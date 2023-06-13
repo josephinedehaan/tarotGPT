@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarot Reading Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="custom.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand" href="index.html">
+      <img id="header-logo" src="assets/graphics/T.png" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Learn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Reading</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="tarot-cards col-sm-8">
+        <div class="row tarot-rows">
+          <div class="col-sm-4" data-tilt data-tilt-max-glare>
+            <img src="assets/cards/image1.jpg" class="img-fluid" alt="Tarot Card 1">
+          </div>
+          <div class="col-sm-4">
+            <img src="assets/cards/image2.jpg" class="img-fluid" alt="Tarot Card 2">
+          </div>
+          <div class="col-sm-4">
+            <img src="assets/cards/image3.jpg" class="img-fluid" alt="Tarot Card 3">
+          </div>
+        </div>
+
+        <div class="row tarot-rows">
+          <div class="col-sm-4">
+            <img src="assets/cards/image4.jpg" class="img-fluid" alt="Tarot Card 1">
+          </div>
+          <div class="col-sm-4">
+            <img src="assets/cards/image5.jpg" class="img-fluid" alt="Tarot Card 2">
+          </div>
+          <div class="col-sm-4">
+            <img src="assets/cards/image6.jpg" class="img-fluid" alt="Tarot Card 3">
+          </div>
+        </div>
+
+        <div class="row tarot-rows">
+          <div class="col-sm-4">
+            <img src="assets/cards/image7.jpg" class="img-fluid" alt="Tarot Card 1">
+          </div>
+          <div class="col-sm-4">
+            <img src="assets/cards/image8.jpg" class="img-fluid" alt="Tarot Card 2">
+          </div>
+          <div class="col-sm-4">
+            <img src="assets/cards/image9.jpg" class="img-fluid" alt="Tarot Card 3">
+          </div>
+        </div>
+       
+
+        <label>
+          <input type="checkbox" name="cards" value="The Fool"> The Fool
+        </label>
+        <label>
+          <input type="checkbox" name="cards" value="The Wizard"> The Wizard
+        </label>
+        <label>
+          <input type="checkbox" name="cards" value="The Empress"> The Empress
+        </label>
+        <label>
+          <input type="checkbox" name="cards" value="The Chariot"> The Chariot
+        </label>
+        <br>
+        <button onclick="fetchAnimalInfo()">Submit</button>
+
+      </div>
+
+      <div class="chatbot col-sm-4">
+        <h3>GPT Chatbot</h3>
+
+        <div>
+          <span id="output"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/vanilla-tilt.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
