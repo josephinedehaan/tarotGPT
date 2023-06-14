@@ -1,63 +1,77 @@
 @font-face {
     font-family: Eubergine;
     src: url(assets/fonts/Eubergine\ Font.ttf);
-}
-
-/* X-Small devices (portrait phones, less than 576px)
-No media query for `xs` since this is the default in Bootstrap */
-
-body {
+  }
+  
+  body {
     background-color: black;
     color: rgb(174, 133, 220);
     font-family: Eubergine;
-}
-
-.navbar-brand {
+  }
+  
+  .navbar-brand {
     padding-left: 10px;
-}
+  }
 
-#header-logo {
+  .navbar-brand img {
     height: 50px;
-}
-
-.nav-link {
+  }
+  
+  .nav-link {
     font-family: Eubergine;
-}
-
-.tarot-cards {
+  }
+  
+  
+  .tarot-cards {
     text-align: center;
-    height: 100%;
-}
-
-.tarot-rows {
+    max-height: 100%;
+  }
+  
+  .tarot-rows {
     padding-bottom: 5px;
-}
-
-
-.img-fluid {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tarot-rows .col-md-4 {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+  
+  .img-fluid {
     max-width: 100%;
     height: auto;
-}
-
-.chatbot {
+  }
+  
+  .chatbot {
     border-style: solid;
     border-width: 2px;
     border-color: rgb(174, 133, 220);
     text-align: center;
     min-height: 200px;
-}
+  }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { ... }
+@media (min-width: 576px) {
+    ...
+}
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { ... }
+@media (min-width: 768px) {
+    ...
+}
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { ... }
+@media (min-width: 992px) {
+    ...
+}
 
 /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { ... }
+@media (min-width: 1200px) {
+    ...
+}
 
 /* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) { ... }
+@media (min-width: 1400px) {
+    ...
+}
