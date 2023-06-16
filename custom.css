@@ -1,55 +1,57 @@
 @font-face {
     font-family: Eubergine;
     src: url(assets/fonts/Eubergine\ Font.ttf);
-  }
-  
-  body {
+}
+
+body {
     background-color: black;
     color: rgb(174, 133, 220);
     font-family: Eubergine;
-  }
-  
-  .navbar-brand {
-    padding-left: 10px;
-  }
+}
 
-  .navbar-brand img {
-    height: 50px;
-  }
-  
-  .nav-link {
+.navbar-brand {
+    padding-left: 10px;
+}
+
+.navbar-brand img {
+    height: 30px;
+}
+
+.nav-link {
     font-family: Eubergine;
-  }
-  
-  
-  .tarot-cards {
+}
+
+
+.tarot-cards {
     text-align: center;
     max-height: 100%;
-  }
-  
-  .tarot-rows {
+}
+
+.tarot-rows {
     padding-bottom: 5px;
     display: flex;
     justify-content: center;
-  }
-  
-  .tarot-rows .col-md-4 {
+}
+
+.tarot-rows .col-md-4 {
     flex: 0 0 33.33%;
     max-width: 33.33%;
-  }
-  
-  .img-fluid {
+}
+
+.img-fluid {
     max-width: 100%;
     height: auto;
-  }
-  
-  .chatbot {
+    max-height: 300px;
+    border-radius: 5%;
+}
+
+.chatbot {
     border-style: solid;
     border-width: 2px;
     border-color: rgb(174, 133, 220);
     text-align: center;
     min-height: 200px;
-  }
+}
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
@@ -58,12 +60,15 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    ...
+
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    ...
+    .navbar-brand img {
+        height: 50px;
+    }
+
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
