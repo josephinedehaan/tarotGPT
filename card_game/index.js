@@ -5,6 +5,8 @@ const cardObjectDefinitions = [
     {id:4, imagePath:'/images/4.jpg'},
 ]
 
+const acedId = 1
+
 const cardBackImgPath = '/images/back.jpg'
 
 const cardContainerElem = document.querySelector('.card-container')
@@ -20,7 +22,113 @@ const numCards = cardObjectDefinitions.length
 
 let cardPositions = []
 
+let gameInProgress = false
+let shufflingInProgress = false
+let cardsRevealed = false
+
+const currentGameStatusElem = document.querySelector('.current-status')
+
+const scoreContainerElem = document.querySelector('.header-score-container')
+const scoreElem = document.querySelector('.score')
+
+const roundContainerElem = document.querySelector('.header-round-container')
+const roundElem = document.querySelector('.round')
+
+const winColor = "green"
+const loseColor = "red"
+const primaryColor = "black"
+
+let roundNum = 0
+let maxRounds = 4
+let score = 0
+
 loadGame()
+
+function chooseCard(card) {
+    if(canChooseCard())
+    {
+        evaluateCardChoice(card)
+        flipCard(card, false)
+        setTimeout(() => {
+            flipCards(false)
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "card positions revealed")
+        }, 1000)
+        cardsRevealed = true
+    }
+
+}
+
+// this won't be necessary
+function calculateScoreToAdd(roundNum) {
+    if(roundNum == 1)
+    {
+        return 100
+    }
+    else if(roundNum == 2)
+    {
+        return 50
+    }
+    else if(roundNum == 3)
+    {
+        return 25
+    }
+    else
+    {
+        return 10
+    }
+}
+
+// this won't be necessary
+function calculateScore(){
+    const scoreToAdd = calculateScoreToAdd(roundNum)
+    score = score + scoreToAdd
+}
+
+// this will eventually be a function that tells chatgpt what cards have been drawn
+function updateScore() {
+    calculateScore()
+
+}
+
+function updateStatusElement(elem, display, color, innerHTML) {
+    elem.style.display = display
+    if(arguments.length > 2)
+    {
+        elem.style.color = color
+        elem.innerHTML = innerHTML
+    }
+
+}
+
+function outputChoiceFeedback(hit) {
+    if(hit)
+    {
+        updateStatusElement(currentGameStatusElem, "block", winColor, "Hit! Well Done :)")
+    }
+    else
+    {
+        updateStatusElement(currentGameStatusElem, "block", loseColor, "Missed :(")
+    }
+}
+
+// evaluates and outputs whether selected card is the ace (star); and updates score
+// this will probably be deleted further on as not necessary for tarot reading, tbd
+function evaluateCardChoice(card) {
+    if(card.id == acedId)
+    {
+        updateScore()
+        outputChoiceFeedback(true)
+    }
+    else
+    {
+        outputChoiceFeedback(false)
+    }
+
+}
+
+function canChooseCard() {
+    return gameInProgress == true && !shufflingInProgress && !cardsRevealed
+}
 
 function loadGame(){
     createCards()
@@ -34,18 +142,38 @@ function startGame(){
 }
 
 function initializeNewGame() {
+    score = 0 
+    roundNum = 0 
+    shufflingInProgress = false
 
+    updateStatusElement(scoreContainerElem, "flex")
+    updateStatusElement(roundContainerElem, "flex")
+
+    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
+
+    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`)
+   
 }
 
 function startRound() {
     initializeNewRound()
     collectCards()
-    // flipCards(true)
+    flipCards(true)
     shuffleCards()
 
 }
 
+// sthis will probably eventually be initialize new reading
 function initializeNewRound() {
+    roundNum++
+    playGameButtonElem.disabled = true
+    gameInProgress = true
+    shufflingInProgress = true
+    cardsRevealed = false
+
+    updateStatusElement(currentGameStatusElem, "block", primaryColor, "Shuffling... shuffling")
+    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`)
+
 
 }
 
@@ -95,10 +223,12 @@ function shuffleCards() {
     function shuffle() {
         randomizeCardPositions()
 
-        if(shuffleCount == 500)
+        if(shuffleCount == 250)
         {
             clearInterval(id)
+            shufflingInProgress = false
             dealCards()
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Please choose the card you think is the star")
         }
         else
         {
@@ -233,8 +363,14 @@ function createCard(cardItem) {
     // add card element as chld element to appropriate grid cell
     addCardToGridCell(cardElem)
 
-    initializeCardPositions(cardElem)
+    initializeCardPositions(cardElem) 
+
+    attachClickEventHandlerToCard(cardElem)
 }   
+
+function attachClickEventHandlerToCard(card){
+    card.addEventListener('click', () => chooseCard(card))
+}
 
 function initializeCardPositions(card){
     cardPositions.push(card.id)

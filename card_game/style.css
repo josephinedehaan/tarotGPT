@@ -10,12 +10,40 @@ body {
     background-color: antiquewhite;
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.header-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.header-round-info-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-status-info-container,
+.header-button-container,
+.header-score-container,
+.header-round-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-score-container,
+.header-round-container {
+    width: 100px;
+}
+
 main {
     height:55%;
     display: flex;
     justify-content: center;
-    border: 1px solid black;
-
 }
 
 .card-container {
@@ -27,31 +55,26 @@ main {
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "a b" 
                         "c d";
-    border: 1px solid black;
 
 }
 .card-pos-a {
     grid-area: a;
-    border: 1px solid black;
-    background-color: rgb(14, 123, 218);
+    /* background-color: rgb(14, 123, 218); */
 
 }
 .card-pos-b {
     grid-area: b;
-    border: 1px solid black;
-    background-color: brown;
+    /* background-color: brown; */
 
 }
 .card-pos-c {
     grid-area: c;
-    border: 1px solid black;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
 
 }
 .card-pos-d {
     grid-area: d;
-    border: 1px solid black;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
 }
 
 .card-pos-a, .card-pos-b, .card-pos-c, .card-pos-d{
@@ -87,6 +110,8 @@ main {
 
 .card-img {
     height:100%;
+    border-radius: 6px;
+
 
 }
 
