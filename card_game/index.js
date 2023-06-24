@@ -3,6 +3,11 @@ const cardObjectDefinitions = [
     {id:2, imagePath:'/images/2.jpg'},
     {id:3, imagePath:'/images/3.jpg'},
     {id:4, imagePath:'/images/4.jpg'},
+    {id:5, imagePath:'/images/5.jpg'},
+    {id:6, imagePath:'/images/6.jpg'},
+    {id:7, imagePath:'/images/7.jpg'},
+    {id:8, imagePath:'/images/8.jpg'},
+    {id:9, imagePath:'/images/9.jpg'},
 ]
 
 const acedId = 1
@@ -15,7 +20,7 @@ let cards = []
 
 const playGameButtonElem = document.getElementById('playGame')
 
-const collapsedGridAreaTemplate = '"a a" "a a"'
+const collapsedGridAreaTemplate = '"a a a" "a a a" "a a a"'
 const cardCollectionCellClass = ".card-pos-a"
 
 const numCards = cardObjectDefinitions.length
@@ -87,6 +92,8 @@ function calculateScore(){
 // this will eventually be a function that tells chatgpt what cards have been drawn
 function updateScore() {
     calculateScore()
+    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
+
 
 }
 
@@ -217,16 +224,44 @@ function flipCards(flipToBack) {
     })
 }
 
+function removeShuffleCasses() {
+    cards.forEach((card) =>{
+        card.classList.remove("shuffle-left")
+        card.classList.remove("shuffle-right")
+    })
+}
+
+function animateShuffle(shuffleCount) {
+    const random1 = Math.floor(Math.random() * numCards) + 1
+    const random2 = Math.floor(Math.random() * numCards) + 1
+
+    let card1 = document.getElementById(random1)
+    let card2 = document.getElementById(random2)
+
+    if (shuffleCount % 4 == 0)
+    {
+        card1.classList.toggle("shuffle-left")
+        card1.style.zIndex = 100
+    }
+    if (shuffleCount % 10 == 0)
+    {
+        card2.classList.toggle("shuffle-right")
+        card2.style.zIndex = 200
+    }
+
+}
+
 function shuffleCards() {
     const id = setInterval(shuffle, 12)
     let shuffleCount = 0 
     function shuffle() {
         randomizeCardPositions()
-
+        animateShuffle(shuffleCount)
         if(shuffleCount == 250)
         {
             clearInterval(id)
             shufflingInProgress = false
+            removeShuffleCasses()
             dealCards()
             updateStatusElement(currentGameStatusElem, "block", primaryColor, "Please choose the card you think is the star")
         }
@@ -252,8 +287,6 @@ function dealCards() {
     addCardsToAppropriateCell()
     const areasTemplate = returnGridAreasMappedToCardPos()
     transformGridArea(areasTemplate)
-
-
 }
 
 function returnGridAreasMappedToCardPos()
@@ -279,6 +312,30 @@ function returnGridAreasMappedToCardPos()
         {
             areas = areas + "d "
         }
+        else if(cardPositions[index] == 5)
+        {
+            areas = areas + "e "
+        }
+        else if (cardPositions[index] ==6)
+        {
+            areas = areas + "f "
+        }
+        else if (cardPositions[index] == 7)
+        {
+            areas = areas + "g "
+        }
+        else if(cardPositions[index] == 8)
+        {
+            areas = areas + "h "
+        }
+        else if(cardPositions[index] == 9)
+        {
+            areas = areas + "i "
+        }
+
+
+
+
         if (index == 1)
         {
             firstPart = areas.substring(0, areas.length - 1)
@@ -288,12 +345,9 @@ function returnGridAreasMappedToCardPos()
         {
             secondPart = areas.substring(0, areas.length - 1)
         }
-
     })
-
+    return `"a b c" "d e f" "g h i"`
     return `"${firstPart}" "${secondPart}"`
-
-
 }
 
 
@@ -419,6 +473,26 @@ function mapCardIdToGridCell(card) {
     else if(card.id == 4)
     {
         return '.card-pos-d'
+    }
+    else if(card.id == 5)
+    {
+        return '.card-pos-e'
+    }
+    else if(card.id == 6)
+    {
+        return '.card-pos-f'
+    }
+    else if(card.id == 7)
+    {
+        return '.card-pos-g'
+    }
+    else if(card.id == 8)
+    {
+        return '.card-pos-h'
+    }
+    else if(card.id == 9)
+    {
+        return '.card-pos-i'
     }
 
 

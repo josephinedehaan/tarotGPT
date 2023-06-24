@@ -35,10 +35,6 @@ header {
     align-items: center;
 }
 
-.header-score-container,
-.header-round-container {
-    width: 100px;
-}
 
 main {
     height:55%;
@@ -51,36 +47,49 @@ main {
     height: 100%;
     width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space));
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "a b" 
-                        "c d";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "a b c" 
+                        "d e f"
+                        "g h i";
+                        
+    border: 1px solid black;
 
 }
 .card-pos-a {
     grid-area: a;
-    /* background-color: rgb(14, 123, 218); */
-
 }
 .card-pos-b {
     grid-area: b;
-    /* background-color: brown; */
-
 }
 .card-pos-c {
     grid-area: c;
-    /* background-color: yellowgreen; */
-
 }
 .card-pos-d {
     grid-area: d;
-    /* background-color: cadetblue; */
+}
+.card-pos-e {
+    grid-area: e;
+}
+.card-pos-f {
+    grid-area: f;
+}
+.card-pos-g {
+    grid-area: g;
+}
+.card-pos-h {
+    grid-area: h;
+}
+.card-pos-i {
+    grid-area: i;
 }
 
-.card-pos-a, .card-pos-b, .card-pos-c, .card-pos-d{
+.card-pos-a, .card-pos-b, .card-pos-c, .card-pos-d, .card-pos-e, .card-pos-f, .card-pos-g, .card-pos-h, .card-pos-i{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
+
 }
 
 .card {
@@ -89,6 +98,7 @@ main {
     width: var(--card-width);
     perspective: 1000px;
     cursor: pointer;
+    transition: transform 0.6s ease-in-out;
 }
 
 .card-inner {
@@ -121,4 +131,12 @@ main {
 
 .card-inner.flip-it {
     transform: rotateY(180deg);
+}
+
+.card.shuffle-left {
+    transform: translateX(200px) translateY(10px);
+}
+
+.card.shuffle-right {
+    transform: translateX(-200px) translateY(-10px);
 }
