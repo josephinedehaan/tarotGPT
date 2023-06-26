@@ -21,10 +21,6 @@ header {
     justify-content: center;
 }
 
-.header-round-info-container {
-    display: flex;
-    justify-content: space-evenly;
-}
 
 .header-status-info-container,
 .header-button-container,
@@ -49,9 +45,9 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "a b c" 
-                        "d e f"
-                        "g h i";
+    grid-template-areas: "a a a" 
+                        "a a a"
+                        "a a a";
                         
     border: 1px solid black;
 

@@ -10,8 +10,6 @@ const cardObjectDefinitions = [
     {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
 ]
 
-const acedId = 1
-
 const cardBackImgPath = '/images/back.jpg'
 
 const cardContainerElem = document.querySelector('.card-container')
@@ -34,7 +32,7 @@ let cardsRevealed = false
 const currentGameStatusElem = document.querySelector('.current-status')
 
 const scoreContainerElem = document.querySelector('.header-score-container')
-const scoreElem = document.querySelector('.score')
+const selectedCardElem = document.querySelector('.selected-card')
 
 const roundContainerElem = document.querySelector('.header-round-container')
 const roundElem = document.querySelector('.round')
@@ -45,14 +43,12 @@ const primaryColor = "black"
 
 
 let maxRounds = 4
-let score = 0
 
 loadGame()
 
 function chooseCard(card) {
     if(canChooseCard())
     {
-        evaluateCardChoice(card)
         flipCard(card, false)
         setTimeout(() => {
             flipCards(false)
@@ -70,9 +66,8 @@ function getCardName(card) {
 // this will eventually be a function that tells chatgpt what cards have been drawn
 function showCardName(card) {
     cardName = getCardName(card)
-    updateStatusElement(scoreElem, "block", primaryColor, `<span class='badge'>${cardName}</span>`)
+    updateStatusElement(selectedCardElem, "block", primaryColor, `<span class='badge'>${cardName}</span>`)
 }
-
 
 function updateStatusElement(elem, display, color, innerHTML) {
     elem.style.display = display
@@ -81,35 +76,32 @@ function updateStatusElement(elem, display, color, innerHTML) {
         elem.style.color = color
         elem.innerHTML = innerHTML
     }
-
 }
 
-function outputChoiceFeedback(hit) {
-    if(hit)
-    {
-        updateStatusElement(currentGameStatusElem, "block", winColor, "Hit! Well Done :)")
-    }
-    else
-    {
-        updateStatusElement(currentGameStatusElem, "block", loseColor, "Missed :(")
-    }
-}
+// function outputChoiceFeedback(hit) {
+//     if(hit)
+//     {
+//         updateStatusElement(currentGameStatusElem, "block", winColor, "Hit! Well Done :)")
+//     }
+//     else
+//     {
+//         updateStatusElement(currentGameStatusElem, "block", loseColor, "Missed :(")
+//     }
+// }
 
-// evaluates and outputs whether selected card is the ace (star); and updates score
+// evaluates and outputs whether selected card is the ace (star)
 // this will probably be deleted further on as not necessary for tarot reading, tbd
-function evaluateCardChoice(card) {
-    showCardName(card)
+// function evaluateCardChoice(card) {
+//     if(card.id == acedId)
+//     {
+//         outputChoiceFeedback(true)
+//     }
+//     else
+//     {
+//         outputChoiceFeedback(false)
+//     }
 
-    if(card.id == acedId)
-    {
-        outputChoiceFeedback(true)
-    }
-    else
-    {
-        outputChoiceFeedback(false)
-    }
-
-}
+// }
 
 function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed
@@ -127,12 +119,11 @@ function startGame(){
 }
 
 function initializeNewGame() {
-    score = 0 
     shufflingInProgress = false
 
     updateStatusElement(scoreContainerElem, "flex")
-    
-    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
+
+    // updateStatusElement(selectedCardElem, "block", primaryColor, `Score <span class='badge'>'test'</span>`)
    
 }
 
@@ -235,7 +226,7 @@ function shuffleCards() {
             shufflingInProgress = false
             removeShuffleCasses()
             dealCards()
-            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Please choose the card you think is the star")
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Click on any card to reveal cards")
         }
         else
         {
@@ -336,6 +327,7 @@ function createCard(cardItem) {
     // add card element as chld element to appropriate grid cell
     addCardToGridCell(cardElem)
 
+
     initializeCardPositions(cardElem) 
 
     attachClickEventHandlerToCard(cardElem)
@@ -382,6 +374,7 @@ function addCardToGridCell(card) {
     addChildElement(cardPosElem, card)
 
 }
+
 
 function mapCardIdToGridCell(card) {
     if(card.id == 1)
