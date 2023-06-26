@@ -43,7 +43,7 @@ const winColor = "green"
 const loseColor = "red"
 const primaryColor = "black"
 
-let roundNum = 0
+
 let maxRounds = 4
 let score = 0
 
@@ -60,48 +60,19 @@ function chooseCard(card) {
         }, 1000)
         cardsRevealed = true
     }
-
-    alert(getCardName(card))
-
 }
 
 function getCardName(card) {
     return cardName = card.getAttribute("data-cardname")
 }
 
-// this won't be necessary
-function calculateScoreToAdd(roundNum) {
-    if(roundNum == 1)
-    {
-        return 100
-    }
-    else if(roundNum == 2)
-    {
-        return 50
-    }
-    else if(roundNum == 3)
-    {
-        return 25
-    }
-    else
-    {
-        return 10
-    }
-}
-
-// this won't be necessary
-function calculateScore(){
-    const scoreToAdd = calculateScoreToAdd(roundNum)
-    score = score + scoreToAdd
-}
 
 // this will eventually be a function that tells chatgpt what cards have been drawn
-function updateScore() {
-    calculateScore()
-    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
-
-
+function showCardName(card) {
+    cardName = getCardName(card)
+    updateStatusElement(scoreElem, "block", primaryColor, `<span class='badge'>${cardName}</span>`)
 }
+
 
 function updateStatusElement(elem, display, color, innerHTML) {
     elem.style.display = display
@@ -127,9 +98,10 @@ function outputChoiceFeedback(hit) {
 // evaluates and outputs whether selected card is the ace (star); and updates score
 // this will probably be deleted further on as not necessary for tarot reading, tbd
 function evaluateCardChoice(card) {
+    showCardName(card)
+
     if(card.id == acedId)
     {
-        updateScore()
         outputChoiceFeedback(true)
     }
     else
@@ -156,15 +128,11 @@ function startGame(){
 
 function initializeNewGame() {
     score = 0 
-    roundNum = 0 
     shufflingInProgress = false
 
     updateStatusElement(scoreContainerElem, "flex")
-    updateStatusElement(roundContainerElem, "flex")
-
+    
     updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
-
-    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`)
    
 }
 
@@ -178,14 +146,12 @@ function startRound() {
 
 // sthis will probably eventually be initialize new reading
 function initializeNewRound() {
-    roundNum++
     playGameButtonElem.disabled = true
     gameInProgress = true
     shufflingInProgress = true
     cardsRevealed = false
 
     updateStatusElement(currentGameStatusElem, "block", primaryColor, "Shuffling... shuffling")
-    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`)
 
 
 }
@@ -298,64 +264,6 @@ function dealCards() {
 function returnGridAreasMappedToCardPos()
 {
     return `"a b c" "d e f" "g h i"`
-
-
-    // let firstPart = ""
-    // let secondPart = ""
-    // let areas = ""
-
-    // cards.forEach((card, index) => {
-    //     if(cardPositions[index] == 1)
-    //     {
-    //         areas = areas + "a "
-    //     }
-    //     else if(cardPositions[index] == 2)
-    //     {
-    //         areas = areas + "b "
-    //     }
-    //     else if (cardPositions[index] == 3)
-    //     {
-    //         areas = areas + "c "
-    //     }
-    //     else if (cardPositions[index] == 4)
-    //     {
-    //         areas = areas + "d "
-    //     }
-    //     else if(cardPositions[index] == 5)
-    //     {
-    //         areas = areas + "e "
-    //     }
-    //     else if (cardPositions[index] ==6)
-    //     {
-    //         areas = areas + "f "
-    //     }
-    //     else if (cardPositions[index] == 7)
-    //     {
-    //         areas = areas + "g "
-    //     }
-    //     else if(cardPositions[index] == 8)
-    //     {
-    //         areas = areas + "h "
-    //     }
-    //     else if(cardPositions[index] == 9)
-    //     {
-    //         areas = areas + "i "
-    //     }
-
-
-
-
-    //     if (index == 1)
-    //     {
-    //         firstPart = areas.substring(0, areas.length - 1)
-    //         areas = "";
-    //     }
-    //     else if (index == 3)
-    //     {
-    //         secondPart = areas.substring(0, areas.length - 1)
-    //     }
-    // })
-    // return `"${firstPart}" "${secondPart}"`
 }
 
 
@@ -434,7 +342,10 @@ function createCard(cardItem) {
 }   
 
 function attachClickEventHandlerToCard(card){
-    card.addEventListener('click', () => chooseCard(card))
+    card.addEventListener('click', () => {
+        chooseCard(card);
+        showCardName(card);
+    });
 }
 
 function initializeCardPositions(card){
