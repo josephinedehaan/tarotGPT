@@ -1,13 +1,13 @@
 const cardObjectDefinitions = [
-    {id:1, imagePath:'/images/1.jpg'},
-    {id:2, imagePath:'/images/2.jpg'},
-    {id:3, imagePath:'/images/3.jpg'},
-    {id:4, imagePath:'/images/4.jpg'},
-    {id:5, imagePath:'/images/5.jpg'},
-    {id:6, imagePath:'/images/6.jpg'},
-    {id:7, imagePath:'/images/7.jpg'},
-    {id:8, imagePath:'/images/8.jpg'},
-    {id:9, imagePath:'/images/9.jpg'},
+    {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
+    {id:2, imagePath:'/images/2.jpg', cardName:'The Tower'},
+    {id:3, imagePath:'/images/3.jpg', cardName:'The World'},
+    {id:4, imagePath:'/images/4.jpg', cardName:'The Moon'},
+    {id:5, imagePath:'/images/5.jpg', cardName:'Two of Swords'},
+    {id:6, imagePath:'/images/6.jpg', cardName:'Two of Cups'},
+    {id:7, imagePath:'/images/7.jpg', cardName:'Five of Cups'},
+    {id:8, imagePath:'/images/8.jpg', cardName:'Eight of Cups'},
+    {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
 ]
 
 const acedId = 1
@@ -61,6 +61,12 @@ function chooseCard(card) {
         cardsRevealed = true
     }
 
+    alert(getCardName(card))
+
+}
+
+function getCardName(card) {
+    return cardName = card.getAttribute("data-cardname")
 }
 
 // this won't be necessary
@@ -291,63 +297,65 @@ function dealCards() {
 
 function returnGridAreasMappedToCardPos()
 {
-    let firstPart = ""
-    let secondPart = ""
-    let areas = ""
-
-    cards.forEach((card, index) => {
-        if(cardPositions[index] == 1)
-        {
-            areas = areas + "a "
-        }
-        else if(cardPositions[index] == 2)
-        {
-            areas = areas + "b "
-        }
-        else if (cardPositions[index] == 3)
-        {
-            areas = areas + "c "
-        }
-        else if (cardPositions[index] == 4)
-        {
-            areas = areas + "d "
-        }
-        else if(cardPositions[index] == 5)
-        {
-            areas = areas + "e "
-        }
-        else if (cardPositions[index] ==6)
-        {
-            areas = areas + "f "
-        }
-        else if (cardPositions[index] == 7)
-        {
-            areas = areas + "g "
-        }
-        else if(cardPositions[index] == 8)
-        {
-            areas = areas + "h "
-        }
-        else if(cardPositions[index] == 9)
-        {
-            areas = areas + "i "
-        }
-
-
-
-
-        if (index == 1)
-        {
-            firstPart = areas.substring(0, areas.length - 1)
-            areas = "";
-        }
-        else if (index == 3)
-        {
-            secondPart = areas.substring(0, areas.length - 1)
-        }
-    })
     return `"a b c" "d e f" "g h i"`
-    return `"${firstPart}" "${secondPart}"`
+
+
+    // let firstPart = ""
+    // let secondPart = ""
+    // let areas = ""
+
+    // cards.forEach((card, index) => {
+    //     if(cardPositions[index] == 1)
+    //     {
+    //         areas = areas + "a "
+    //     }
+    //     else if(cardPositions[index] == 2)
+    //     {
+    //         areas = areas + "b "
+    //     }
+    //     else if (cardPositions[index] == 3)
+    //     {
+    //         areas = areas + "c "
+    //     }
+    //     else if (cardPositions[index] == 4)
+    //     {
+    //         areas = areas + "d "
+    //     }
+    //     else if(cardPositions[index] == 5)
+    //     {
+    //         areas = areas + "e "
+    //     }
+    //     else if (cardPositions[index] ==6)
+    //     {
+    //         areas = areas + "f "
+    //     }
+    //     else if (cardPositions[index] == 7)
+    //     {
+    //         areas = areas + "g "
+    //     }
+    //     else if(cardPositions[index] == 8)
+    //     {
+    //         areas = areas + "h "
+    //     }
+    //     else if(cardPositions[index] == 9)
+    //     {
+    //         areas = areas + "i "
+    //     }
+
+
+
+
+    //     if (index == 1)
+    //     {
+    //         firstPart = areas.substring(0, areas.length - 1)
+    //         areas = "";
+    //     }
+    //     else if (index == 3)
+    //     {
+    //         secondPart = areas.substring(0, areas.length - 1)
+    //     }
+    // })
+    // return `"${firstPart}" "${secondPart}"`
 }
 
 
@@ -377,6 +385,9 @@ function createCard(cardItem) {
     // add class and id to card element
     addClassToElement(cardElem, 'card')
     addIdToElement(cardElem, cardItem.id)
+
+    // adds card name as metadata ussing data-name=name to card element
+    addCardNameToElement(cardElem, cardItem.cardName)
 
     // add class to inner card elemet
     addClassToElement(cardInnerElem, 'card-inner')
@@ -440,6 +451,10 @@ function addClassToElement(elem, className){
 
 function addIdToElement(elem, id) {
     elem.id = id
+}
+
+function addCardNameToElement(elem, cardName) {
+    elem.setAttribute('data-cardname', cardName)
 }
 
 function addSrcToImageElem(imgElem, src){
