@@ -18,7 +18,6 @@ let cards = []
 
 const playGameButtonElem = document.getElementById('playGame')
 
-const collapsedGridAreaTemplate = '"a a a" "a a a" "a a a"'
 const cardCollectionCellClass = ".card-pos-a"
 
 const numCards = cardObjectDefinitions.length
@@ -34,75 +33,42 @@ const currentGameStatusElem = document.querySelector('.current-status')
 const scoreContainerElem = document.querySelector('.header-score-container')
 const selectedCardElem = document.querySelector('.selected-card')
 
-const roundContainerElem = document.querySelector('.header-round-container')
-const roundElem = document.querySelector('.round')
 
-const winColor = "green"
-const loseColor = "red"
-const primaryColor = "black"
+loadGame();
 
-
-let maxRounds = 4
-
-loadGame()
-
+// if canchoosecard is true, flips one card then all the rest after a few seconds
 function chooseCard(card) {
     if(canChooseCard())
     {
         flipCard(card, false)
         setTimeout(() => {
             flipCards(false)
-            updateStatusElement(currentGameStatusElem, "block", primaryColor, "card positions revealed")
+            updateStatusElement(currentGameStatusElem, "block", "card positions revealed")
         }, 1000)
         cardsRevealed = true
     }
 }
 
+// retrieves card name metadatata from card element
 function getCardName(card) {
     return cardName = card.getAttribute("data-cardname")
 }
 
-
-// this will eventually be a function that tells chatgpt what cards have been drawn
+// updates html with relevant card name
 function showCardName(card) {
     cardName = getCardName(card)
-    updateStatusElement(selectedCardElem, "block", primaryColor, `<span class='badge'>${cardName}</span>`)
+    updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
 }
 
-function updateStatusElement(elem, display, color, innerHTML) {
+function updateStatusElement(elem, display, innerHTML) {
     elem.style.display = display
     if(arguments.length > 2)
     {
-        elem.style.color = color
         elem.innerHTML = innerHTML
     }
 }
 
-// function outputChoiceFeedback(hit) {
-//     if(hit)
-//     {
-//         updateStatusElement(currentGameStatusElem, "block", winColor, "Hit! Well Done :)")
-//     }
-//     else
-//     {
-//         updateStatusElement(currentGameStatusElem, "block", loseColor, "Missed :(")
-//     }
-// }
-
-// evaluates and outputs whether selected card is the ace (star)
-// this will probably be deleted further on as not necessary for tarot reading, tbd
-// function evaluateCardChoice(card) {
-//     if(card.id == acedId)
-//     {
-//         outputChoiceFeedback(true)
-//     }
-//     else
-//     {
-//         outputChoiceFeedback(false)
-//     }
-
-// }
-
+// returns boolean value to assess whether cards can or can't be chosen
 function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed
 }
@@ -110,48 +76,24 @@ function canChooseCard() {
 function loadGame(){
     createCards()
     cards = document.querySelectorAll('.card')
-    playGameButtonElem.addEventListener('click', ()=>startGame())
-}
-
-function startGame(){
-    initializeNewGame()
-    startRound()
-}
-
-function initializeNewGame() {
-    shufflingInProgress = false
-
-    updateStatusElement(scoreContainerElem, "flex")
-
-    // updateStatusElement(selectedCardElem, "block", primaryColor, `Score <span class='badge'>'test'</span>`)
-   
+    playGameButtonElem.addEventListener('click', ()=>startRound())
 }
 
 function startRound() {
     initializeNewRound()
-    collectCards()
-    flipCards(true)
+    addCardsToGridAreaCell(cardCollectionCellClass)
     shuffleCards()
-
 }
 
-// sthis will probably eventually be initialize new reading
 function initializeNewRound() {
     playGameButtonElem.disabled = true
     gameInProgress = true
     shufflingInProgress = true
     cardsRevealed = false
 
-    updateStatusElement(currentGameStatusElem, "block", primaryColor, "Shuffling... shuffling")
-
-
+    updateStatusElement(currentGameStatusElem, "block", "Shuffling... shuffling")
 }
 
-function collectCards() {
-    transformGridArea(collapsedGridAreaTemplate)
-    addCardsToGridAreaCell(cardCollectionCellClass)
-
-}
 
 function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
@@ -162,9 +104,7 @@ function addCardsToGridAreaCell(cellPositionClassName) {
     const cellPositionElem = document.querySelector(cellPositionClassName)
     cards.forEach((card, index) => {
         addChildElement(cellPositionElem, card)
-    }
-
-    )
+    })
 }
 
 function flipCard(card, flipToBack) {
@@ -211,7 +151,6 @@ function animateShuffle(shuffleCount) {
         card2.classList.toggle("shuffle-right")
         card2.style.zIndex = 200
     }
-
 }
 
 function shuffleCards() {
@@ -226,7 +165,7 @@ function shuffleCards() {
             shufflingInProgress = false
             removeShuffleCasses()
             dealCards()
-            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Click on any card to reveal cards")
+            updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
         }
         else
         {
@@ -241,22 +180,15 @@ function randomizeCardPositions() {
 
     const temp = cardPositions [random1 - 1]
 
-
     cardPositions[random1 - 1] = cardPositions[random2 - 1]
     cardPositions[random2 -1] = temp
 }
 
 function dealCards() {
     addCardsToAppropriateCell()
-    const areasTemplate = returnGridAreasMappedToCardPos()
+    const areasTemplate = `"a b c" "d e f" "g h i"`
     transformGridArea(areasTemplate)
 }
-
-function returnGridAreasMappedToCardPos()
-{
-    return `"a b c" "d e f" "g h i"`
-}
-
 
 function addCardsToAppropriateCell() {
     cards.forEach((card)=>{
@@ -270,6 +202,7 @@ function createCards() {
     })
 }
 
+// creates cards by calling a series of functions
 function createCard(cardItem) {
     // create div elements that make up a card
     const cardElem = createElement('div')
@@ -290,6 +223,7 @@ function createCard(cardItem) {
 
     // add class to inner card elemet
     addClassToElement(cardInnerElem, 'card-inner')
+    addClassToElement(cardInnerElem, 'flip-it')
 
     // add class to front cart element
     addClassToElement(cardFrontElem, 'card-front')
@@ -326,7 +260,6 @@ function createCard(cardItem) {
 
     // add card element as chld element to appropriate grid cell
     addCardToGridCell(cardElem)
-
 
     initializeCardPositions(cardElem) 
 
@@ -368,13 +301,22 @@ function addChildElement(parentElem, childElem) {
     parentElem.appendChild(childElem)
 }
 
+
+// assesses whether the game is in progress and "places the cards in the correct grid area so to speak"
 function addCardToGridCell(card) {
-    const cardPositionClassName = mapCardIdToGridCell(card)
+    let cardPositionClassName;
+
+    if (gameInProgress == true && !shufflingInProgress && !cardsRevealed)
+    {
+        cardPositionClassName = mapCardIdToGridCell(card);
+    }
+    else
+    {
+        cardPositionClassName = '.card-pos-a';
+    }
     const cardPosElem = document.querySelector(cardPositionClassName)
     addChildElement(cardPosElem, card)
-
 }
-
 
 function mapCardIdToGridCell(card) {
     if(card.id == 1)
@@ -413,6 +355,4 @@ function mapCardIdToGridCell(card) {
     {
         return '.card-pos-i'
     }
-
-
 }

@@ -7,7 +7,8 @@
 
 body {
     height: 100vh;
-    background-color: antiquewhite;
+    background-color: rgb(38, 30, 30);
+    color: rgb(182, 182, 182);
 }
 
 header {
@@ -84,7 +85,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
 }
 
@@ -117,8 +118,6 @@ main {
 .card-img {
     height:100%;
     border-radius: 6px;
-
-
 }
 
 .card-back {
