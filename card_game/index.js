@@ -54,10 +54,12 @@ function getCardName(card) {
     return cardName = card.getAttribute("data-cardname")
 }
 
-// updates html with relevant card name
+// updates html with relevant card name only if the cards have been flipped
 function showCardName(card) {
     cardName = getCardName(card)
-    updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
+    if (cardsRevealed){
+        updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
+    }
 }
 
 // updates the display (flex, block, etc) of html element and gives the option of updating the innerhtml
