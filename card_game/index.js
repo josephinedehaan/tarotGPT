@@ -18,7 +18,7 @@ let cards = []
 
 const playGameButtonElem = document.getElementById('playGame')
 
-const cardCollectionCellClass = ".card-pos-a"
+// const cardCollectionCellClass = ".card-pos-a"
 
 const numCards = cardObjectDefinitions.length
 
@@ -60,6 +60,7 @@ function showCardName(card) {
     updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
 }
 
+// updates the display (flex, block, etc) of html element and gives the option of updating the innerhtml
 function updateStatusElement(elem, display, innerHTML) {
     elem.style.display = display
     if(arguments.length > 2)
@@ -73,38 +74,29 @@ function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed
 }
 
+// this gets called upon loading the page, creates all cards
 function loadGame(){
     createCards()
-    cards = document.querySelectorAll('.card')
-    playGameButtonElem.addEventListener('click', ()=>startRound())
+    cards = document.querySelectorAll('.card')  // creates array with all cards
+    playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
 }
 
-function startRound() {
+// this gets called when the play game button is clicked.
+function startTarotReading() {
     initializeNewRound()
-    addCardsToGridAreaCell(cardCollectionCellClass)
     shuffleCards()
 }
 
 function initializeNewRound() {
-    playGameButtonElem.disabled = true
+    playGameButtonElem.hidden = true
     gameInProgress = true
     shufflingInProgress = true
     cardsRevealed = false
-
-    updateStatusElement(currentGameStatusElem, "block", "Shuffling... shuffling")
 }
-
 
 function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
 
-}
-
-function addCardsToGridAreaCell(cellPositionClassName) {
-    const cellPositionElem = document.querySelector(cellPositionClassName)
-    cards.forEach((card, index) => {
-        addChildElement(cellPositionElem, card)
-    })
 }
 
 function flipCard(card, flipToBack) {
@@ -157,7 +149,7 @@ function shuffleCards() {
     const id = setInterval(shuffle, 12)
     let shuffleCount = 0 
     function shuffle() {
-        randomizeCardPositions()
+        // randomizeCardPositions()
         animateShuffle(shuffleCount)
         if(shuffleCount == 250)
         {
@@ -174,15 +166,15 @@ function shuffleCards() {
     }
 }
 
-function randomizeCardPositions() {
-    const random1 = Math.floor(Math.random() * numCards) + 1
-    const random2 = Math.floor(Math.random() * numCards) + 1
+// function randomizeCardPositions() {
+//     const random1 = Math.floor(Math.random() * numCards) + 1
+//     const random2 = Math.floor(Math.random() * numCards) + 1
 
-    const temp = cardPositions [random1 - 1]
+//     const temp = cardPositions [random1 - 1]
 
-    cardPositions[random1 - 1] = cardPositions[random2 - 1]
-    cardPositions[random2 -1] = temp
-}
+//     cardPositions[random1 - 1] = cardPositions[random2 - 1]
+//     cardPositions[random2 -1] = temp
+// }
 
 function dealCards() {
     addCardsToAppropriateCell()
