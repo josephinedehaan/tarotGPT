@@ -17,8 +17,7 @@ const cardContainerElem = document.querySelector('.card-container')
 let cards = []
 
 const playGameButtonElem = document.getElementById('playGame')
-
-// const cardCollectionCellClass = ".card-pos-a"
+const revealCardsButtonElem = document.getElementById('revealCards')
 
 const numCards = cardObjectDefinitions.length
 
@@ -33,7 +32,6 @@ const currentGameStatusElem = document.querySelector('.current-status')
 const scoreContainerElem = document.querySelector('.header-score-container')
 const selectedCardElem = document.querySelector('.selected-card')
 
-
 loadGame();
 
 // if canchoosecard is true, flips one card then all the rest after a few seconds
@@ -47,6 +45,17 @@ function chooseCard(card) {
         }, 1000)
         cardsRevealed = true
     }
+}
+
+// *** NOTE TO SELF: create button to flip each card individually ***
+// figure out how to tell that all of the cards have been flipped 
+// so that cardsrevealed can be set to true. probably if statement?
+//  if flipcard has been executed 9 times, cardsrevealed = true
+
+// unhides the reveal cards button and attaches flipcards() function to it
+function activateRevealCardsButton() {
+    revealCardsButtonElem.hidden = false
+    revealCardsButtonElem.addEventListener('click', ()=> flipCards())
 }
 
 // retrieves card name metadatata from card element
@@ -81,6 +90,7 @@ function loadGame(){
     createCards()
     cards = document.querySelectorAll('.card')  // creates array with all cards
     playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
+    revealCardsButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
@@ -98,7 +108,6 @@ function initializeNewRound() {
 
 function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
-
 }
 
 function flipCard(card, flipToBack) {
@@ -159,6 +168,7 @@ function shuffleCards() {
             shufflingInProgress = false
             removeShuffleCasses()
             dealCards()
+            activateRevealCardsButton()
             updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
         }
         else
@@ -295,7 +305,6 @@ function addChildElement(parentElem, childElem) {
     parentElem.appendChild(childElem)
 }
 
-
 // assesses whether the game is in progress and "places the cards in the correct grid area so to speak"
 function addCardToGridCell(card) {
     let cardPositionClassName;
@@ -303,6 +312,7 @@ function addCardToGridCell(card) {
     if (gameInProgress == true && !shufflingInProgress && !cardsRevealed)
     {
         cardPositionClassName = mapCardIdToGridCell(card);
+        // changeButtonFunctionality()
     }
     else
     {

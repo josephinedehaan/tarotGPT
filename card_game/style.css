@@ -49,7 +49,6 @@ main {
     grid-template-areas: "a a a" 
                         "a a a"
                         "a a a";
-                        
     border: 1px solid black;
 
 }
