@@ -1,3 +1,11 @@
+// TO DO:
+// 1. cardsRevealed seems to not get used. It's always set to false. Is it necessary?
+// 2. Create function to reset reading. 
+// 3. Add more cards
+// 4. Create function to select 9 random cards from extended cards list
+// 5. Make layout responsive
+
+// Array of card objects containing their definitions
 const cardObjectDefinitions = [
     {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
     {id:2, imagePath:'/images/2.jpg', cardName:'The Tower'},
@@ -10,47 +18,57 @@ const cardObjectDefinitions = [
     {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
 ]
 
+// Path to the image for the back of the cards
 const cardBackImgPath = '/images/back.jpg'
 
+// Container element for the cards
 const cardContainerElem = document.querySelector('.card-container')
 
+// Array to store card elements
 let cards = []
 
+// Array to store cards which have been flipped
+let flippedCards = []
+
+// Buttons for game control
 const playGameButtonElem = document.getElementById('playGame')
 const revealCardsButtonElem = document.getElementById('revealCards')
 
+// Number of cards in the game
 const numCards = cardObjectDefinitions.length
 
-let cardPositions = []
-
+// Game state flags
 let gameInProgress = false
 let shufflingInProgress = false
 let cardsRevealed = false
+let flipCounter = 0;
 
+// Element for displaying current game status
 const currentGameStatusElem = document.querySelector('.current-status')
 
-const scoreContainerElem = document.querySelector('.header-score-container')
+// Element for displaying the selected card
 const selectedCardElem = document.querySelector('.selected-card')
 
 loadGame();
 
-// if canchoosecard is true, flips one card then all the rest after a few seconds
-function chooseCard(card) {
-    if(canChooseCard())
-    {
-        flipCard(card, false)
-        setTimeout(() => {
-            flipCards(false)
-            updateStatusElement(currentGameStatusElem, "block", "card positions revealed")
-        }, 1000)
-        cardsRevealed = true
+
+function revealCard(card) {
+    if (canChooseCard() && flipCounter < 9 && !cardIsFlipped(card)) {
+        flipCard(card, false);
+        addToFlippedCardsList(card);
     }
 }
 
-// *** NOTE TO SELF: create button to flip each card individually ***
-// figure out how to tell that all of the cards have been flipped 
-// so that cardsrevealed can be set to true. probably if statement?
-//  if flipcard has been executed 9 times, cardsrevealed = true
+// Returns boolean value stating whether card is in the list of flipped cards
+function cardIsFlipped(card) {
+    return  flippedCards.includes(card.id);
+}
+
+// Adds card to flipped cards list and increases the flip counter by 1
+function addToFlippedCardsList(card) {
+    flippedCards.push(card.id)
+    flipCounter++
+}
 
 // unhides the reveal cards button and attaches flipcards() function to it
 function activateRevealCardsButton() {
@@ -66,7 +84,7 @@ function getCardName(card) {
 // updates html with relevant card name only if the cards have been flipped
 function showCardName(card) {
     cardName = getCardName(card)
-    if (cardsRevealed){
+    if (cardsRevealed || cardIsFlipped(card)){
         updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
     }
 }
@@ -95,11 +113,11 @@ function loadGame(){
 
 // this gets called when the play game button is clicked.
 function startTarotReading() {
-    initializeNewRound()
+    initializeNewReading()
     shuffleCards()
 }
 
-function initializeNewRound() {
+function initializeNewReading() {
     playGameButtonElem.hidden = true
     gameInProgress = true
     shufflingInProgress = true
@@ -122,13 +140,19 @@ function flipCard(card, flipToBack) {
     }
 }
 
+
 function flipCards(flipToBack) {
-    cards.forEach((card, index)=>{
-        setTimeout(() => {
-            flipCard(card, flipToBack)
-        },index *100)
-    })
-}
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        flipCard(card, flipToBack);
+        if (!flippedCards.includes(card.id)) {
+          addToFlippedCardsList(card)
+          console.log(flippedCards, card.id)
+        }
+      }, index * 100);
+    });
+  }
+
 
 function removeShuffleCasses() {
     cards.forEach((card) =>{
@@ -265,20 +289,15 @@ function createCard(cardItem) {
     // add card element as chld element to appropriate grid cell
     addCardToGridCell(cardElem)
 
-    initializeCardPositions(cardElem) 
-
     attachClickEventHandlerToCard(cardElem)
-}   
+}
+
 
 function attachClickEventHandlerToCard(card){
     card.addEventListener('click', () => {
-        chooseCard(card);
+        revealCard(card);
         showCardName(card);
     });
-}
-
-function initializeCardPositions(card){
-    cardPositions.push(card.id)
 }
 
 function createElement(elemType) {
@@ -312,7 +331,6 @@ function addCardToGridCell(card) {
     if (gameInProgress == true && !shufflingInProgress && !cardsRevealed)
     {
         cardPositionClassName = mapCardIdToGridCell(card);
-        // changeButtonFunctionality()
     }
     else
     {
