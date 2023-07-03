@@ -5,6 +5,7 @@
 // 4. Create function to select 9 random cards from extended cards list
 // 5. Make layout responsive
 
+
 // Array of card objects containing their definitions
 const cardObjectDefinitions = [
     {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
@@ -33,6 +34,7 @@ let flippedCards = []
 // Buttons for game control
 const playGameButtonElem = document.getElementById('playGame')
 const revealCardsButtonElem = document.getElementById('revealCards')
+const resetReadingButtonElem = document.getElementById('resetReading')
 
 // Number of cards in the game
 const numCards = cardObjectDefinitions.length
@@ -51,6 +53,36 @@ const selectedCardElem = document.querySelector('.selected-card')
 
 loadGame();
 
+
+function activateResetReadingButton(card) {
+    resetReadingButtonElem.hidden = false;
+    resetReadingButtonElem.addEventListener('click', ()=> resetReading(card))
+}
+
+function resetReading(card) {
+    playGameButtonElem.hidden = false;
+    resetReadingButtonElem.hidden = true;
+    gameInProgress = false;
+    shufflingInProgress = false;
+    cardsRevealed = false;
+    flipCounter = 0;
+    updateStatusElement(selectedCardElem, "block", "")
+
+    // Loop over each card and flip it backwards if it has been flipped forwards
+    cards.forEach((card) => {
+        if (cardIsFlipped(card)) {
+            flipCard(card, true);
+            const index = flippedCards.indexOf(card.id);
+            if (index !== -1) {
+                flippedCards.splice(index, 1);
+            }
+        }
+    });
+    revealCardsButtonElem.hidden = true;
+    const defaultGridAreaTemplate = `"a a a" "a a a" "a a a"`;
+    transformGridArea(defaultGridAreaTemplate);
+    addCardsToAppropriateCell(card);
+}
 
 function revealCard(card) {
     if (canChooseCard() && flipCounter < 9 && !cardIsFlipped(card)) {
@@ -109,6 +141,7 @@ function loadGame(){
     cards = document.querySelectorAll('.card')  // creates array with all cards
     playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
+    resetReadingButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
@@ -127,6 +160,10 @@ function initializeNewReading() {
 function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
 }
+
+
+// ******* CONSIDER CHANGING THE WAY THIS FUNCTION WORKS. YOU NOW HAVE AN ARRAY WHERE CARDS GO IF THEY ARE FLIPPED
+// COULD IT MAKE MORE SENSE TO CHECK ADD AND REMOVE FROM THE ARRAY? ************
 
 function flipCard(card, flipToBack) {
     const innerCardElem = card.firstChild
@@ -151,6 +188,7 @@ function flipCards(flipToBack) {
         }
       }, index * 100);
     });
+    cardsRevealed = true;
   }
 
 
@@ -180,7 +218,7 @@ function animateShuffle(shuffleCount) {
     }
 }
 
-function shuffleCards() {
+function shuffleCards(card) {
     const id = setInterval(shuffle, 12)
     let shuffleCount = 0 
     function shuffle() {
@@ -193,6 +231,7 @@ function shuffleCards() {
             removeShuffleCasses()
             dealCards()
             activateRevealCardsButton()
+            activateResetReadingButton(card)
             updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
         }
         else
@@ -317,7 +356,7 @@ function addCardNameToElement(elem, cardName) {
 }
 
 function addSrcToImageElem(imgElem, src){
-    imgElem.src = src
+    imgElem.src = src  
 }
 
 function addChildElement(parentElem, childElem) {
@@ -336,6 +375,7 @@ function addCardToGridCell(card) {
     {
         cardPositionClassName = '.card-pos-a';
     }
+
     const cardPosElem = document.querySelector(cardPositionClassName)
     addChildElement(cardPosElem, card)
 }
