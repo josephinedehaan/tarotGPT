@@ -1,6 +1,4 @@
 // TO DO:
-// 1. cardsRevealed seems to not get used. It's always set to false. Is it necessary?
-// 2. Create function to reset reading. 
 // 3. Add more cards
 // 4. Create function to select 9 random cards from extended cards list
 // 5. Make layout responsive
@@ -78,6 +76,8 @@ function resetReading(card) {
             }
         }
     });
+
+
     revealCardsButtonElem.hidden = true;
     const defaultGridAreaTemplate = `"a a a" "a a a" "a a a"`;
     transformGridArea(defaultGridAreaTemplate);
@@ -161,7 +161,6 @@ function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
 }
 
-
 // ******* CONSIDER CHANGING THE WAY THIS FUNCTION WORKS. YOU NOW HAVE AN ARRAY WHERE CARDS GO IF THEY ARE FLIPPED
 // COULD IT MAKE MORE SENSE TO CHECK ADD AND REMOVE FROM THE ARRAY? ************
 
@@ -176,7 +175,6 @@ function flipCard(card, flipToBack) {
         innerCardElem.classList.remove('flip-it')
     }
 }
-
 
 function flipCards(flipToBack) {
     cards.forEach((card, index) => {
