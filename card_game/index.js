@@ -1,20 +1,30 @@
 // TO DO:
-// 3. Add more cards
-// 4. Create function to select 9 random cards from extended cards list
-// 5. Make layout responsive
+// Put cards in JSON
+// Make layout responsive
+// Merge branches
 
 
 // Array of card objects containing their definitions
 const cardObjectDefinitions = [
-    {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
     {id:2, imagePath:'/images/2.jpg', cardName:'The Tower'},
     {id:3, imagePath:'/images/3.jpg', cardName:'The World'},
     {id:4, imagePath:'/images/4.jpg', cardName:'The Moon'},
+    {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
     {id:5, imagePath:'/images/5.jpg', cardName:'Two of Swords'},
     {id:6, imagePath:'/images/6.jpg', cardName:'Two of Cups'},
     {id:7, imagePath:'/images/7.jpg', cardName:'Five of Cups'},
     {id:8, imagePath:'/images/8.jpg', cardName:'Eight of Cups'},
     {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
+    {id:10, imagePath:'/images/10.jpg', cardName:'Ten of poops'},
+    {id:11, imagePath:'/images/11.jpg', cardName:'Ten of peeps'},
+    {id:12, imagePath:'/images/12.jpg', cardName:'Ten of wips'},
+    {id:13, imagePath:'/images/13.jpg', cardName:'Ten of poops'},
+    {id:14, imagePath:'/images/14.jpg', cardName:'Ten of peeps'},
+    {id:15, imagePath:'/images/15.jpg', cardName:'Ten of wips'},
+    {id:16, imagePath:'/images/16.jpg', cardName:'Ten of wips'},
+    {id:17, imagePath:'/images/17.jpg', cardName:'Ten of poops'},
+    {id:18, imagePath:'/images/18.jpg', cardName:'Ten of peeps'},
+    {id:19, imagePath:'/images/19.jpg', cardName:'Ten of wips'},
 ]
 
 // Path to the image for the back of the cards
@@ -28,6 +38,13 @@ let cards = []
 
 // Array to store cards which have been flipped
 let flippedCards = []
+
+currentCardPos = 0;
+cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
+            '.card-pos-d', '.card-pos-e', '.card-pos-f',
+            '.card-pos-g', '.card-pos-h', '.card-pos-i']
+
+// cardLayout = shuffleArray(cardLayout)
 
 // Buttons for game control
 const playGameButtonElem = document.getElementById('playGame')
@@ -239,15 +256,9 @@ function shuffleCards(card) {
     }
 }
 
-// function randomizeCardPositions() {
-//     const random1 = Math.floor(Math.random() * numCards) + 1
-//     const random2 = Math.floor(Math.random() * numCards) + 1
-
-//     const temp = cardPositions [random1 - 1]
-
-//     cardPositions[random1 - 1] = cardPositions[random2 - 1]
-//     cardPositions[random2 -1] = temp
-// }
+function increaseCardPos() {
+    currentCardPos = (currentCardPos +1) % 9;
+}
 
 function dealCards() {
     addCardsToAppropriateCell()
@@ -261,8 +272,17 @@ function addCardsToAppropriateCell() {
     })
 }
 
+function randomiseArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+    }
+
 function createCards() {
-    cardObjectDefinitions.forEach((cardItem)=>{
+    randomisedCards = randomiseArray(cardObjectDefinitions).slice(0, 9)
+    randomisedCards.forEach((cardItem)=>{
         createCard(cardItem)
     })
 }
@@ -379,40 +399,7 @@ function addCardToGridCell(card) {
 }
 
 function mapCardIdToGridCell(card) {
-    if(card.id == 1)
-    {
-        return '.card-pos-a'
-    }
-    else if(card.id == 2)
-    {
-        return '.card-pos-b'
-    }
-    else if(card.id == 3)
-    {
-        return '.card-pos-c'
-    }
-    else if(card.id == 4)
-    {
-        return '.card-pos-d'
-    }
-    else if(card.id == 5)
-    {
-        return '.card-pos-e'
-    }
-    else if(card.id == 6)
-    {
-        return '.card-pos-f'
-    }
-    else if(card.id == 7)
-    {
-        return '.card-pos-g'
-    }
-    else if(card.id == 8)
-    {
-        return '.card-pos-h'
-    }
-    else if(card.id == 9)
-    {
-        return '.card-pos-i'
-    }
+    position = cardLayout[currentCardPos]
+    increaseCardPos();
+    return position
 }
