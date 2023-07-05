@@ -5,27 +5,48 @@
 
 
 // Array of card objects containing their definitions
-const cardObjectDefinitions = [
-    {id:2, imagePath:'/images/2.jpg', cardName:'The Tower'},
-    {id:3, imagePath:'/images/3.jpg', cardName:'The World'},
-    {id:4, imagePath:'/images/4.jpg', cardName:'The Moon'},
-    {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
-    {id:5, imagePath:'/images/5.jpg', cardName:'Two of Swords'},
-    {id:6, imagePath:'/images/6.jpg', cardName:'Two of Cups'},
-    {id:7, imagePath:'/images/7.jpg', cardName:'Five of Cups'},
-    {id:8, imagePath:'/images/8.jpg', cardName:'Eight of Cups'},
-    {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
-    {id:10, imagePath:'/images/10.jpg', cardName:'Ten of poops'},
-    {id:11, imagePath:'/images/11.jpg', cardName:'Ten of peeps'},
-    {id:12, imagePath:'/images/12.jpg', cardName:'Ten of wips'},
-    {id:13, imagePath:'/images/13.jpg', cardName:'Ten of poops'},
-    {id:14, imagePath:'/images/14.jpg', cardName:'Ten of peeps'},
-    {id:15, imagePath:'/images/15.jpg', cardName:'Ten of wips'},
-    {id:16, imagePath:'/images/16.jpg', cardName:'Ten of wips'},
-    {id:17, imagePath:'/images/17.jpg', cardName:'Ten of poops'},
-    {id:18, imagePath:'/images/18.jpg', cardName:'Ten of peeps'},
-    {id:19, imagePath:'/images/19.jpg', cardName:'Ten of wips'},
-]
+// const cardObjectDefinitions = [
+//     {id:2, imagePath:'/images/2.jpg', cardName:'The Tower'},
+//     {id:3, imagePath:'/images/3.jpg', cardName:'The World'},
+//     {id:4, imagePath:'/images/4.jpg', cardName:'The Moon'},
+//     {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
+//     {id:5, imagePath:'/images/5.jpg', cardName:'Two of Swords'},
+//     {id:6, imagePath:'/images/6.jpg', cardName:'Two of Cups'},
+//     {id:7, imagePath:'/images/7.jpg', cardName:'Five of Cups'},
+//     {id:8, imagePath:'/images/8.jpg', cardName:'Eight of Cups'},
+//     {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
+//     {id:10, imagePath:'/images/10.jpg', cardName:'Ten of poops'},
+//     {id:11, imagePath:'/images/11.jpg', cardName:'Ten of peeps'},
+//     {id:12, imagePath:'/images/12.jpg', cardName:'Ten of wips'},
+//     {id:13, imagePath:'/images/13.jpg', cardName:'Ten of poops'},
+//     {id:14, imagePath:'/images/14.jpg', cardName:'Ten of peeps'},
+//     {id:15, imagePath:'/images/15.jpg', cardName:'Ten of wips'},
+//     {id:16, imagePath:'/images/16.jpg', cardName:'Ten of wips'},
+//     {id:17, imagePath:'/images/17.jpg', cardName:'Ten of poops'},
+//     {id:18, imagePath:'/images/18.jpg', cardName:'Ten of peeps'},
+//     {id:19, imagePath:'/images/19.jpg', cardName:'Ten of wips'},
+// ]
+
+
+
+let cardObjectDefinitions = [];
+
+// // Fetch card data from JSON file
+// async function fetchCardData() {
+//   try {
+//     const response = await fetch('cards.json');
+//     const data = await response.json();
+//     cardObjectDefinitions = data;
+//   } catch (error) {
+//     console.error('Error fetching card data:', error);
+//   }
+// }
+
+// fetchCardData();
+
+
+
+
 
 // Path to the image for the back of the cards
 const cardBackImgPath = '/images/back.jpg'
@@ -66,6 +87,7 @@ const currentGameStatusElem = document.querySelector('.current-status')
 // Element for displaying the selected card
 const selectedCardElem = document.querySelector('.selected-card')
 
+
 loadGame();
 
 
@@ -82,6 +104,7 @@ function resetReading(card) {
     cardsRevealed = false;
     flipCounter = 0;
     updateStatusElement(selectedCardElem, "block", "")
+    
 
     // Loop over each card and flip it backwards if it has been flipped forwards
     cards.forEach((card) => {
@@ -154,6 +177,7 @@ function canChooseCard() {
 
 // this gets called upon loading the page, creates all cards
 function loadGame(){
+    // Call the function to fetch card data
     createCards()
     cards = document.querySelectorAll('.card')  // creates array with all cards
     playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
@@ -218,8 +242,8 @@ function animateShuffle(shuffleCount) {
     const random1 = Math.floor(Math.random() * numCards) + 1
     const random2 = Math.floor(Math.random() * numCards) + 1
 
-    let card1 = document.getElementById(random1)
-    let card2 = document.getElementById(random2)
+    let card1 = document.querySelectorAll('.card')[Math.floor(Math.random() * document.querySelectorAll('.card').length)]; //document.getElementById(random1)
+    let card2 = document.querySelectorAll('.card')[Math.floor(Math.random() * document.querySelectorAll('.card').length)]; //document.getElementById(random2)
 
     if (shuffleCount % 4 == 0)
     {
@@ -403,3 +427,16 @@ function mapCardIdToGridCell(card) {
     increaseCardPos();
     return position
 }
+
+
+fetch('cards.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    cardObjectDefinitions = data;
+    loadGame();
+  })
+  .catch(error => {
+    console.error('Error loading JSON:', error);
+    alert(error)
+  });
