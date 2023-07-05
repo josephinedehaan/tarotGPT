@@ -3,50 +3,7 @@
 // Make layout responsive
 // Merge branches
 
-
-// Array of card objects containing their definitions
-// const cardObjectDefinitions = [
-//     {id:2, imagePath:'/images/2.jpg', cardName:'The Tower'},
-//     {id:3, imagePath:'/images/3.jpg', cardName:'The World'},
-//     {id:4, imagePath:'/images/4.jpg', cardName:'The Moon'},
-//     {id:1, imagePath:'/images/1.jpg', cardName:'The Star'},
-//     {id:5, imagePath:'/images/5.jpg', cardName:'Two of Swords'},
-//     {id:6, imagePath:'/images/6.jpg', cardName:'Two of Cups'},
-//     {id:7, imagePath:'/images/7.jpg', cardName:'Five of Cups'},
-//     {id:8, imagePath:'/images/8.jpg', cardName:'Eight of Cups'},
-//     {id:9, imagePath:'/images/9.jpg', cardName:'Ten of Sticks'},
-//     {id:10, imagePath:'/images/10.jpg', cardName:'Ten of poops'},
-//     {id:11, imagePath:'/images/11.jpg', cardName:'Ten of peeps'},
-//     {id:12, imagePath:'/images/12.jpg', cardName:'Ten of wips'},
-//     {id:13, imagePath:'/images/13.jpg', cardName:'Ten of poops'},
-//     {id:14, imagePath:'/images/14.jpg', cardName:'Ten of peeps'},
-//     {id:15, imagePath:'/images/15.jpg', cardName:'Ten of wips'},
-//     {id:16, imagePath:'/images/16.jpg', cardName:'Ten of wips'},
-//     {id:17, imagePath:'/images/17.jpg', cardName:'Ten of poops'},
-//     {id:18, imagePath:'/images/18.jpg', cardName:'Ten of peeps'},
-//     {id:19, imagePath:'/images/19.jpg', cardName:'Ten of wips'},
-// ]
-
-
-
 let cardObjectDefinitions = [];
-
-// // Fetch card data from JSON file
-// async function fetchCardData() {
-//   try {
-//     const response = await fetch('cards.json');
-//     const data = await response.json();
-//     cardObjectDefinitions = data;
-//   } catch (error) {
-//     console.error('Error fetching card data:', error);
-//   }
-// }
-
-// fetchCardData();
-
-
-
-
 
 // Path to the image for the back of the cards
 const cardBackImgPath = '/images/back.jpg'
@@ -87,14 +44,7 @@ const currentGameStatusElem = document.querySelector('.current-status')
 // Element for displaying the selected card
 const selectedCardElem = document.querySelector('.selected-card')
 
-
 loadGame();
-
-
-function activateResetReadingButton(card) {
-    resetReadingButtonElem.hidden = false;
-    resetReadingButtonElem.addEventListener('click', ()=> resetReading(card))
-}
 
 function resetReading(card) {
     playGameButtonElem.hidden = false;
@@ -103,21 +53,11 @@ function resetReading(card) {
     shufflingInProgress = false;
     cardsRevealed = false;
     flipCounter = 0;
+    flippedCards = [];
     updateStatusElement(selectedCardElem, "block", "")
-    
-
-    // Loop over each card and flip it backwards if it has been flipped forwards
-    cards.forEach((card) => {
-        if (cardIsFlipped(card)) {
-            flipCard(card, true);
-            const index = flippedCards.indexOf(card.id);
-            if (index !== -1) {
-                flippedCards.splice(index, 1);
-            }
-        }
-    });
-
-
+    destroyCards()
+    createCards()
+    cards = document.querySelectorAll('.card')
     revealCardsButtonElem.hidden = true;
     const defaultGridAreaTemplate = `"a a a" "a a a" "a a a"`;
     transformGridArea(defaultGridAreaTemplate);
@@ -146,6 +86,12 @@ function addToFlippedCardsList(card) {
 function activateRevealCardsButton() {
     revealCardsButtonElem.hidden = false
     revealCardsButtonElem.addEventListener('click', ()=> flipCards())
+}
+
+// unhides the reset reading button
+function activateResetReadingButton(card) {
+    resetReadingButtonElem.hidden = false;
+    resetReadingButtonElem.addEventListener('click', ()=> resetReading(card))
 }
 
 // retrieves card name metadatata from card element
@@ -304,6 +250,15 @@ function randomiseArray(array) {
     return array;
     }
 
+
+function destroyCards() {
+    const cardElements = document.querySelectorAll('.card');
+    cardElements.forEach((card) => {
+        card.remove();
+    });
+    }
+
+      
 function createCards() {
     randomisedCards = randomiseArray(cardObjectDefinitions).slice(0, 9)
     randomisedCards.forEach((cardItem)=>{
