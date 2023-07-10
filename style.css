@@ -7,8 +7,9 @@
 
 body {
     height: 100vh;
-    background-color: rgb(38, 30, 30);
-    color: rgb(182, 182, 182);
+    background-color: rgb(0, 0, 0);
+    color: rgb(253, 253, 253);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 header {
@@ -49,7 +50,7 @@ main {
     grid-template-areas: "a a a" 
                         "a a a"
                         "a a a";
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
 }
 .card-pos-a {

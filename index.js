@@ -217,7 +217,7 @@ function shuffleCards(card) {
             dealCards()
             activateRevealCardsButton()
             activateResetReadingButton(card)
-            updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
+            // updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
         }
         else
         {
@@ -306,6 +306,12 @@ function createCard(cardItem) {
     
     // assign class to front image elemnet of front of card
     addClassToElement(cardFrontImg, 'card-img')
+
+    // assign class to back image elemnet of back of card
+    addClassToElement(cardBackImg, 'img-fluid')
+
+    // assign class to front image elemnet of front of card
+    addClassToElement(cardFrontImg, 'img-fluid')
 
     // add front image element as child element to front card element
     addChildElement(cardFrontElem, cardFrontImg)

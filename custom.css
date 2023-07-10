@@ -24,7 +24,7 @@ body {
 
 .tarot-cards {
     text-align: center;
-    max-height: 100%;
+    height: 800px;
 }
 
 .tarot-rows {
@@ -41,17 +41,30 @@ body {
 .img-fluid {
     max-width: 100%;
     height: auto;
-    max-height: 300px;
+    max-height: 250px;
     border-radius: 5%;
 }
 
 .chatbot {
     border-style: solid;
     border-width: 2px;
-    border-color: rgb(174, 133, 220);
+    background-color: rgba(174, 133, 220, 0.884);
+    color: black;
     text-align: center;
     min-height: 200px;
+    padding-right: 5px;
+    border-radius: 20px;
 }
+
+
+
+
+
+
+
+
+
+
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
@@ -79,4 +92,152 @@ body {
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
     ...
+}
+
+
+
+
+
+
+
+
+
+
+/* all css below needs to be properly intergrated, just copied and pasted for now */
+:root {
+    --card-width:157px;
+    --card-height:220px;
+    --num-cards:4;
+    --card-horizontal-space: 100px;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    color: rgb(253, 253, 253);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.header-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.header-status-info-container,
+.header-button-container,
+.header-score-container,
+.header-round-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main {
+    height:55%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-container {
+    position: relative;
+    height: 100%;
+    /* width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space)); */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "a a a" 
+                        "a a a"
+                        "a a a";
+    /* border: 1px solid black; */
+
+}
+.card-pos-a {
+    grid-area: a;
+}
+.card-pos-b {
+    grid-area: b;
+}
+.card-pos-c {
+    grid-area: c;
+}
+.card-pos-d {
+    grid-area: d;
+}
+.card-pos-e {
+    grid-area: e;
+}
+.card-pos-f {
+    grid-area: f;
+}
+.card-pos-g {
+    grid-area: g;
+}
+.card-pos-h {
+    grid-area: h;
+}
+.card-pos-i {
+    grid-area: i;
+}
+
+.card-pos-a, .card-pos-b, .card-pos-c, .card-pos-d, .card-pos-e, .card-pos-f, .card-pos-g, .card-pos-h, .card-pos-i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+
+}
+
+.card {
+    position:absolute;
+    height: var(--card-height);
+    width: var(--card-width);
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.6s ease-in-out;
+    background-color: black;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    -backface-visibility: hidden;
+}
+
+.card-img {
+    /* height:100%; */
+    border-radius: 6px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-inner.flip-it {
+    transform: rotateY(180deg);
+}
+
+.card.shuffle-left {
+    transform: translateX(200px) translateY(10px);
+}
+
+.card.shuffle-right {
+    transform: translateX(-200px) translateY(-10px);
 }
