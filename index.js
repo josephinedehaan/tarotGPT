@@ -57,7 +57,7 @@ function resetReading(card) {
     updateStatusElement(selectedCardElem, "block", "")
     destroyCards()
     createCards()
-    cards = document.querySelectorAll('.card')
+    cards = document.querySelectorAll('.tarot-card')
     revealCardsButtonElem.hidden = true;
     const defaultGridAreaTemplate = `"a a a" "a a a" "a a a"`;
     transformGridArea(defaultGridAreaTemplate);
@@ -125,7 +125,7 @@ function canChooseCard() {
 function loadGame(){
     // Call the function to fetch card data
     createCards()
-    cards = document.querySelectorAll('.card')  // creates array with all cards
+    cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
     playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
     resetReadingButtonElem.hidden = true
@@ -188,8 +188,8 @@ function animateShuffle(shuffleCount) {
     const random1 = Math.floor(Math.random() * numCards) + 1
     const random2 = Math.floor(Math.random() * numCards) + 1
 
-    let card1 = document.querySelectorAll('.card')[Math.floor(Math.random() * document.querySelectorAll('.card').length)]; //document.getElementById(random1)
-    let card2 = document.querySelectorAll('.card')[Math.floor(Math.random() * document.querySelectorAll('.card').length)]; //document.getElementById(random2)
+    let card1 = document.querySelectorAll('.tarot-card')[Math.floor(Math.random() * document.querySelectorAll('.tarot-card').length)]; //document.getElementById(random1)
+    let card2 = document.querySelectorAll('.tarot-card')[Math.floor(Math.random() * document.querySelectorAll('.tarot-card').length)]; //document.getElementById(random2)
 
     if (shuffleCount % 4 == 0)
     {
@@ -252,7 +252,7 @@ function randomiseArray(array) {
 
 
 function destroyCards() {
-    const cardElements = document.querySelectorAll('.card');
+    const cardElements = document.querySelectorAll('.tarot-card');
     cardElements.forEach((card) => {
         card.remove();
     });
@@ -279,7 +279,7 @@ function createCard(cardItem) {
     const cardBackImg = createElement('img')
 
     // add class and id to card element
-    addClassToElement(cardElem, 'card')
+    addClassToElement(cardElem, 'tarot-card')
     addIdToElement(cardElem, cardItem.id)
 
     // adds card name as metadata ussing data-name=name to card element
@@ -301,11 +301,11 @@ function createCard(cardItem) {
     // add src attribute and appropriate value to img element - front of card
     addSrcToImageElem(cardFrontImg, cardItem.imagePath) 
 
-    // assign class to back image elemnet of back of card
-    addClassToElement(cardBackImg, 'card-img')
+    // // assign class to back image elemnet of back of card
+    // addClassToElement(cardBackImg, 'card-img')
     
-    // assign class to front image elemnet of front of card
-    addClassToElement(cardFrontImg, 'card-img')
+    // // assign class to front image elemnet of front of card
+    // addClassToElement(cardFrontImg, 'card-img')
 
     // assign class to back image elemnet of back of card
     addClassToElement(cardBackImg, 'img-fluid')

@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-md navbar-dark">
     <a class="navbar-brand" href="index.html">
       <img class="img-fluid" id="header-logo" src="assets/graphics/T.png" alt="Logo">
@@ -30,19 +31,35 @@
     </div>
   </nav>
 
+  <!-- Main contents  -->
   <div class="container-fluid">
     <div class="row">
-      <div class="tarot-cards col-sm-8">
-        <!-- <div class="header-score-container">
-          <h2 class="selected-card"><span class="badge"></span></h2>
-        </div> -->
-        <div class="header-status-info-container">
-          <p class="current-status">
-            <!-- Click Play Game button to shuffle cards. -->
-          </p>
-
+      <!-- LHS: Tarot card section -->
+      <div class="tarot-spread-container col-lg-8">
+        <!-- Tarot Cards -->
+        <div class="card-container">
+          <div class="card-pos-a d-flex justify-content-center">
+          </div>
+          <div class="card-pos-b d-flex justify-content-center">
+          </div>
+          <div class="card-pos-c d-flex justify-content-center">
+          </div>
+          <div class="card-pos-d d-flex justify-content-center">
+          </div>
+          <div class="card-pos-e d-flex justify-content-center">
+          </div>
+          <div class="card-pos-f d-flex justify-content-center">
+          </div>
+          <div class="card-pos-g d-flex justify-content-center">
+          </div>
+          <div class="card-pos-h d-flex justify-content-center">
+          </div>
+          <div class="card-pos-i d-flex justify-content-center">
+          </div>
         </div>
-        <div class="header-button-container">
+
+        <!-- Buttons -->
+        <div class="button-container">
           <div class="game-play-button-container">
             <button class="play-game" id="playGame">Play Game</button>
           </div>
@@ -53,30 +70,7 @@
             <button class="reset-reading" id="resetReading">Reset Reading</button>
           </div>
         </div>
-
-          <div class="row card-container">
-            <div class="card-pos-a">
-            </div>
-            <div class="card-pos-b">
-            </div>
-            <div class="card-pos-c">
-            </div>
-            <div class="card-pos-d">
-            </div>
-            <div class="card-pos-e">
-            </div>
-            <div class="card-pos-f">
-            </div>
-            <div class="card-pos-g">
-            </div>
-            <div class="card-pos-h">
-            </div>
-            <div class="card-pos-i">
-            </div>
-          </div>
-
-
-        <label>
+        <!-- <label>
           <input type="checkbox" name="cards" value="The Fool"> The Fool
         </label>
         <label>
@@ -89,15 +83,16 @@
           <input type="checkbox" name="cards" value="The Chariot"> The Chariot
         </label>
         <br>
-        <button onclick="fetchAnimalInfo()">Submit</button>
+        <button onclick="fetchAnimalInfo()">Submit</button> -->
       </div>
 
-
-      <div class="chatbot col-sm-4">
+      <!-- RHS: ChatGPT Section -->
+      <div class="chatbot col-lg-4">
         <h3>GPT Chatbot</h3>
 
         <div>
           <span id="output"></span>
+          <p class="current-status"> Click Play Game button to shuffle cards.</p>
           <h2 class="selected-card"><span class="badge"></span></h2>
 
         </div>
