@@ -10,9 +10,14 @@
     --card-horizontal-space: 100px;
 }
 
+main {
+    height:55%;
+    display: flex;
+    justify-content: center;
+}
+
 body {
     font-family: Eubergine;
-    height: 100vh;
     background-color: rgb(0, 0, 0);
     color: rgb(174, 133, 220);
 }
@@ -27,7 +32,7 @@ body {
 
 .card-container {
     position: relative;
-    height: 500px;
+    height: 700px;
     /* width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space)); */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -73,10 +78,12 @@ body {
     grid-area: i;
 }
 
+
+
 .tarot-card {
     position: absolute;
     height: auto;
-    width: 10%;
+    width: 15%;
     perspective: 1000px;
     cursor: pointer;
     transition: transform 0.6s ease-in-out;
