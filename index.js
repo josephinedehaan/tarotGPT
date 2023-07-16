@@ -28,6 +28,7 @@ cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
 const playGameButtonElem = document.getElementById('playGame')
 const revealCardsButtonElem = document.getElementById('revealCards')
 const resetReadingButtonElem = document.getElementById('resetReading')
+const simulateReadingButtonElem = document.getElementById('simulateReading')
 
 // Number of cards in the game
 const numCards = cardObjectDefinitions.length
@@ -49,6 +50,7 @@ loadGame();
 function resetReading(card) {
     playGameButtonElem.hidden = false;
     resetReadingButtonElem.hidden = true;
+    simulateReadingButtonElem.hidden = true;
     gameInProgress = false;
     shufflingInProgress = false;
     cardsRevealed = false;
@@ -94,6 +96,10 @@ function activateResetReadingButton(card) {
     resetReadingButtonElem.addEventListener('click', ()=> resetReading(card))
 }
 
+function activateSimulateReadingButton() {
+    simulateReadingButtonElem.hidden = false;
+}
+
 // retrieves card name metadatata from card element
 function getCardName(card) {
     return cardName = card.getAttribute("data-cardname")
@@ -129,6 +135,7 @@ function loadGame(){
     playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
     resetReadingButtonElem.hidden = true
+    simulateReadingButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
@@ -217,6 +224,7 @@ function shuffleCards(card) {
             dealCards()
             activateRevealCardsButton()
             activateResetReadingButton(card)
+            activateSimulateReadingButton()
             // updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
         }
         else
