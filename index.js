@@ -44,6 +44,7 @@ const currentGameStatusElem = document.querySelector('.current-status')
 
 // Element for displaying the selected card
 const selectedCardElem = document.querySelector('.selected-card')
+const readingTextElem = document.querySelector('.reading-text')
 
 loadGame();
 
@@ -57,6 +58,7 @@ function resetReading(card) {
     flipCounter = 0;
     flippedCards = [];
     updateStatusElement(selectedCardElem, "block", "")
+    updateStatusElement(readingTextElem, "block", "")
     destroyCards()
     createCards()
     cards = document.querySelectorAll('.tarot-card')
@@ -98,7 +100,27 @@ function activateResetReadingButton(card) {
 
 function activateSimulateReadingButton() {
     simulateReadingButtonElem.hidden = false;
+    simulateReadingButtonElem.addEventListener('click', ()=> showReadingSimulationText())
+
 }
+
+function showReadingSimulationText() {
+    if (cardsRevealed) {
+        // Fetch the content of the file (simulationtext.txt)
+        fetch('simulationtext.txt')
+            .then(response => response.text())
+            .then(text => {
+                // Update the reading text element with the content from the file
+                updateStatusElement(readingTextElem, "block", text);
+            })
+            .catch(error => {
+                console.error('Error fetching the file:', error);
+                // If there's an error, you can display a default text or handle it in any way you prefer
+                updateStatusElement(readingTextElem, "block", "Unable to fetch the Tarot reading at the moment.");
+            });
+    }
+}
+
 
 // retrieves card name metadatata from card element
 function getCardName(card) {
