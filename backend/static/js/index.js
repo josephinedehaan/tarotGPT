@@ -95,13 +95,14 @@ function activateResetReadingButton(card) {
 
 function activateSimulateReadingButton() {
     simulateReadingButtonElem.hidden = false;
-    simulateReadingButtonElem.addEventListener('click', ()=> showReadingSimulationText())
+    simulateReadingButtonElem.addEventListener('click', showReadingSimulationText)
 
 }
 
 function showReadingSimulationText() {
+    updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
     if (cardsRevealed) {
-        fetch('static/simulationtext.txt')
+        fetch('/gpt')
             .then(response => response.text())
             .then(text => {
                 // Update the reading text element with the content from the file

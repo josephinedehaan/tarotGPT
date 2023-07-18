@@ -9,16 +9,22 @@ def index():
 
 @app.route('/reading')
 def reading():
-        selected_cards = ['The Fool', 'The Magician', 'The High Priestess']
-        output_message = fetch_tarot_reading(selected_cards)
-        return render_template('reading.html', output_message=output_message)
+        return render_template('reading.html')
 
 @app.route('/sunny/<user_input>')
 def sunny(user_input):
        return render_template('sunny.html', name = user_input)
 
 
+@app.route('/gpt')
+def gpt():
+        selected_cards = ['The Fool', 'The Magician', 'The High Priestess']
+        output_message = fetch_tarot_reading(selected_cards)
+        return output_message, 200, {'Content-Type': 'application/json'}
 
+@app.route('/test')
+def test():
+        return "<h1>Test</h1>"
 
 if __name__ == '__main__':
     app.run(debug=True)
