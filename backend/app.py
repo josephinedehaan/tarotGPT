@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from gpt_api import fetch_tarot_reading
 
 app = Flask(__name__)
 
@@ -8,7 +9,9 @@ def index():
 
 @app.route('/reading')
 def reading():
-        return render_template('reading.html')
+        selected_cards = ['The Fool', 'The Magician', 'The High Priestess']
+        output_message = fetch_tarot_reading(selected_cards)
+        return render_template('reading.html', output_message=output_message)
 
 @app.route('/sunny/<user_input>')
 def sunny(user_input):

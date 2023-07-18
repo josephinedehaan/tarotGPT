@@ -32,9 +32,10 @@ body {
     padding-left: 10px;
 }
 
-.navbar-brand img {
-    height: 30px;
+.header-logo {
+    height: 40px;
 }
+
 
 .card-container {
     position: relative;
@@ -50,7 +51,8 @@ body {
 
 .card-pos-a {
     grid-area: a;
-}
+
+  }
 
 .card-pos-b {
     grid-area: b;
@@ -83,7 +85,6 @@ body {
 .card-pos-i {
     grid-area: i;
 }
-
 
 
 .tarot-card {
@@ -145,15 +146,14 @@ body {
 }
 
 .chatbot {
-    border-style: solid;
-    border-width: 2px;
+
     background-color: rgba(174, 133, 220, 0.884);
     color: black;
     text-align: center;
-    /* padding-right: 5px; */
-    border-radius: 20px;
-    margin-top: 100px;
+    border-radius: 10px;
+    width: 100%;
     height: 500px; /* Set the desired height for the div */
+    margin-right: 20px;
     overflow-y: auto; 
 }
 
@@ -171,10 +171,6 @@ body {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .navbar-brand img {
-        height: 50px;
-    }
-
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
