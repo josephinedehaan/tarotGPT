@@ -100,8 +100,8 @@ function activateSimulateReadingButton() {
 }
 
 function showReadingSimulationText() {
-    updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
     if (cardsRevealed) {
+        updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
         fetch('/gpt')
             .then(response => response.text())
             .then(text => {
