@@ -11,11 +11,6 @@ def index():
 def reading():
         return render_template('reading.html')
 
-@app.route('/sunny/<user_input>')
-def sunny(user_input):
-       return render_template('sunny.html', name = user_input)
-
-
 @app.route('/gpt')
 def gpt():
         selected_cards = ['The Fool', 'The Magician', 'The High Priestess']

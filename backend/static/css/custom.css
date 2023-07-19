@@ -32,10 +32,39 @@ body {
     padding-left: 10px;
 }
 
+.nav-link {
+    float: right;
+    padding-right: 10px;
+
+}
+
 .header-logo {
     height: 40px;
 }
 
+.masthead {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url("/static/assets/images/astrology.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.masthead-text {
+    display: flex; /* Add this line to enable flexbox */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgb(174, 133, 220);
+    text-align: center;
+    flex-direction: column; /* Add this line to align items vertically */
+    margin-top: 20%;
+}
+
+.masthead-heading h1 {
+    margin-bottom: 10px; /* Optional: add some spacing between heading and subheading */
+}
 
 .card-container {
     position: relative;
@@ -146,15 +175,22 @@ body {
 }
 
 .chatbot {
-
     background-color: rgba(174, 133, 220, 0.884);
     color: black;
     text-align: center;
     border-radius: 10px;
     width: 100%;
-    height: 500px; /* Set the desired height for the div */
+    height: 85%;
     margin-right: 20px;
-    overflow-y: auto; 
+}
+
+.form-control {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 /* Small devices (landscape phones, 576px and up) */
