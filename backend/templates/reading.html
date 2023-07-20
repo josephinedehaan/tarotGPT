@@ -78,8 +78,10 @@
 
       <!-- RHS: ChatGPT Section -->
       <div class="col-lg-4">
-        <h3 class="align-items-center">GPT Chatbot</h3>
         <div class="card chatbot">
+          <div class="card-header">
+            <h3 class="align-items-center">GPT Chatbot</h3>
+          </div>
           <div class="card-body">
             <span id="output"></span>
             <p class="current-status"> Click Play Game button to shuffle cards.</p>
@@ -88,9 +90,9 @@
           </div>
           <div class="card-footer">
             <div class="input-group">
-              <textarea class="card-footer form-control" rows="2"></textarea>
+              <textarea class="card-footer form-control" rows="1"></textarea>
               <div class="input-group-append">
-                <button class="btn btn-outline-dark" type="button" id="button-addon2">Send</button>
+                <button class="btn btn-outline-dark input-box-btn" type="button" >Send</button>
               </div>
             </div>
         </div>
@@ -101,7 +103,7 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="js/vanilla-tilt.js"></script>
+  <script src="static/js/vanilla-tilt.js"></script>
   <script src="/static/js/index.js"></script>
 
 </body>

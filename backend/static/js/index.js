@@ -14,8 +14,8 @@ let flippedCards = []
 
 currentCardPos = 0;
 cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
-            '.card-pos-d', '.card-pos-e', '.card-pos-f',
-            '.card-pos-g', '.card-pos-h', '.card-pos-i']
+    '.card-pos-d', '.card-pos-e', '.card-pos-f',
+    '.card-pos-g', '.card-pos-h', '.card-pos-i']
 
 // cardLayout = shuffleArray(cardLayout)
 
@@ -72,7 +72,7 @@ function revealCard(card) {
 
 // Returns boolean value stating whether card is in the list of flipped cards
 function cardIsFlipped(card) {
-    return  flippedCards.includes(card.id);
+    return flippedCards.includes(card.id);
 }
 
 // Adds card to flipped cards list and increases the flip counter by 1
@@ -84,38 +84,20 @@ function addToFlippedCardsList(card) {
 // unhides the reveal cards button and attaches flipcards() function to it
 function activateRevealCardsButton() {
     revealCardsButtonElem.hidden = false
-    revealCardsButtonElem.addEventListener('click', ()=> flipCards())
+    revealCardsButtonElem.addEventListener('click', () => flipCards())
 }
 
 // unhides the reset reading button
 function activateResetReadingButton(card) {
     resetReadingButtonElem.hidden = false;
-    resetReadingButtonElem.addEventListener('click', ()=> resetReading(card))
+    resetReadingButtonElem.addEventListener('click', () => resetReading(card))
 }
 
 function activateSimulateReadingButton() {
     simulateReadingButtonElem.hidden = false;
-    simulateReadingButtonElem.addEventListener('click', showReadingSimulationText)
+    simulateReadingButtonElem.addEventListener('click', showReading)
 
 }
-
-function showReadingSimulationText() {
-    if (cardsRevealed) {
-        updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
-        fetch('/gpt')
-            .then(response => response.text())
-            .then(text => {
-                // Update the reading text element with the content from the file
-                updateStatusElement(readingTextElem, "block", text);
-            })
-            .catch(error => {
-                console.error('Error fetching the file:', error);
-                // If there's an error, you can display a default text or handle it in any way you prefer
-                updateStatusElement(readingTextElem, "block", "Unable to fetch the Tarot reading at the moment.");
-            });
-    }
-}
-
 
 // retrieves card name metadatata from card element
 function getCardName(card) {
@@ -125,7 +107,7 @@ function getCardName(card) {
 // updates html with relevant card name only if the cards have been flipped
 function showCardName(card) {
     cardName = getCardName(card)
-    if (cardsRevealed || cardIsFlipped(card)){
+    if (cardsRevealed || cardIsFlipped(card)) {
         updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
     }
 }
@@ -133,10 +115,63 @@ function showCardName(card) {
 // updates the display (flex, block, etc) of html element and gives the option of updating the innerhtml
 function updateStatusElement(elem, display, innerHTML) {
     elem.style.display = display
-    if(arguments.length > 2)
-    {
+    if (arguments.length > 2) {
         elem.innerHTML = innerHTML
     }
+}
+
+// generate selected cards list 
+function generateSelectedCardsList() {
+    cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
+    // iterate through cards and make a list of card names using getCardName()
+    const cardList = []
+    for (let i = 0; i < cards.length; i++) {
+        cardList.push(getCardName(cards[i]))
+    }
+    return cardList
+}
+
+
+function showReading() {    
+    alert('test')
+    if (cardsRevealed) {
+        // shows typing gif while waiting for response
+        updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
+        // fetches the reading text from the server
+        generateCardsPositionList();
+    }
+}
+
+function generateCardsPositionList() {
+    const cardList = generateSelectedCardsList();
+    const positionList = ['past', 'present', 'future', 'mind', 'body', 'spirit', 'challenge', 'action', 'outcome'];
+    const tarotCardsPositionList = [];
+
+    for (let i = 0; i < cardList.length; i++) {
+        const cardName = cardList[i];
+        const position = positionList[i];
+        tarotCardsPositionList.push({ card: cardName, position: position });
+    }
+
+    // alert(JSON.stringify({ selected_cards: tarotCardsPositionList }))
+
+    // Make an API request to the Flask server
+    fetch('/gpt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ selected_cards: tarotCardsPositionList })
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data if needed
+            updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
 }
 
 // returns boolean value to assess whether cards can or can't be chosen
@@ -145,11 +180,11 @@ function canChooseCard() {
 }
 
 // this gets called upon loading the page, creates all cards
-function loadGame(){
+function loadGame() {
     // Call the function to fetch card data
     createCards()
     cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
-    playGameButtonElem.addEventListener('click', ()=>startTarotReading()) // attaches startround function to play game button
+    playGameButtonElem.addEventListener('click', () => startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
     resetReadingButtonElem.hidden = true
     simulateReadingButtonElem.hidden = true
@@ -177,32 +212,30 @@ function transformGridArea(areas) {
 
 function flipCard(card, flipToBack) {
     const innerCardElem = card.firstChild
-    if(flipToBack && !innerCardElem.classList.contains('flip-it'))
-    {
+    if (flipToBack && !innerCardElem.classList.contains('flip-it')) {
         innerCardElem.classList.add('flip-it')
     }
-    else if(innerCardElem.classList.contains('flip-it'))
-    {
+    else if (innerCardElem.classList.contains('flip-it')) {
         innerCardElem.classList.remove('flip-it')
     }
 }
 
 function flipCards(flipToBack) {
     cards.forEach((card, index) => {
-      setTimeout(() => {
-        flipCard(card, flipToBack);
-        if (!flippedCards.includes(card.id)) {
-          addToFlippedCardsList(card)
-          console.log(flippedCards, card.id)
-        }
-      }, index * 100);
+        setTimeout(() => {
+            flipCard(card, flipToBack);
+            if (!flippedCards.includes(card.id)) {
+                addToFlippedCardsList(card)
+                console.log(flippedCards, card.id)
+            }
+        }, index * 100);
     });
     cardsRevealed = true;
-  }
+}
 
 
 function removeShuffleCasses() {
-    cards.forEach((card) =>{
+    cards.forEach((card) => {
         card.classList.remove("shuffle-left")
         card.classList.remove("shuffle-right")
     })
@@ -215,13 +248,11 @@ function animateShuffle(shuffleCount) {
     let card1 = document.querySelectorAll('.tarot-card')[Math.floor(Math.random() * document.querySelectorAll('.tarot-card').length)]; //document.getElementById(random1)
     let card2 = document.querySelectorAll('.tarot-card')[Math.floor(Math.random() * document.querySelectorAll('.tarot-card').length)]; //document.getElementById(random2)
 
-    if (shuffleCount % 4 == 0)
-    {
+    if (shuffleCount % 4 == 0) {
         card1.classList.toggle("shuffle-left")
         card1.style.zIndex = 100
     }
-    if (shuffleCount % 10 == 0)
-    {
+    if (shuffleCount % 10 == 0) {
         card2.classList.toggle("shuffle-right")
         card2.style.zIndex = 200
     }
@@ -229,12 +260,10 @@ function animateShuffle(shuffleCount) {
 
 function shuffleCards(card) {
     const id = setInterval(shuffle, 12)
-    let shuffleCount = 0 
+    let shuffleCount = 0
     function shuffle() {
-        // randomizeCardPositions()
         animateShuffle(shuffleCount)
-        if(shuffleCount == 250)
-        {
+        if (shuffleCount == 250) {
             clearInterval(id)
             shufflingInProgress = false
             removeShuffleCasses()
@@ -242,17 +271,15 @@ function shuffleCards(card) {
             activateRevealCardsButton()
             activateResetReadingButton(card)
             activateSimulateReadingButton()
-            // updateStatusElement(currentGameStatusElem, "block", "Click on any card to reveal cards")
         }
-        else
-        {
+        else {
             shuffleCount++;
         }
     }
 }
 
 function increaseCardPos() {
-    currentCardPos = (currentCardPos +1) % 9;
+    currentCardPos = (currentCardPos + 1) % 9;
 }
 
 function dealCards() {
@@ -262,7 +289,7 @@ function dealCards() {
 }
 
 function addCardsToAppropriateCell() {
-    cards.forEach((card)=>{
+    cards.forEach((card) => {
         addCardToGridCell(card)
     })
 }
@@ -273,7 +300,7 @@ function randomiseArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-    }
+}
 
 
 function destroyCards() {
@@ -281,12 +308,12 @@ function destroyCards() {
     cardElements.forEach((card) => {
         card.remove();
     });
-    }
+}
 
-      
+
 function createCards() {
     randomisedCards = randomiseArray(cardObjectDefinitions).slice(0, 9)
-    randomisedCards.forEach((cardItem)=>{
+    randomisedCards.forEach((cardItem) => {
         createCard(cardItem)
     })
 }
@@ -324,11 +351,11 @@ function createCard(cardItem) {
     addSrcToImageElem(cardBackImg, cardBackImgPath)
 
     // add src attribute and appropriate value to img element - front of card
-    addSrcToImageElem(cardFrontImg, cardItem.imagePath) 
+    addSrcToImageElem(cardFrontImg, cardItem.imagePath)
 
     // // assign class to back image elemnet of back of card
     // addClassToElement(cardBackImg, 'card-img')
-    
+
     // // assign class to front image elemnet of front of card
     // addClassToElement(cardFrontImg, 'card-img')
 
@@ -351,7 +378,7 @@ function createCard(cardItem) {
     addChildElement(cardInnerElem, cardBackElem)
 
     // add inner card element as child element to card element
-    addChildElement(cardElem, cardInnerElem)  
+    addChildElement(cardElem, cardInnerElem)
 
     // add card element as chld element to appropriate grid cell
     addCardToGridCell(cardElem)
@@ -360,7 +387,7 @@ function createCard(cardItem) {
 }
 
 
-function attachClickEventHandlerToCard(card){
+function attachClickEventHandlerToCard(card) {
     card.addEventListener('click', () => {
         revealCard(card);
         showCardName(card);
@@ -371,7 +398,7 @@ function createElement(elemType) {
     return document.createElement(elemType)
 }
 
-function addClassToElement(elem, className){
+function addClassToElement(elem, className) {
     elem.classList.add(className)
 }
 
@@ -383,8 +410,8 @@ function addCardNameToElement(elem, cardName) {
     elem.setAttribute('data-cardname', cardName)
 }
 
-function addSrcToImageElem(imgElem, src){
-    imgElem.src = src  
+function addSrcToImageElem(imgElem, src) {
+    imgElem.src = src
 }
 
 function addChildElement(parentElem, childElem) {
@@ -395,12 +422,10 @@ function addChildElement(parentElem, childElem) {
 function addCardToGridCell(card) {
     let cardPositionClassName;
 
-    if (gameInProgress == true && !shufflingInProgress && !cardsRevealed)
-    {
+    if (gameInProgress == true && !shufflingInProgress && !cardsRevealed) {
         cardPositionClassName = mapCardIdToGridCell(card);
     }
-    else
-    {
+    else {
         cardPositionClassName = '.card-pos-a';
     }
 
@@ -416,13 +441,13 @@ function mapCardIdToGridCell(card) {
 
 
 fetch('/static/cards.json')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    cardObjectDefinitions = data;
-    loadGame();
-  })
-  .catch(error => {
-    console.error('Error loading JSON:', error);
-    alert(error)
-  });
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data);
+        cardObjectDefinitions = data;
+        loadGame();
+    })
+    .catch(error => {
+        console.error('Error loading JSON:', error);
+        alert(error)
+    });

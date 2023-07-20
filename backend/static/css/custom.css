@@ -188,9 +188,11 @@ body {
     border: 1px solid black;
     border-radius: 5px;
 }
-.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control, .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select, .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+
+.input-box-btn {
+    padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 /* Small devices (landscape phones, 576px and up) */

@@ -12,11 +12,13 @@ def fetch_tarot_reading(selected_cards):
         'Authorization': f"Bearer {api_key}"
     }
 
-    prompt = f"You are a fortune teller that responds with a Tarot reading interpretation of three cards provided by the user. \
-            Card 1 represents the past, Card 2 represents the present, Card 3 represents the future.\nUser: {', '.join(selected_cards)}"
+    prompt = f"You are a fortune teller that responds with a Tarot reading interpretation of 9 cards provided to you in JSON format. \
+             Reply with a ~300 character paragraph: Start the sentence by greeting the user, then go over the meaning of each card provided and the meaning of it in its current position. \
+            Do not refer to cards spatially but in relation to the position field provided in JSON. End by asking the user if they have any questions. \
+            Generated cards: {', '.join(selected_cards)}"
     data = {
         'prompt': prompt,
-        'max_tokens': 100
+        'max_tokens': 350
     }
 
     try:
@@ -31,3 +33,7 @@ def fetch_tarot_reading(selected_cards):
     except requests.exceptions.RequestException as e:
         print('Error:', e)
         return None
+
+
+
+
