@@ -63,6 +63,65 @@ function resetReading(card) {
     addCardsToAppropriateCell(card);
 }
 
+function activateChat() {
+    document.getElementById('sendButton').addEventListener('click', sendMessage);
+
+    document.getElementById('messageInput').addEventListener('keypress', function (event) {
+        // Check if the Enter key is pressed (keyCode 13)
+        if (event.keyCode === 13) {
+            sendMessage();
+            document.getElementById('messageInput').value = '';
+        }
+    });
+}
+
+
+
+
+function sendMessage() {
+    // Get the user input from the input box
+    const userInput = document.getElementById('messageInput').value;
+
+    // Data to be sent in the POST request
+    const data = {
+        message: userInput
+    };
+
+    updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <b>${userInput}</b>`)
+
+    // Convert the data to JSON string
+    const jsonData = JSON.stringify(data);
+
+    // Make the POST request using the Fetch API
+    fetch('/chat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: jsonData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            // Handle the response data here if needed
+            console.log('Response:', responseData);
+            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> ${responseData.output_message}`)
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
+
+
+
+
 function revealCard(card) {
     if (canChooseCard() && flipCounter < 9 && !cardIsFlipped(card)) {
         flipCard(card, false);
@@ -132,8 +191,7 @@ function generateSelectedCardsList() {
 }
 
 
-function showReading() {    
-    alert('test')
+function showReading() {
     if (cardsRevealed) {
         // shows typing gif while waiting for response
         updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
@@ -183,6 +241,7 @@ function canChooseCard() {
 function loadGame() {
     // Call the function to fetch card data
     createCards()
+    activateChat()
     cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
     playGameButtonElem.addEventListener('click', () => startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
