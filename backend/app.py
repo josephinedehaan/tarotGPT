@@ -12,7 +12,7 @@ def index():
 def reading():
         return render_template('reading.html')
 
-@app.route('/gpt', methods=['POST'])  # Accept POST requests for '/gpt'
+@app.route('/chat/submit_reading', methods=['POST'])  # Accept POST requests for '/gpt'
 def gpt():
     data = request.get_json()  # Get the JSON data sent from JavaScript
 
@@ -33,13 +33,6 @@ def chatf():
 
         output_message = chat(message)
         return jsonify(output_message=output_message)  # Return the JSON response
-
-@app.route('/test')
-def test():
-        counter = session.get('counter', 0)
-        counter += 1
-        session['counter'] = counter
-        return f'Counter: {counter}'
 
 @app.route('/reset')
 def clear_session():

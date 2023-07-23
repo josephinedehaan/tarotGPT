@@ -150,7 +150,7 @@ function generateCardsPositionList() {
     cardsJson = buildSelectedCardsJSON()
 
     // Make an API request to the Flask server
-    fetch('/gpt', {
+    fetch('/chat/submit_reading', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -163,7 +163,7 @@ function generateCardsPositionList() {
             // updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
             updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> ${data.output_message}`)
             removeTypingGIF()
-            
+
 
         })
         .catch(error => {
