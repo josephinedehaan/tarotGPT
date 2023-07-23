@@ -1,23 +1,17 @@
 let cardObjectDefinitions = [];
 
-// Path to the image for the back of the cards
 const cardBackImgPath = '/static/assets/images/back.jpg'
 
-// Container element for the cards
 const cardContainerElem = document.querySelector('.card-container')
 
-// Array to store card elements
 let cards = []
 
-// Array to store cards which have been flipped
 let flippedCards = []
 
 currentCardPos = 0;
 cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
     '.card-pos-d', '.card-pos-e', '.card-pos-f',
     '.card-pos-g', '.card-pos-h', '.card-pos-i']
-
-// cardLayout = shuffleArray(cardLayout)
 
 // Buttons for game control
 const playGameButtonElem = document.getElementById('playGame')
@@ -34,10 +28,8 @@ let shufflingInProgress = false
 let cardsRevealed = false
 let flipCounter = 0;
 
-// Element for displaying current game status
+// Elements for displaying text
 const currentGameStatusElem = document.querySelector('.current-status')
-
-// Element for displaying the selected card
 const selectedCardElem = document.querySelector('.selected-card')
 const readingTextElem = document.querySelector('.reading-text')
 
@@ -65,29 +57,25 @@ function resetReading(card) {
 
 function activateChat() {
     document.getElementById('sendButton').addEventListener('click', sendMessage);
-
     document.getElementById('messageInput').addEventListener('keypress', function (event) {
         // Check if the Enter key is pressed (keyCode 13)
         if (event.keyCode === 13) {
             sendMessage();
-            document.getElementById('messageInput').value = '';
         }
     });
 }
 
-
-
-
 function sendMessage() {
     // Get the user input from the input box
     const userInput = document.getElementById('messageInput').value;
-
     // Data to be sent in the POST request
     const data = {
         message: userInput
     };
 
     updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <b>${userInput}</b>`)
+    document.getElementById('messageInput').value = '';
+
 
     // Convert the data to JSON string
     const jsonData = JSON.stringify(data);
@@ -117,16 +105,70 @@ function sendMessage() {
         });
 }
 
-
-
-
-
-
-function revealCard(card) {
-    if (canChooseCard() && flipCounter < 9 && !cardIsFlipped(card)) {
-        flipCard(card, false);
-        addToFlippedCardsList(card);
+// generate selected cards list 
+function generateSelectedCardsList() {
+    cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
+    // iterate through cards and make a list of card names using getCardName()
+    const cardList = []
+    for (let i = 0; i < cards.length; i++) {
+        cardList.push(getCardName(cards[i]))
     }
+    return cardList
+}
+
+function showReading() {
+    if (cardsRevealed) {
+        // shows typing gif while waiting for response
+        updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <img id='typingGIF' src='/static/assets/graphics/typing.gif'>`)
+        // fetches the reading text from the server
+        generateCardsPositionList();
+    }
+}
+
+// function to remove typing gif ID from chatbox
+function removeTypingGIF() {
+    const typingGIF = document.getElementById('typingGIF')
+    typingGIF.remove()
+}
+
+
+
+function buildSelectedCardsJSON() {
+    const cardList = generateSelectedCardsList();
+    const positionList = ['past', 'present', 'future', 'mind', 'body', 'spirit', 'challenge', 'action', 'outcome'];
+    const tarotCardsPositionList = [];
+
+    for (let i = 0; i < cardList.length; i++) {
+        const cardName = cardList[i];
+        const position = positionList[i];
+        tarotCardsPositionList.push({ card: cardName, position: position });
+    }
+    return JSON.stringify({ selected_cards: tarotCardsPositionList })
+}
+
+function generateCardsPositionList() {
+    cardsJson = buildSelectedCardsJSON()
+
+    // Make an API request to the Flask server
+    fetch('/gpt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: cardsJson
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data if needed
+            // updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
+            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> ${data.output_message}`)
+            removeTypingGIF()
+            
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 // Returns boolean value stating whether card is in the list of flipped cards
@@ -140,10 +182,10 @@ function addToFlippedCardsList(card) {
     flipCounter++
 }
 
-// unhides the reveal cards button and attaches flipcards() function to it
+// unhides the reveal cards button and attaches revealcards() function to it
 function activateRevealCardsButton() {
     revealCardsButtonElem.hidden = false
-    revealCardsButtonElem.addEventListener('click', () => flipCards())
+    revealCardsButtonElem.addEventListener('click', revealCards)
 }
 
 // unhides the reset reading button
@@ -177,59 +219,6 @@ function updateStatusElement(elem, display, innerHTML) {
     if (arguments.length > 2) {
         elem.innerHTML = innerHTML
     }
-}
-
-// generate selected cards list 
-function generateSelectedCardsList() {
-    cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
-    // iterate through cards and make a list of card names using getCardName()
-    const cardList = []
-    for (let i = 0; i < cards.length; i++) {
-        cardList.push(getCardName(cards[i]))
-    }
-    return cardList
-}
-
-
-function showReading() {
-    if (cardsRevealed) {
-        // shows typing gif while waiting for response
-        updateStatusElement(readingTextElem, "block", "<img src='/static/assets/graphics/typing.gif'>")
-        // fetches the reading text from the server
-        generateCardsPositionList();
-    }
-}
-
-function generateCardsPositionList() {
-    const cardList = generateSelectedCardsList();
-    const positionList = ['past', 'present', 'future', 'mind', 'body', 'spirit', 'challenge', 'action', 'outcome'];
-    const tarotCardsPositionList = [];
-
-    for (let i = 0; i < cardList.length; i++) {
-        const cardName = cardList[i];
-        const position = positionList[i];
-        tarotCardsPositionList.push({ card: cardName, position: position });
-    }
-
-    // alert(JSON.stringify({ selected_cards: tarotCardsPositionList }))
-
-    // Make an API request to the Flask server
-    fetch('/gpt', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ selected_cards: tarotCardsPositionList })
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data if needed
-            updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
 }
 
 // returns boolean value to assess whether cards can or can't be chosen
@@ -266,23 +255,19 @@ function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
 }
 
-// ******* CONSIDER CHANGING THE WAY THIS FUNCTION WORKS. YOU NOW HAVE AN ARRAY WHERE CARDS GO IF THEY ARE FLIPPED
-// COULD IT MAKE MORE SENSE TO CHECK ADD AND REMOVE FROM THE ARRAY? ************
 
-function flipCard(card, flipToBack) {
+function flipCard(card) {
     const innerCardElem = card.firstChild
-    if (flipToBack && !innerCardElem.classList.contains('flip-it')) {
-        innerCardElem.classList.add('flip-it')
-    }
-    else if (innerCardElem.classList.contains('flip-it')) {
+    if (innerCardElem.classList.contains('flip-it')) {
         innerCardElem.classList.remove('flip-it')
     }
 }
 
-function flipCards(flipToBack) {
+// flips all cards
+function revealCards() {
     cards.forEach((card, index) => {
         setTimeout(() => {
-            flipCard(card, flipToBack);
+            flipCard(card);
             if (!flippedCards.includes(card.id)) {
                 addToFlippedCardsList(card)
                 console.log(flippedCards, card.id)
@@ -290,8 +275,16 @@ function flipCards(flipToBack) {
         }, index * 100);
     });
     cardsRevealed = true;
+    alert("Cards revealed")
 }
 
+// flips individual card if it hasn't been flipped already
+function revealCard(card) {
+    if (canChooseCard() && flipCounter < 9 && !cardIsFlipped(card)) {
+        flipCard(card);
+        addToFlippedCardsList(card);
+    }
+}
 
 function removeShuffleCasses() {
     cards.forEach((card) => {
@@ -361,14 +354,12 @@ function randomiseArray(array) {
     return array;
 }
 
-
 function destroyCards() {
     const cardElements = document.querySelectorAll('.tarot-card');
     cardElements.forEach((card) => {
         card.remove();
     });
 }
-
 
 function createCards() {
     randomisedCards = randomiseArray(cardObjectDefinitions).slice(0, 9)
@@ -445,7 +436,6 @@ function createCard(cardItem) {
     attachClickEventHandlerToCard(cardElem)
 }
 
-
 function attachClickEventHandlerToCard(card) {
     card.addEventListener('click', () => {
         revealCard(card);
@@ -497,7 +487,6 @@ function mapCardIdToGridCell(card) {
     increaseCardPos();
     return position
 }
-
 
 fetch('/static/cards.json')
     .then(response => response.json())

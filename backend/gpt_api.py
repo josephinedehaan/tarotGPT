@@ -15,7 +15,7 @@ def fetch_tarot_reading(selected_cards):
     }
 
     prompt = f"You are a fortune teller that responds with a Tarot reading interpretation of 9 cards provided to you in JSON format. \
-             Reply with a ~300 character paragraph: Start the sentence by greeting the user, then go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
+             Reply with a ~300 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
             Do not refer to cards spatially but in relation to the position field provided in JSON. End by asking the user if they have any questions. \
             Generated cards: {', '.join(selected_cards)}"
     data = {
@@ -23,12 +23,15 @@ def fetch_tarot_reading(selected_cards):
         'max_tokens': 350
     }
 
+    session["log"].append(prompt)   
+
     try:
         response = requests.post(url, headers=headers, json=data)
         response_data = response.json()
 
         if 'choices' in response_data and response_data['choices']:
             message = response_data['choices'][0].get('text', '').strip()
+            session["log"].append(f"TarotGPT: {message}")   
             return message
         else:
             return "Error: Invalid response from OpenAI API" + json.dumps(response_data)
@@ -65,9 +68,6 @@ def chat(message):
         'Content-Type': 'application/json',
         'Authorization': f"Bearer {api_key}"
     }
-
-    # print(session['log'])
-
 
     #prompt = f"You are TarotGPT, a tarot reader. Greet the user and answer any questions the may ask. user: {message}"
     data = {
