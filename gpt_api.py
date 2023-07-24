@@ -16,14 +16,18 @@ def fetch_tarot_reading(selected_cards):
 
     prompt = f"Reply with a ~200 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
             Make sure to mention what the cards mean in relation the user's question, if they've provided one \
-            Do not refer to cards spatially but in relation to the position field provided in JSON. End by asking the user if they have any questions. \
-            Generated cards: {', '.join(selected_cards)}"
+            Do not refer to cards spatially but in relation to the position field provided in JSON. End by referencing the user's initial question if they had one. \
+            Always refere to the user as 'you' and the tarot reader as 'I'. \
+            The cards are now shuffled and dealt, do not prompt the user to shuffle the cards again. \
+            Generated cards: {selected_cards}"
     data = {
         'prompt': prompt,
         'max_tokens': 350
     }
 
     session["log"].append(prompt)   
+
+    print("session log: ", session["log"])
 
     try:
         response = requests.post(url, headers=headers, json=data)
@@ -57,8 +61,10 @@ def chat(message):
     if "log" not in session:
         session["log"] = []
         session["log"].append(f"You are TarotGPT, a tarot reader. Ask the user if they would like to ask the tarot any specific questions. \
-                            You will soon be provided a tarot card spread. \
-                            ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT:\".")
+                            If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. \
+                            User messages will always end in with the following symbol: '🜑'. \
+                            Never end your own messages with this symbol ('🜑'). \
+                            ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT\".")
 
     session["log"].append(f"User: {message}")   
 
@@ -89,7 +95,7 @@ def chat(message):
             message = remove_tarot_gpt_prefix(message)
             session["log"].append(f"TarotGPT: {message}")   
 
-            return f"{counter}: {message}"
+            return f"{message}"
         else:
             return "Error: Invalid response from OpenAI API" + json.dumps(response_data)
     except requests.exceptions.RequestException as e:

@@ -54,13 +54,18 @@ function resetReading(card) {
 
 function activateChat() {
     document.getElementById('sendButton').addEventListener('click', sendMessage);
-    document.getElementById('messageInput').addEventListener('keypress', function (event) {
-        // Check if the Enter key is pressed (keyCode 13)
-        if (event.keyCode === 13) {
-            sendMessage();
-        }
-    });
+
+    document.getElementById('messageInput').addEventListener('keyup', handleKeyPress);
 }
+
+function handleKeyPress(event) {
+    // Check if the Enter key is pressed (keyCode 13)
+    if (event.code === 'Enter') {
+        event.preventDefault(); // Prevent form submission
+        sendMessage(); // Send the message
+    }
+}
+
 
 function sendMessage() {
     // Get the user input from the input box
@@ -70,9 +75,8 @@ function sendMessage() {
         message: userInput
     };
 
-    updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <p class="userText">${userInput}</p>`)
-    document.getElementById('messageInput').value = '';
-
+    updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="userText">${userInput}</p>`)
+    document.getElementById('messageInput').value = "";
 
     // Convert the data to JSON string
     const jsonData = JSON.stringify(data);
@@ -94,7 +98,7 @@ function sendMessage() {
         .then(responseData => {
             // Handle the response data here if needed
             console.log('Response:', responseData);
-            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <p class="gptText"> ${responseData.output_message} <p>`)
+            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="gptText"> ${responseData.output_message} </p>`)
 
         })
         .catch(error => {
@@ -116,7 +120,7 @@ function generateSelectedCardsList() {
 function showReading() {
     if (cardsRevealed) {
         // shows typing gif while waiting for response
-        updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <img id='typingGIF' src='/static/assets/graphics/typing.gif'> `)
+        updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <img id='typingGIF' src='/static/assets/graphics/typing.gif'> `)
         // fetches the reading text from the server
         generateCardsPositionList();
     }
@@ -158,7 +162,7 @@ function generateCardsPositionList() {
         .then(data => {
             // Handle the response data if needed
             // updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
-            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <p class="gptText">${data.output_message} <p>`)
+            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="gptText">${data.output_message} </p>`)
             removeTypingGIF()
 
 

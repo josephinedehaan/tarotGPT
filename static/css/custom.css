@@ -185,24 +185,37 @@ body {
 }
 
 .chatbot .card-body {
-    height: 50vh;
+    height: 550px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
 #typingGIF {
-    height: 30px;
+    height: 50px;
     float: left;
+    padding-left: 10px;
 }
 
 .userText {
     text-align: right;
-    font-weight: 800;
+    background-color: rgba(245, 222, 179, 0.547);
+    border-radius: 40px;
+    /* padding-left: 20%; */
+    margin-left: 20%;
+    
 }
 
 .gptText {
     text-align: left;
-    padding-right: 20%;
+    background-color: rgba(245, 179, 224, 0.547);
+    border-radius: 40px;
+    /* padding-right: 20%; */
+    margin-right: 20%;
+
+}
+
+p {
+    padding: 20px;
 }
 
 
