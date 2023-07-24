@@ -1,0 +1,52 @@
+@font-face {
+    font-family: Unbounded;
+    src: url(/static/assets/fonts/Unbounded/Unbounded-VariableFont_wght.ttf);
+}
+
+body {
+    font-family: Unbounded;
+/* a 90 degree linear gradient background */
+    background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
+    color: rgb(174, 133, 220);    
+}
+
+.masthead-text {
+    padding-left: 30px;
+    padding-right: 30px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-size: 80px;
+    text-align: center;
+    flex-direction: column; /* Add this line to align items vertically */
+
+}
+
+.masthead-heading h1 {
+    margin-bottom: 10px; /* Optional: add some spacing between heading and subheading */
+}
+
+.text-float-left {
+    float: left;
+}
+
+.text-float-right {
+    float: right;
+}
+
+.text-100 {
+    font-size: 100px;
+}
+
+.text-80 {
+    font-size: 80px;
+}
+
+.text-60 {
+    font-size: 60px;
+}
+
+
+.text-white {
+    color: white;
+}

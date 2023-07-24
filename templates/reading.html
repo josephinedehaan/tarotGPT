@@ -11,7 +11,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark">
+  <!-- <nav class="navbar navbar-expand-md navbar-dark">
     <a class="navbar-brand" href="{{ url_for('index') }}">
       <img class="header-logo" src="static/assets/graphics/T.png" alt="Logo">
     </a>
@@ -29,7 +29,7 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- Main contents  -->
   <div class="container-fluid">
@@ -58,45 +58,55 @@
           </div>
         </div>
 
-        <!-- Buttons -->
-        <div class="button-container">
-          <div class="game-play-button-container">
-            <button class="btn btn-outline-light play-game" id="playGame">Shuffle Cards</button>
-          </div>
-          <div class="reveal-cards-button-container">
-            <button class="btn btn-outline-light reveal-cards" id="revealCards">Reveal Cards</button>
-          </div>
-          <div class="reset-reading-button-container">
-            <button class="btn btn-outline-light reset-reading" id="resetReading">Reset Reading</button>
-          </div>
-        </div>
+
       </div>
 
       <!-- RHS: ChatGPT Section -->
       <div class="col-lg-4">
-        <div class="card chatbot">
-          <div class="card-header">
-            <h4 class="align-items-center">GPT Chatbot</h4>
-          </div>
-          <div class="card-body">
-            <span id="output"></span>
-            <h2 class="selected-card"><span class="badge"></span></h2>
-            <div class="reading-text"><p class="gptText">Hello and welcome to TarotGPT! You can ask me a question or go ahead and press shuffle cards.</p></div>
-          </div>
-          <div class="card-footer">
-            <div class="input-group">
-              <textarea class="card-footer form-control" id="messageInput" rows="1"></textarea>
-              <div class="input-group-append">
-                <button class="btn btn-outline-dark input-box-btn" id="sendButton" type="button" >Send</button>
+        <div class="chatbot-container">
+          <div class="card chatbot">
+            <div class="card-header">
+              <!-- Buttons -->
+              <div class="button-container">
+                <div class="game-play-button-container">
+                  <button class="btn btn-outline-light play-game" id="playGame">Shuffle Cards</button>
+                </div>
+                <div class="reveal-cards-button-container">
+                  <button class="btn btn-outline-light reveal-cards" id="revealCards">Reveal Cards</button>
+                </div>
+                <div class="reset-reading-button-container">
+                  <button class="btn btn-outline-light reset-reading" id="resetReading">Reset Reading</button>
+                </div>
               </div>
             </div>
+
+            <div class="card-body">
+              <span id="output"></span>
+              <h2 class="selected-card"><span class="badge"></span></h2>
+              <div class="reading-text">
+                <p class="gptText">Hello and welcome to TarotGPT! You can ask me a question or go ahead and press
+                  shuffle
+                  cards.</p>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="input-group">
+                <textarea class="card-footer form-control" id="messageInput" rows="1"></textarea>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-dark input-box-btn" id="sendButton" type="button">Send</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="static/js/vanilla-tilt.js"></script>
-  <script src="/static/js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="static/js/vanilla-tilt.js"></script>
+    <script src="/static/js/index.js"></script>
 </body>
+
 </html>

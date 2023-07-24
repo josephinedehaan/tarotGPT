@@ -14,12 +14,12 @@ def fetch_tarot_reading(selected_cards):
         'Authorization': f"Bearer {api_key}"
     }
 
-    prompt = f"Reply with a ~200 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
-            Make sure to mention what the cards mean in relation the user's question, if they've provided one \
-            Do not refer to cards spatially but in relation to the position field provided in JSON. End by referencing the user's initial question if they had one. \
-            Always refere to the user as 'you' and the tarot reader as 'I'. \
-            The cards are now shuffled and dealt, do not prompt the user to shuffle the cards again. \
-            Generated cards: {selected_cards}"
+    prompt = f"Generated cards: {selected_cards} \
+            Reply with a ~200 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
+            Offer some basic insight into how this spread can answer the question that was asked earlier (if a question was asked).  \
+            Do not refer to cards spatially but in relation to the position field provided in JSON. \
+            Always refere to the user as 'you' and the tarot reader as 'I'."
+    
     data = {
         'prompt': prompt,
         'max_tokens': 350
@@ -60,8 +60,8 @@ def chat(message):
 
     if "log" not in session:
         session["log"] = []
-        session["log"].append(f"You are TarotGPT, a tarot reader. Ask the user if they would like to ask the tarot any specific questions. \
-                            If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. \
+        session["log"].append(f"You are TarotGPT, a tarot reader. If the user hasn't already asked a question, enquire whether the user would like to ask the tarot any specific questions. \
+                            If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. Once you have received the spread, keep it in memory as no other tarot spread can be generated.\
                             User messages will always end in with the following symbol: '🜑'. \
                             Never end your own messages with this symbol ('🜑'). \
                             ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT\".")
