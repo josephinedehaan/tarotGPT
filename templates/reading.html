@@ -61,7 +61,7 @@
         <!-- Buttons -->
         <div class="button-container">
           <div class="game-play-button-container">
-            <button class="btn btn-outline-light play-game" id="playGame">Play Game</button>
+            <button class="btn btn-outline-light play-game" id="playGame">Shuffle Cards</button>
           </div>
           <div class="reveal-cards-button-container">
             <button class="btn btn-outline-light reveal-cards" id="revealCards">Reveal Cards</button>
@@ -69,24 +69,19 @@
           <div class="reset-reading-button-container">
             <button class="btn btn-outline-light reset-reading" id="resetReading">Reset Reading</button>
           </div>
-          <div class="reset-reading-button-container">
-            <button class="btn btn-outline-light simulate-reading" id="simulateReading">Simulate Chatbot</button>
-          </div>
         </div>
-        <!-- <button onclick="fetchAnimalInfo()">Submit</button> -->
       </div>
 
       <!-- RHS: ChatGPT Section -->
       <div class="col-lg-4">
         <div class="card chatbot">
           <div class="card-header">
-            <h3 class="align-items-center">GPT Chatbot</h3>
+            <h4 class="align-items-center">GPT Chatbot</h4>
           </div>
           <div class="card-body">
             <span id="output"></span>
-            <p class="current-status"> Click Play Game button to shuffle cards.</p>
             <h2 class="selected-card"><span class="badge"></span></h2>
-            <p class="reading-text"></p>
+            <div class="reading-text"><p class="gptText">Hello and welcome to TarotGPT! You can ask me a question or go ahead and press shuffle cards.</p></div>
           </div>
           <div class="card-footer">
             <div class="input-group">
@@ -98,14 +93,10 @@
         </div>
       </div>
     </div>
-
   </div>
-
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="static/js/vanilla-tilt.js"></script>
   <script src="/static/js/index.js"></script>
-
 </body>
-
 </html>

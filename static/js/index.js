@@ -17,7 +17,6 @@ cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
 const playGameButtonElem = document.getElementById('playGame')
 const revealCardsButtonElem = document.getElementById('revealCards')
 const resetReadingButtonElem = document.getElementById('resetReading')
-const simulateReadingButtonElem = document.getElementById('simulateReading')
 
 // Number of cards in the game
 const numCards = cardObjectDefinitions.length
@@ -29,7 +28,6 @@ let cardsRevealed = false
 let flipCounter = 0;
 
 // Elements for displaying text
-const currentGameStatusElem = document.querySelector('.current-status')
 const selectedCardElem = document.querySelector('.selected-card')
 const readingTextElem = document.querySelector('.reading-text')
 
@@ -38,7 +36,6 @@ loadGame();
 function resetReading(card) {
     playGameButtonElem.hidden = false;
     resetReadingButtonElem.hidden = true;
-    simulateReadingButtonElem.hidden = true;
     gameInProgress = false;
     shufflingInProgress = false;
     cardsRevealed = false;
@@ -73,7 +70,7 @@ function sendMessage() {
         message: userInput
     };
 
-    updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <b>${userInput}</b>`)
+    updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <p class="userText">${userInput}</p>`)
     document.getElementById('messageInput').value = '';
 
 
@@ -97,7 +94,7 @@ function sendMessage() {
         .then(responseData => {
             // Handle the response data here if needed
             console.log('Response:', responseData);
-            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> ${responseData.output_message}`)
+            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <p class="gptText"> ${responseData.output_message} <p>`)
 
         })
         .catch(error => {
@@ -119,7 +116,7 @@ function generateSelectedCardsList() {
 function showReading() {
     if (cardsRevealed) {
         // shows typing gif while waiting for response
-        updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <img id='typingGIF' src='/static/assets/graphics/typing.gif'>`)
+        updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <img id='typingGIF' src='/static/assets/graphics/typing.gif'> `)
         // fetches the reading text from the server
         generateCardsPositionList();
     }
@@ -161,7 +158,7 @@ function generateCardsPositionList() {
         .then(data => {
             // Handle the response data if needed
             // updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
-            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> ${data.output_message}`)
+            updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <br> <p class="gptText">${data.output_message} <p>`)
             removeTypingGIF()
 
 
@@ -192,12 +189,6 @@ function activateRevealCardsButton() {
 function activateResetReadingButton(card) {
     resetReadingButtonElem.hidden = false;
     resetReadingButtonElem.addEventListener('click', () => resetReading(card))
-}
-
-function activateSimulateReadingButton() {
-    simulateReadingButtonElem.hidden = false;
-    simulateReadingButtonElem.addEventListener('click', showReading)
-
 }
 
 // retrieves card name metadatata from card element
@@ -235,7 +226,6 @@ function loadGame() {
     playGameButtonElem.addEventListener('click', () => startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
     resetReadingButtonElem.hidden = true
-    simulateReadingButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
@@ -275,7 +265,7 @@ function revealCards() {
         }, index * 100);
     });
     cardsRevealed = true;
-    alert("Cards revealed")
+    showReading()
 }
 
 // flips individual card if it hasn't been flipped already
@@ -322,7 +312,6 @@ function shuffleCards(card) {
             dealCards()
             activateRevealCardsButton()
             activateResetReadingButton(card)
-            activateSimulateReadingButton()
         }
         else {
             shuffleCount++;

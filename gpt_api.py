@@ -14,8 +14,8 @@ def fetch_tarot_reading(selected_cards):
         'Authorization': f"Bearer {api_key}"
     }
 
-    prompt = f"You are a fortune teller that responds with a Tarot reading interpretation of 9 cards provided to you in JSON format. \
-             Reply with a ~300 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
+    prompt = f"Reply with a ~200 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
+            Make sure to mention what the cards mean in relation the user's question, if they've provided one \
             Do not refer to cards spatially but in relation to the position field provided in JSON. End by asking the user if they have any questions. \
             Generated cards: {', '.join(selected_cards)}"
     data = {
@@ -56,7 +56,9 @@ def chat(message):
 
     if "log" not in session:
         session["log"] = []
-        session["log"].append(f"You are TarotGPT, a tarot reader. Greet the user and answer any questions the may ask. ONLY reply as TarotGPT, but never start teh reply with the text: \"TarotGPT:\".")
+        session["log"].append(f"You are TarotGPT, a tarot reader. Ask the user if they would like to ask the tarot any specific questions. \
+                            You will soon be provided a tarot card spread. \
+                            ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT:\".")
 
     session["log"].append(f"User: {message}")   
 
@@ -87,7 +89,7 @@ def chat(message):
             message = remove_tarot_gpt_prefix(message)
             session["log"].append(f"TarotGPT: {message}")   
 
-            return f"u r in debug {counter} {message}"
+            return f"{counter}: {message}"
         else:
             return "Error: Invalid response from OpenAI API" + json.dumps(response_data)
     except requests.exceptions.RequestException as e:
