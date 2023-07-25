@@ -1,19 +1,7 @@
-@font-face {
-    font-family: Unbounded;
-    src: url(/static/assets/fonts/Unbounded/Unbounded-VariableFont_wght.ttf);
-}
-
-body {
-    font-family: Unbounded;
-/* a 90 degree linear gradient background */
-    background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
-    color: rgb(174, 133, 220);    
-}
-
 .masthead-text {
+    font-family: Unbounded;
     padding-left: 30px;
     padding-right: 30px;
-    justify-content: center;
     align-items: center;
     color: rgb(0, 0, 0);
     font-size: 80px;
@@ -45,7 +33,6 @@ body {
 .text-60 {
     font-size: 60px;
 }
-
 
 .text-white {
     color: white;

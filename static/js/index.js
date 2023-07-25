@@ -14,7 +14,6 @@ cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
     '.card-pos-g', '.card-pos-h', '.card-pos-i']
 
 // Buttons for game control
-const playGameButtonElem = document.getElementById('playGame')
 const revealCardsButtonElem = document.getElementById('revealCards')
 const resetReadingButtonElem = document.getElementById('resetReading')
 
@@ -34,7 +33,6 @@ const readingTextElem = document.querySelector('.reading-text')
 loadGame();
 
 function resetReading(card) {
-    playGameButtonElem.hidden = false;
     resetReadingButtonElem.hidden = true;
     gameInProgress = false;
     shufflingInProgress = false;
@@ -227,19 +225,20 @@ function loadGame() {
     createCards()
     activateChat()
     cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
-    playGameButtonElem.addEventListener('click', () => startTarotReading()) // attaches startround function to play game button
     revealCardsButtonElem.hidden = true
     resetReadingButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
 function startTarotReading() {
-    initializeNewReading()
-    shuffleCards()
+    if (!gameInProgress) {
+        alert('test')
+        initializeNewReading()
+        shuffleCards()
+    }
 }
 
 function initializeNewReading() {
-    playGameButtonElem.hidden = true
     gameInProgress = true
     shufflingInProgress = true
     cardsRevealed = false
@@ -431,6 +430,7 @@ function createCard(cardItem) {
 
 function attachClickEventHandlerToCard(card) {
     card.addEventListener('click', () => {
+        startTarotReading();
         revealCard(card);
         showCardName(card);
     });

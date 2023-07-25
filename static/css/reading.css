@@ -1,14 +1,3 @@
-@font-face {
-    font-family: Eubergine;
-    src: url(/static/assets/fonts/Eubergine\ Font.ttf);
-}
-
-@font-face {
-    font-family: Manrope;
-    src: url(/static/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf);
-}
-
-
 :root {
     --tarot-card-width: 300px;
     --tarot-card-height: 528px;
@@ -17,54 +6,32 @@
 }
 
 main {
-    height:55%;
+    height: 55%;
     display: flex;
     justify-content: center;
 }
 
-body {
-    font-family: Manrope;
-    background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
-    color: rgb(174, 133, 220);
+/* body {
     height: 100vh;
-}
-
-.navbar-brand {
-    padding-left: 10px;
-}
-
-.nav-link {
-    float: right;
-    padding-right: 10px;
-
-}
-
-.header-logo {
-    height: 40px;
-}
-
+} */
 
 .card-container {
     position: relative;
     height: 600px;
-    /* width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space)); */
+    width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space));
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: "a a a"
         "a a a"
         "a a a";
-/* center content vertically */
     align-items: center;
     justify-items: center;
-
-
-    }
+}
 
 .card-pos-a {
     grid-area: a;
-
-  }
+}
 
 .card-pos-b {
     grid-area: b;
@@ -153,7 +120,7 @@ body {
 
 .button-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -164,9 +131,7 @@ body {
     color: black;
     text-align: center;
     border-radius: 10px;
-    /* height: 85%; */
-    margin-right: 20px;
-    height: 100vh;
+    margin-right: 5px;
 }
 
 .chatbot .card-header {
@@ -174,31 +139,10 @@ body {
 }
 
 .chatbot .card-body {
-    /* height: 500px; */
     overflow-y: scroll;
-    overflow-x: hidden;
+    height: 60vh;
+    width: 100%;
 }
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f100; 
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #cab0cc62; 
-    border-radius: 5px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
 
 #typingGIF {
     height: 50px;
@@ -210,24 +154,34 @@ body {
     text-align: right;
     background-color: rgba(245, 222, 179, 0.547);
     border-radius: 40px;
-    /* padding-left: 20%; */
     margin-left: 20%;
-    
+
 }
 
 .gptText {
     text-align: left;
     background-color: rgba(245, 179, 224, 0.547);
     border-radius: 40px;
-    /* padding-right: 20%; */
     margin-right: 20%;
-
 }
 
 p {
     padding: 20px;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+}
+::-webkit-scrollbar-thumb {
+    background: #cab0cc62;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 .form-control {
     border: 1px solid black;
@@ -246,22 +200,19 @@ p {
         margin-top: 0px;
     }
 
-    .tarot-card {}
+    /* .tarot-card {
+
+    } */
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {}
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-}
+@media (min-width: 992px) {}
 
 /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    ...
-}
+@media (min-width: 1200px) {}
 
 /* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
-    ...
-}
+@media (min-width: 1400px) {}

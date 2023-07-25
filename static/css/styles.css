@@ -1,0 +1,34 @@
+@font-face {
+    font-family: Eubergine;
+    src: url(/static/assets/fonts/Eubergine\ Font.ttf);
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url(/static/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Unbounded;
+    src: url(/static/assets/fonts/Unbounded/Unbounded-VariableFont_wght.ttf);
+}
+
+body {
+    background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
+    color: rgb(174, 133, 220);   
+    font-family: Manrope; 
+}
+
+
+.navbar-brand {
+    padding-left: 10px;
+}
+
+.nav-link {
+    float: right;
+    padding-right: 10px;
+}
+
+.header-logo {
+    height: 40px;
+}
