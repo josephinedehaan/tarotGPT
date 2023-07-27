@@ -17,7 +17,7 @@ main {
 
 .card-container {
     position: relative;
-    height: 600px;
+    height: 50vh;
     width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space));
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -25,8 +25,8 @@ main {
     grid-template-areas: "a a a"
         "a a a"
         "a a a";
-    align-items: center;
     justify-items: center;
+    z-index: 1;
 }
 
 .card-pos-a {
@@ -77,12 +77,15 @@ main {
     border: 0px;
 }
 
+.initial-pos {
+    margin-top: 100px;
+}
+
 .img-fluid {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
 }
-
 
 .card-inner {
     position: relative;
@@ -111,11 +114,11 @@ main {
 }
 
 .tarot-card.shuffle-left {
-    transform: translateX(200px) translateY(10px);
+    transform: translateX(100px) translateY(10px);
 }
 
 .tarot-card.shuffle-right {
-    transform: translateX(-200px) translateY(-10px);
+    transform: translateX(-100px) translateY(-10px);
 }
 
 .button-container {
@@ -125,22 +128,29 @@ main {
 }
 
 .chatbot {
-    background-color: rgba(242, 231, 231, 0.2);
+    background: linear-gradient(360deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
     position: fixed;
     bottom: 0;
     color: black;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.267);
     border-radius: 10px;
-    margin-right: 5px;
+    margin-left: -12px;
+    width: 100vw;
+    z-index: 10;
 }
 
 .chatbot .card-header {
-    height: 8%;
+    /* height: 8%; */
+}
+
+.selected-card {
+    margin-left: -50px;
 }
 
 .chatbot .card-body {
     overflow-y: scroll;
-    height: 60vh;
+    height: 25vh;
     width: 100%;
 }
 
@@ -172,13 +182,16 @@ p {
 ::-webkit-scrollbar {
     width: 10px;
 }
+
 ::-webkit-scrollbar-track {
     background: #f1f1f100;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #cab0cc62;
     border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
@@ -209,10 +222,64 @@ p {
 @media (min-width: 768px) {}
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+    .chatbot {
+        background: rgba(242, 231, 231, 0.077);
+        position: relative;
+        width: 100%;
+        border:none;
+    }
+    .chatbot .card-body {
+        height: 60vh;
+    }
+    .chatbot .card-header {
+        height: 60px;
+        align-items: center;
+    }
+
+    .chatbot-container {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .card-container {
+        height: 80vh;
+    }
+
+    .tarot-card.shuffle-left {
+        transform: translateX(200px) translateY(-10px);
+    }
+
+    .tarot-card.shuffle-right {
+        transform: translateX(-200px) translateY(-10px);
+    }
+
+    .initial-pos {
+        margin-top: 200px;
+    }
+
+    .minimize-button {
+        display: none;
+    }
+    .img-fluid{
+        max-width: 80%;
+    }
+
+    .selected-card{
+        margin-left: 0px;
+        /* position: fixed; */
+        float: right;
+    }
+
+}
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {}
 
 /* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+    .img-fluid{
+        max-width: 80%;
+    }
+}

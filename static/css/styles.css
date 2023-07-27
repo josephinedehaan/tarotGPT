@@ -19,6 +19,15 @@ body {
     font-family: Manrope; 
 }
 
+.navbar {
+    height: 80px;
+}
+.navbar-toggler {
+    border: none;
+    /* make the navbar icon stick to the right when it's collapsed */
+    float: right;
+
+}
 
 .navbar-brand {
     padding-left: 10px;

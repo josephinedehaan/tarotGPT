@@ -232,7 +232,6 @@ function loadGame() {
 // this gets called when the play game button is clicked.
 function startTarotReading() {
     if (!gameInProgress) {
-        alert('test')
         initializeNewReading()
         shuffleCards()
     }
@@ -279,6 +278,13 @@ function revealCard(card) {
     }
 }
 
+function removeInitialPosClass(){
+    cards.forEach((card) => {
+        card.classList.remove("initial-pos")
+    })
+}
+
+
 function removeShuffleCasses() {
     cards.forEach((card) => {
         card.classList.remove("shuffle-left")
@@ -309,6 +315,7 @@ function shuffleCards(card) {
     function shuffle() {
         animateShuffle(shuffleCount)
         if (shuffleCount == 250) {
+            removeInitialPosClass()
             clearInterval(id)
             shufflingInProgress = false
             removeShuffleCasses()
@@ -375,6 +382,10 @@ function createCard(cardItem) {
     // add class and id to card element
     addClassToElement(cardElem, 'tarot-card')
     addIdToElement(cardElem, cardItem.id)
+
+    // add initial card position class to card element
+    addClassToElement(cardElem, 'initial-pos')
+
 
     // adds card name as metadata ussing data-name=name to card element
     addCardNameToElement(cardElem, cardItem.cardName)
