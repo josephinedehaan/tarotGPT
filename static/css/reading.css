@@ -15,6 +15,27 @@ main {
     height: 100vh;
 } */
 
+.page-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: rgba(242, 231, 231, 0.226);
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.selected-card-container {
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.selected-card {
+    margin-bottom: 0;
+}
+
 .card-container {
     position: relative;
     height: 50vh;
@@ -135,7 +156,6 @@ main {
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.267);
     border-radius: 10px;
-    margin-left: -12px;
     width: 100vw;
     z-index: 10;
 }
@@ -197,8 +217,9 @@ p {
 }
 
 .form-control {
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
+    background: transparent;
 }
 
 .input-box-btn {
@@ -223,28 +244,38 @@ p {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .main-container {
+        bottom: 0;
+        position: fixed;
+        margin-bottom: 10px;
+    }
+
     .chatbot {
-        background: rgba(242, 231, 231, 0.077);
+        background: rgba(242, 231, 231, 0.226);
         position: relative;
         width: 100%;
         border:none;
+        height: 80vh;
     }
     .chatbot .card-body {
-        height: 60vh;
+        height: 70vh;
     }
     .chatbot .card-header {
         height: 60px;
         align-items: center;
     }
-
-    .chatbot-container {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+    .chatbot .card-footer {
+        height: 60px;
     }
+
+
+
 
     .card-container {
         height: 80vh;
+        background-color: rgba(242, 231, 231, 0.226);
+        border-radius: 10px;
+        padding-top: 20px;
     }
 
     .tarot-card.shuffle-left {
