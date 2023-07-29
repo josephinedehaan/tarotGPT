@@ -20,7 +20,7 @@ body {
 }
 
 .navbar {
-    height: 80px;
+    height: 0px;
 }
 .navbar-toggler {
     border: none;
@@ -40,4 +40,4 @@ body {
 
 .header-logo {
     height: 40px;
-}
+} 

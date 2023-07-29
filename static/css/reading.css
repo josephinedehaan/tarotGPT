@@ -17,24 +17,42 @@ main {
 
 .page-header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    height: 13vh;
     background-color: rgba(242, 231, 231, 0.226);
     border-radius: 10px;
     color: white;
     margin-bottom: 20px;
 }
 
+.back-button-container {
+    float: left;
+    padding-left: 10px;
+}
+
+.exit-button-container {
+    float: right;
+    padding-right: 10px;
+}
+
+.round-button {
+    border-radius: 20px;
+}
+
 .selected-card-container {
-    border: 2px solid white;
-    padding: 10px;
+    border: 1px solid white;
+    padding: 5px;
     border-radius: 50px;
 }
 
 .selected-card {
     margin-bottom: 0;
 }
+
+.badge {
+    font-weight: 400;
+}   
 
 .card-container {
     position: relative;
@@ -149,7 +167,7 @@ main {
 }
 
 .chatbot {
-    background: linear-gradient(360deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
+    background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
     position: fixed;
     bottom: 0;
     color: black;
@@ -164,9 +182,6 @@ main {
     /* height: 8%; */
 }
 
-.selected-card {
-    margin-left: -50px;
-}
 
 .chatbot .card-body {
     overflow-y: scroll;
@@ -185,6 +200,7 @@ main {
     background-color: rgba(245, 222, 179, 0.547);
     border-radius: 40px;
     margin-left: 20%;
+    padding:20px;
 
 }
 
@@ -193,11 +209,9 @@ main {
     background-color: rgba(245, 179, 224, 0.547);
     border-radius: 40px;
     margin-right: 20%;
+    padding:20px;
 }
 
-p {
-    padding: 20px;
-}
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -220,6 +234,11 @@ p {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
     background: transparent;
+}
+
+.input-group {
+    max-height: fit-content;
+
 }
 
 .input-box-btn {
@@ -245,11 +264,10 @@ p {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .main-container {
-        bottom: 0;
+        /* bottom: 0;
         position: fixed;
-        margin-bottom: 10px;
+        margin-bottom: 10px; */
     }
-
     .chatbot {
         background: rgba(242, 231, 231, 0.226);
         position: relative;
@@ -267,10 +285,6 @@ p {
     .chatbot .card-footer {
         height: 60px;
     }
-
-
-
-
     .card-container {
         height: 80vh;
         background-color: rgba(242, 231, 231, 0.226);
