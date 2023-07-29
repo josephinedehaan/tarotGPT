@@ -25,18 +25,18 @@
           </div>
 
           <a><button class="btn btn-outline-light round-button"><i class="fas fa-shuffle"></i>
-          </button></a>
+            </button></a>
 
           <div class="selected-card-container">
             <h3 class="selected-card"><span class="badge">Welcome</span></h3>
           </div>
 
-          <a><button class="btn btn-outline-light round-button"><i class="fa-regular fa-eye"></i>
-          </button></a>
+          <a><button class="btn btn-outline-light round-button" id="revealCards"><i class="fa-regular fa-eye"></i>
+            </button></a>
 
           <div class="exit-button-container">
-            <a href="/"><button class="btn btn-outline-light round-button"><i class="fas fa-times"></i>
-              </button></a>
+            <button class="btn btn-outline-light round-button" id="resetReading"><i class="fas fa-times"></i>
+              </button>
 
 
 
@@ -78,18 +78,9 @@
           <div class="card-header">
             <!-- Buttons -->
             <div class="button-container">
-              <div class="btn-group">
-                <div class="reveal-cards-button-container">
-                  <button class="btn btn-outline-light reveal-cards" id="revealCards">Reveal</button>
-                </div>
-                <div class="reset-reading-button-container">
-                  <button class="btn btn-outline-light reset-reading" id="resetReading">Reset</button>
-                </div>
-              </div>
-              <h2 class="selected-card"><span class="badge"></span></h2>
-
-              <div class="minimize-button">
-                <button class="btn btn-outline-light" type="button" data-toggle="collapse"
+              <h3><span class="badge">Chat</span></h3>
+              <div class="minimize-button ">
+                <button class="btn btn-outline-light round-button" type="button" data-toggle="collapse"
                   data-target="#collapseExample" aria-controls="collapseExample">
                   <i class="fas fa-angle-down"></i></button>
               </div>
