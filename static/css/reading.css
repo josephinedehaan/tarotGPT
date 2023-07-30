@@ -211,7 +211,7 @@ main {
 
 .chatbot .card-body {
     overflow-y: scroll;
-    height: 19vh;
+    height: 70vh;
     width: 100%;
     z-index: 2;
 }
@@ -224,14 +224,14 @@ main {
 .collapse:not(.show) {
     display: block;
     width: auto;
-    height: 0px;
-    visibility: hidden;
+    height: 20vh;
+    /* visibility: hidden; */
 }
 
-.minimize-button:active {
-    transform: rotate(180deg);
-}
 
+.collapsing {
+    transition:linear;
+}
 
 
 #typingGIF {
@@ -348,8 +348,8 @@ main {
     }
 
     .chatbot .card-footer {
-        bottom: 0;
-        position: absolute;
+        /* bottom: 0;
+        position: absolute; */
         width: 100%;
     } 
 
