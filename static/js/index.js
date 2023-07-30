@@ -14,6 +14,7 @@ cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
     '.card-pos-g', '.card-pos-h', '.card-pos-i']
 
 // Buttons for game control
+const shuffleCardsButtonElem = document.getElementById('shuffleCards')
 const revealCardsButtonElem = document.getElementById('revealCards')
 const resetReadingButtonElem = document.getElementById('resetReading')
 
@@ -33,7 +34,7 @@ const readingTextElem = document.querySelector('.reading-text')
 loadGame();
 
 function resetReading(card) {
-    resetReadingButtonElem.hidden = true;
+    // resetReadingButtonElem.hidden = true;
     gameInProgress = false;
     shufflingInProgress = false;
     cardsRevealed = false;
@@ -44,15 +45,18 @@ function resetReading(card) {
     destroyCards()
     createCards()
     cards = document.querySelectorAll('.tarot-card')
-    revealCardsButtonElem.hidden = true;
+    revealCardsButtonElem.disabled = true;
+    shuffleCardsButtonElem.disabled = false;
     const defaultGridAreaTemplate = `"a a a" "a a a" "a a a"`;
     transformGridArea(defaultGridAreaTemplate);
     addCardsToAppropriateCell(card);
+    updateStatusElement(selectedCardElem, "block", `<span class='badge'>Welcome</span>`)
+    updateStatusElement(readingTextElem, "block", `<p class="gptText">Hi again! Ask the tarot a question or go ahead and shuffle the cards.</p>`)
 }
+
 
 function activateChat() {
     document.getElementById('sendButton').addEventListener('click', sendMessage);
-
     document.getElementById('messageInput').addEventListener('keyup', handleKeyPress);
 }
 
@@ -131,7 +135,7 @@ function removeTypingGIF() {
 }
 
 
-
+// generate JSON for selected cards and assigns them their position name
 function buildSelectedCardsJSON() {
     const cardList = generateSelectedCardsList();
     const positionList = ['past', 'present', 'future', 'mind', 'body', 'spirit', 'challenge', 'action', 'outcome'];
@@ -183,14 +187,18 @@ function addToFlippedCardsList(card) {
 
 // unhides the reveal cards button and attaches revealcards() function to it
 function activateRevealCardsButton() {
-    revealCardsButtonElem.hidden = false
+    revealCardsButtonElem.disabled = false
     revealCardsButtonElem.addEventListener('click', revealCards)
 }
 
 // unhides the reset reading button
 function activateResetReadingButton(card) {
-    resetReadingButtonElem.hidden = false;
+    // resetReadingButtonElem.hidden = false;
     resetReadingButtonElem.addEventListener('click', () => resetReading(card))
+}
+
+function activateShuffleCardsButton() {
+    shuffleCardsButtonElem.addEventListener('click', startTarotReading)
 }
 
 // retrieves card name metadatata from card element
@@ -225,8 +233,10 @@ function loadGame() {
     createCards()
     activateChat()
     cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
-    revealCardsButtonElem.hidden = true
-    resetReadingButtonElem.hidden = true
+    revealCardsButtonElem.disabled = true
+    activateShuffleCardsButton()
+
+    // resetReadingButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
@@ -253,6 +263,7 @@ function flipCard(card) {
     if (innerCardElem.classList.contains('flip-it')) {
         innerCardElem.classList.remove('flip-it')
     }
+
 }
 
 // flips all cards
@@ -261,12 +272,15 @@ function revealCards() {
         setTimeout(() => {
             flipCard(card);
             if (!flippedCards.includes(card.id)) {
+                showCardName(card);
                 addToFlippedCardsList(card)
-                console.log(flippedCards, card.id)
             }
-        }, index * 100);
+        }, index * 500);
+
     });
+
     cardsRevealed = true;
+    revealCardsButtonElem.disabled = true
     showReading()
 }
 
@@ -276,7 +290,11 @@ function revealCard(card) {
         flipCard(card);
         addToFlippedCardsList(card);
     }
+    if (flipCounter == 9) {
+        revealCardsButtonElem.disabled = true
+    }
 }
+
 
 function removeInitialPosClass(){
     cards.forEach((card) => {
@@ -322,9 +340,15 @@ function shuffleCards(card) {
             dealCards()
             activateRevealCardsButton()
             activateResetReadingButton(card)
+            shuffleCardsButtonElem.disabled = true
+            updateStatusElement(selectedCardElem, "block", `<span class='badge'>Cards dealt</span>`)
+
+
         }
         else {
             shuffleCount++;
+            updateStatusElement(selectedCardElem, "block", `<span class='badge'>Shuffling</span>`)
+
         }
     }
 }

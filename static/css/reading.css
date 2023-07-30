@@ -55,7 +55,10 @@ main {
     /* border: 1px solid white; */
     padding: 5px;
     border-radius: 50px;
-    width: fit-content;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .selected-card {
@@ -247,18 +250,14 @@ main {
     margin-left: 20%;
     padding: 20px;
     z-index: 2;
-
 }
-
 .gptText {
     text-align: left;
     background-color: rgba(245, 179, 224, 0.547);
     border-radius: 40px;
     margin-right: 20%;
     padding: 20px;
-
 }
-
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -278,26 +277,25 @@ main {
 }
 
 .form-control {
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 5px;
+    /* border: 1px solid rgb(255, 255, 255); */
+    /* border-radius: 5px; */
+    border: none;
     background: transparent;
     z-index: 2;
-
 }
 
 .form-control:focus {
     background: transparent;
+    border-color: #946e6e00;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0), 0 0 8px rgba(255, 0, 0, 0);
 }
 
 .input-group {
     max-height: fit-content;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 10px;
 
-}
-
-.input-box-btn {
-    padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
 }
 
 /* Small devices (landscape phones, 576px and up) */
