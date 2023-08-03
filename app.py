@@ -23,18 +23,18 @@ def gpt():
     # Extract card names from the 'selected_cards' list
     #cardList = [card['card'] for card in selected_cards]
 
+    print("IN SUBMIT READING")
     output_message = fetch_tarot_reading(json.dumps(data))
+    print("END SUBMIT READING")
     return jsonify(output_message=output_message)  # Return the JSON response
 
-@app.route('/chat', methods=['POST'])  # Accept POST requests for '/gpt'
+@app.route('/chat', methods=['POST'])
 def chatf():
-        data = request.get_json()  # Get the JSON data sent from JavaScript
+        data = request.get_json()
 
         message = data.get('message', None) 
 
         message += '🜑'
-
-
 
         output_message = chat(message)
         return jsonify(output_message=output_message)  # Return the JSON response

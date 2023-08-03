@@ -37,7 +37,3 @@
 .text-white {
     color: white;
 }
-
-.btn.disabled, .btn:disabled {
-    opacity: 1;
-}

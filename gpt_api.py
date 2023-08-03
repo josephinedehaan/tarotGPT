@@ -5,6 +5,8 @@ from flask import session
 
 
 def fetch_tarot_reading(selected_cards):
+
+    print("SNEED FUNCTION SNEEDED")
     api_key = os.environ.get('OPENAI_KEY')
 
     print(api_key)
@@ -14,20 +16,21 @@ def fetch_tarot_reading(selected_cards):
         'Authorization': f"Bearer {api_key}"
     }
 
-    prompt = f"Generated cards: {selected_cards} \
-            Reply with a ~200 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). \
-            Offer some basic insight into how this spread can answer the question that was asked earlier (if a question was asked).  \
-            Do not refer to cards spatially but in relation to the position field provided in JSON. \
-            Always refere to the user as 'you' and the tarot reader as 'I'."
+    prompt = f"Generated cards: {selected_cards} Reply with a ~200 character paragraph: go over the meaning of each card provided and emphasise what its position is (eg past, present, future, etc). Offer some basic insight into how this spread can answer the question that was asked earlier (if a question was asked).  \Do not refer to cards spatially but in relation to the position field provided in JSON. Always refere to the user as 'you' and the tarot reader as 'I'."
     
     data = {
         'prompt': prompt,
         'max_tokens': 350
     }
 
+    if "log" not in session:
+        session["log"] = []
+    
     session["log"].append(prompt)   
+    session.modified = True
+   
 
-    print("session log: ", session["log"])
+    print("FROM SESSION['log']:", session["log"])
 
     try:
         response = requests.post(url, headers=headers, json=data)
@@ -36,6 +39,7 @@ def fetch_tarot_reading(selected_cards):
         if 'choices' in response_data and response_data['choices']:
             message = response_data['choices'][0].get('text', '').strip()
             session["log"].append(f"TarotGPT: {message}")   
+            session.modified = True
             return message
         else:
             return "Error: Invalid response from OpenAI API" + json.dumps(response_data)
