@@ -25,7 +25,7 @@ def fetch_tarot_reading(selected_cards):
 
     if "log" not in session:
         session["log"] = []
-    
+     
     session["log"].append(prompt)   
     session.modified = True
    

@@ -13,31 +13,37 @@
     src: url(/static/assets/fonts/Unbounded/Unbounded-VariableFont_wght.ttf);
 }
 
+@font-face {
+    font-family: Averia_Serif_Libre;
+    src: url(/static/assets/fonts/Averia_Serif_Libre/AveriaSerifLibre-Regular.ttf);
+}
+
+
 body {
     background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
     color: rgb(174, 133, 220);   
     font-family: Manrope; 
 }
 
-.navbar {
-    height: 0px;
-}
-.navbar-toggler {
-    border: none;
-    /* make the navbar icon stick to the right when it's collapsed */
-    float: right;
-
-}
-
-.navbar-brand {
-    padding-left: 10px;
+.page-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: rgba(242, 231, 231, 0.226);
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.nav-link {
-    float: right;
-    padding-right: 10px;
+.round-button {
+    border-radius: 20px;
 }
 
-.header-logo {
-    height: 40px;
-} 
+.basic-container {
+    background-color: rgba(242, 231, 231, 0.226);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}

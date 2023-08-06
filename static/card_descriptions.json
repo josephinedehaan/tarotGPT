@@ -1,0 +1,29 @@
+{
+    "cards": [
+        {
+            "name": "King of Hearts",
+            "description": "The King of Hearts is often referred to as the 'suicide king' because he appears to be sticking his sword into his head. However, this is a misinterpretation of the original design. In decks of playing cards, the King of Hearts represents a royal figure with a sword behind his head, giving him a unique appearance.",
+            "urlFriendlyName": "king-of-hearts"
+        },
+        {
+            "name": "Queen of Spades",
+            "description": "The Queen of Spades is known as one of the most powerful and mysterious cards in a deck. She is often associated with secrets, hidden knowledge, and a strong, independent character. In card games, the Queen of Spades can be a formidable card to play or encounter.",
+            "urlFriendlyName": "queen-of-spades"
+        },
+        {
+            "name": "Jack of Diamonds",
+            "description": "The Jack of Diamonds is a youthful and energetic card. He is often depicted as a cheerful, mischievous figure, ready to take on any challenge. In some games, the Jack of Diamonds may hold special significance, like being the highest trump card.",
+            "urlFriendlyName": "jack-of-diamonds"
+        },
+        {
+            "name": "Ace of Clubs",
+            "description": "The Ace of Clubs is the highest-ranking card in the club suit. It symbolizes unity, power, and mastery. In many games, the Ace of Clubs can be a winning card or a wild card that can be used strategically to gain an advantage.",
+            "urlFriendlyName": "ace-of-clubs"
+        },
+        {
+            "name": "10 of Spades",
+            "description": "The 10 of Spades is often considered a card of change and transformation. It represents the end of a cycle and the beginning of something new. In card games, the 10 of Spades can sometimes have special effects, like skipping turns or causing reversals.",
+            "urlFriendlyName": "10-of-spades"
+        }
+    ]
+}

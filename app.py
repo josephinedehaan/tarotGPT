@@ -13,6 +13,35 @@ def index():
 def reading():
         return render_template('reading.html')
 
+def create_card_dict_from_file(filename):
+    with open(filename, 'r') as f:
+        data = json.load(f)
+        card_dict = {}
+        for card in data['cards']:
+            key = card['urlFriendlyName']
+            value = {
+                "name": card['name'],
+                "description": card['description']
+            }
+            card_dict[key] = value
+    return card_dict
+
+
+card_descriptions = create_card_dict_from_file('static/card_descriptions.json')
+
+@app.route('/card/<card_name>')
+def card_detail(card_name):
+    card = card_descriptions.get(card_name)
+    if card:
+        print(card)
+        return render_template('card.html', card=card)
+    else:
+        return "Card not found", 404
+
+@app.route('/learn')
+def learn():
+      return render_template('learn.html')
+
 @app.route('/chat/submit_reading', methods=['POST'])  # Accept POST requests for '/gpt'
 def gpt():
     data = request.get_json()  # Get the JSON data sent from JavaScript

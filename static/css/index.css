@@ -1,17 +1,35 @@
 .masthead-text {
     font-family: Unbounded;
     padding-left: 30px;
+    font-size: 2rem;
     padding-right: 30px;
+    padding-bottom: 30px;
     align-items: center;
     color: rgb(0, 0, 0);
-    font-size: 80px;
     text-align: center;
     flex-direction: column; /* Add this line to align items vertically */
 
 }
 
-.masthead-heading h1 {
-    margin-bottom: 10px; /* Optional: add some spacing between heading and subheading */
+.masthead-container {
+    background-color: rgba(242, 231, 231, 0.226);
+    border-radius: 10px;
+    padding: 20px;
+    height: calc(90vh - 30px);
+
+}
+
+.page-header-container {
+    justify-content: space-around;
+}
+
+#left-container {
+    margin-right: -5px;
+}
+
+#right-container {
+    margin-left: -5px;
+
 }
 
 .text-float-left {
@@ -20,18 +38,6 @@
 
 .text-float-right {
     float: right;
-}
-
-.text-100 {
-    font-size: 100px;
-}
-
-.text-80 {
-    font-size: 80px;
-}
-
-.text-60 {
-    font-size: 60px;
 }
 
 .text-white {

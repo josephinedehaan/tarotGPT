@@ -1,0 +1,64 @@
+body {
+    color:white;
+}
+
+.deck-title-container {
+    color: rgb(255, 255, 255);
+    /* font-family: Averia_Serif_Libre; */
+    text-align: center;
+    align-content: center;
+}
+
+.deck-container {
+    justify-content: center;
+}
+.basic-container {
+    text-align: center;
+}
+
+.tarot-deck-ind-img {
+    width: 30%;
+    height:auto;
+    padding: 5px
+}
+
+h2 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .tarot-deck-ind-img {
+        width: 20%;
+    
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .tarot-deck-ind-img {
+        width: 15%;
+    
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .tarot-deck-ind-img {
+        width: 10%;
+    
+    }
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
+}

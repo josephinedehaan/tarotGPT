@@ -7,52 +7,33 @@
   <title>Tarot Reading Website</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="stylesheet" href="/static/css/index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="/static/css/index.css">
 </head>
 
 <body>
 
 
-
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Learn</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('reading') }}">Reading</a>
-        </li>
-      </ul>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <div class="page-header-container" id="left-container">
+          <a href="{{ url_for('reading') }}"><button class="btn btn-outline-light round-button">Reading</button></a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="page-header-container " id="right-container">
+          <a href="{{ url_for('learn') }}"><button class="btn btn-outline-light round-button">Learn</button></a>
+        </div>
+      </div>
     </div>
-  </nav>
-
-  <div class="container">
     <div class="masthead-container ">
       <div class="masthead-text ">
         <div class="masthead-heading">
-          <div class="text-float-left"><span>Welcome to</span></div>
-          <br>
-          <div class="text-float-right text-100 text-white"><span>TarotGPT</span></div>
-          <br>
-          <br>
-          <div class="text-float-left"><span>your friendly AI</span></div>
-          <br>
-          <div class="text-float-right"><span>tarot companion.</span></div>
-          <br>
-          <br>
-        
-          <div class="text-float-left text-60"><span>Get your tarot reading <u>here</u>.</span></div>
-          <br>
-          <div class="text-60"><span>or</span></div>
-          <div class="text-float-right text-60"><span>learn more about tarot <u>here</u>.</span></div>
+          <div >WELCOME TO <span class="text-white">tarotGPT</span></div>
+          <div class="text-float-left">your friendly AI tarot companion</div>
 
+          <div class="text-float-left">Get your tarot reading or simply learn more about tarot</div>
 
         </div>
 
