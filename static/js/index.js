@@ -54,7 +54,6 @@ function resetReading(card) {
     updateStatusElement(readingTextElem, "block", `<p class="gptText">Hi again! Ask the tarot a question or go ahead and shuffle the cards.</p>`)
 }
 
-
 function activateChat() {
     document.getElementById('sendButton').addEventListener('click', sendMessage);
     document.getElementById('messageInput').addEventListener('keyup', handleKeyPress);
@@ -68,8 +67,9 @@ function handleKeyPress(event) {
     }
 }
 
+function sendMessage(route) {
+    route = document.getElementById('chatbox').getAttribute('data-chat-type');
 
-function sendMessage() {
     // Get the user input from the input box
     const userInput = document.getElementById('messageInput').value;
     // Data to be sent in the POST request
@@ -84,7 +84,7 @@ function sendMessage() {
     const jsonData = JSON.stringify(data);
 
     // Make the POST request using the Fetch API
-    fetch('/chat', {
+    fetch('/chat/' + route, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

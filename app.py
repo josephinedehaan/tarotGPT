@@ -5,6 +5,7 @@ import json
 app = Flask(__name__)
 app.secret_key = 'secret'
 
+
 @app.route('/')
 def index():
         return render_template('index.html')
@@ -35,11 +36,9 @@ card_descriptions = create_card_dict_from_file('static/cards.json')
 def card_detail(card_name):
     card = card_descriptions.get(card_name)
     if card:
-        print(card)
         return render_template('card.html', card=card)
     else:
         return "Card not found", 404
-
 
 @app.route('/allcards')
 def allcards():
@@ -53,27 +52,27 @@ def learn():
 @app.route('/chat/submit_reading', methods=['POST'])  # Accept POST requests for '/gpt'
 def gpt():
     data = request.get_json()  # Get the JSON data sent from JavaScript
-
-    # Assuming the JSON data sent from JavaScript is of the format:
-    #selected_cards = data.get('selected_cards', [])  # Extract the 'selected_cards' list
-
-    # Extract card names from the 'selected_cards' list
-    #cardList = [card['card'] for card in selected_cards]
-
-    print("IN SUBMIT READING")
     output_message = fetch_tarot_reading(json.dumps(data))
-    print("END SUBMIT READING")
     return jsonify(output_message=output_message)  # Return the JSON response
 
-@app.route('/chat', methods=['POST'])
-def chatf():
+@app.route('/chat/<system_message>', methods=['POST'])
+def chatf(system_message):
+        chat_system_prompts = {
+    "reading" : f"You are TarotGPT, a tarot reader. If the user hasn't already asked a question, enquire whether the user would like to ask the tarot any specific questions. \
+                    If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. Once you have received the spread, keep it in memory as no other tarot spread can be generated.\
+                    User messages will always end in with the following symbol: '🜑'. \
+                    Never end your own messages with this symbol ('🜑'). \
+                    ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT\".",
+                    
+    "card_detail": f"You are a tarot card expert. You know alot about tarot cards, but you are not a tarot card. \
+                        Answer the user's questions about the meaning of a specific card. "
+     
+}
         data = request.get_json()
-
         message = data.get('message', None) 
-
         message += '🜑'
-
-        output_message = chat(message)
+        init_prompt = chat_system_prompts.get(system_message, None)
+        output_message = chat(init_prompt, message)
         return jsonify(output_message=output_message)  # Return the JSON response
 
 @app.route('/reset')
