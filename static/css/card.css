@@ -31,9 +31,6 @@ body {
     margin: 0 auto; 
 }
 
-.single-card-img:hover {
-    cursor: pointer;
-}
 
 .test1 {
     background-color: red;

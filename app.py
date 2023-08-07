@@ -24,6 +24,7 @@ def create_card_dict_from_file(filename):
                 "description": card['description'],
                 "imagePath": card['imagePath'],
                 "urlName": card['urlName'],
+                "arcana": card['arcana'],
             }
             card_dict[key] = value
     return card_dict

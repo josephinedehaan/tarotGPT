@@ -24,7 +24,8 @@ body {
 .tarot-deck-ind-img {
     width: 30%;
     height:auto;
-    padding: 5px
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .tarot-deck-ind-img:hover {
@@ -35,6 +36,8 @@ h2 {
     padding-top: 10px;
     padding-bottom: 20px;
 }
+
+
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

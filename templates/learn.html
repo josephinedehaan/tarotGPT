@@ -45,20 +45,55 @@
                 <h4>Major Arcana</h4>
             </div>
         </div> -->
-        <div class="col-12">
-            <div class="basic-container">
-
-                <h2>Major Arcana</h2>
-
-                <div class="d-flex flex-wrap deck-container">
-                    {% for card in cards %}
-                        <img class="tarot-deck-ind-img" data-tilt src="{{card.imagePath}}" alt="Image of the {{card.cardName}} card">
-
-                    {% endfor %}
-
-                </div>
-            </div>
-
+        <div class="basic-container">
+            <h2>Major Arcana</h2>
+            {% for card in cards %}
+                {% if card.arcana == "Major Arcana" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="basic-container">
+            <h2>Minor Arcana</h2>
+            <h5>Cups</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Cups" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <h5>Pentacles</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Pentacles" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <h5>Swords</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Swords" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <h5>Wands</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Wands" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
