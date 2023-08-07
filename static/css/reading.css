@@ -71,9 +71,15 @@ main {
         "a a a";
     justify-items: center;
     z-index: 1;
-    background-color: rgba(242, 231, 231, 0.226);
+    background-color: rgba(242, 231, 231, 0.069);
     border-radius: 10px;
     padding-top:15px;
+}
+
+#deck-img {
+    z-index: 10;
+    width: 20%;
+    cursor: default;
 }
 
 .card-pos-a {
@@ -180,12 +186,12 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(242, 231, 231, 0.226);
+    background-color: rgba(242, 231, 231, 0.069);
     z-index: 2;
 }
 
 .chatbot {
-    background: linear-gradient(90deg, rgb(187, 137, 137) 0%, rgb(165, 65, 228) 100%);
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
     position: fixed;
     bottom: 0;
     color: black;
@@ -315,7 +321,7 @@ main {
     }
 
     .chatbot {
-        background: rgba(242, 231, 231, 0.226);
+        background: rgba(242, 231, 231, 0.069);
         position: relative;
         /* bottom: none; */
         width: 100%;
@@ -343,7 +349,7 @@ main {
 
     .card-container {
         height: 80vh;
-        background-color: rgba(242, 231, 231, 0.226);
+        background-color: rgba(242, 231, 231, 0.069);
         border-radius: 10px;
         padding-top: 20px;
     }

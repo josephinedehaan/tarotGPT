@@ -10,10 +10,6 @@ app.secret_key = 'secret'
 def index():
         return render_template('index.html')
 
-@app.route('/reading')
-def reading():
-        return render_template('reading.html')
-
 def create_card_dict_from_file(filename):
     with open(filename, 'r') as f:
         data = json.load(f)
@@ -32,6 +28,10 @@ def create_card_dict_from_file(filename):
 
 card_descriptions = create_card_dict_from_file('static/cards.json')
 
+@app.route('/reading')
+def reading():
+        return render_template('reading.html')
+
 @app.route('/card/<card_name>')
 def card_detail(card_name):
     card = card_descriptions.get(card_name)
@@ -39,10 +39,6 @@ def card_detail(card_name):
         return render_template('card.html', card=card)
     else:
         return "Card not found", 404
-
-@app.route('/allcards')
-def allcards():
-    return render_template('all_cards.html', cards=card_descriptions.values())
 
 
 @app.route('/learn')

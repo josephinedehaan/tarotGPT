@@ -34,7 +34,6 @@ const readingTextElem = document.querySelector('.reading-text')
 loadGame();
 
 function resetReading(card) {
-    // resetReadingButtonElem.hidden = true;
     gameInProgress = false;
     shufflingInProgress = false;
     cardsRevealed = false;
@@ -52,6 +51,9 @@ function resetReading(card) {
     addCardsToAppropriateCell(card);
     updateStatusElement(selectedCardElem, "block", `<span class='badge'>Welcome</span>`)
     updateStatusElement(readingTextElem, "block", `<p class="gptText">Hi again! Ask the tarot a question or go ahead and shuffle the cards.</p>`)
+    document.getElementById('deck-img').hidden = false;
+
+
 }
 
 function activateChat() {
@@ -210,8 +212,9 @@ function getCardName(card) {
 // updates html with relevant card name only if the cards have been flipped
 function showCardName(card) {
     cardName = getCardName(card)
+    cardUrl = card.getAttribute("data-cardurl")
     if (cardsRevealed || cardIsFlipped(card)) {
-        updateStatusElement(selectedCardElem, "block", `<span class='badge round-button pointer'>${cardName} <i class="fa-regular fa-circle-right"></i> </span>`)
+        updateStatusElement(selectedCardElem, "block", `<a href="/card/` + cardUrl +`"> <span  class='badge round-button pointer'>${cardName} <i class="fa-regular fa-circle-right"></i> </span> </a>`)
     }
 }
 
@@ -245,6 +248,7 @@ function startTarotReading() {
     if (!gameInProgress) {
         initializeNewReading()
         shuffleCards()
+        document.getElementById('deck-img').hidden = true;
     }
 }
 
@@ -414,6 +418,7 @@ function createCard(cardItem) {
 
     // adds card name as metadata ussing data-name=name to card element
     addCardNameToElement(cardElem, cardItem.cardName)
+    addCardURLToElement(cardElem, cardItem.urlName)
 
     // add class to inner card elemet
     addClassToElement(cardInnerElem, 'card-inner')
@@ -486,6 +491,10 @@ function addIdToElement(elem, id) {
 
 function addCardNameToElement(elem, cardName) {
     elem.setAttribute('data-cardname', cardName)
+}
+
+function addCardURLToElement(elem, url) {
+    elem.setAttribute('data-cardurl', url)
 }
 
 function addSrcToImageElem(imgElem, src) {
