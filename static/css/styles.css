@@ -38,6 +38,7 @@ body {
 }
 
 .round-button {
+    border: 1px solid white;
     border-radius: 20px;
 }
 
@@ -46,4 +47,8 @@ body {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 10px;
+}
+
+.pointer {
+    cursor: pointer;
 }

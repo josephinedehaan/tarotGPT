@@ -51,44 +51,26 @@
                 <h2>Major Arcana</h2>
 
                 <div class="d-flex flex-wrap deck-container">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/1.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/2.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/3.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/4.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/5.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/6.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/7.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/8.jpg" alt="0" class="card">
-                    <img class="tarot-deck-ind-img" src="static/assets/images/9.jpg" alt="0" class="card">
+                    {% for card in cards %}
+                        <img class="tarot-deck-ind-img" data-tilt src="{{card.imagePath}}" alt="Image of the {{card.cardName}} card">
+
+                    {% endfor %}
+
                 </div>
             </div>
 
         </div>
-        <div class="col-12">
-            <div class="deck-title-container basic-container">
-                <h4>Minor Arcana</h4>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="deck-container basic-container d-flex flex-wrap">
-                <img class="tarot-deck-ind-img" src="static/assets/images/1.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/2.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/3.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/4.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/5.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/6.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/7.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/8.jpg" alt="0" class="card">
-                <img class="tarot-deck-ind-img" src="static/assets/images/9.jpg" alt="0" class="card">
-            </div>
-        </div>
+    </div>
+
+    </div>
+
 
     </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="static/js/vanilla-tilt.js"></script>
+    <script src="/static/js/vanilla-tilt.js"></script>
     <script src="js/script.js"></script>
 
 </body>

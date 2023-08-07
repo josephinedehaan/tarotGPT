@@ -17,17 +17,18 @@ def create_card_dict_from_file(filename):
     with open(filename, 'r') as f:
         data = json.load(f)
         card_dict = {}
-        for card in data['cards']:
-            key = card['urlFriendlyName']
+        for card in data:
+            key = card['urlName']
             value = {
-                "name": card['name'],
-                "description": card['description']
+                "name": card['cardName'],
+                "description": card['description'],
+                "imagePath": card['imagePath'],
+                "urlName": card['urlName'],
             }
             card_dict[key] = value
     return card_dict
 
-
-card_descriptions = create_card_dict_from_file('static/card_descriptions.json')
+card_descriptions = create_card_dict_from_file('static/cards.json')
 
 @app.route('/card/<card_name>')
 def card_detail(card_name):
@@ -38,9 +39,15 @@ def card_detail(card_name):
     else:
         return "Card not found", 404
 
+
+@app.route('/allcards')
+def allcards():
+    return render_template('all_cards.html', cards=card_descriptions.values())
+
+
 @app.route('/learn')
 def learn():
-      return render_template('learn.html')
+        return render_template('learn.html', cards=card_descriptions.values())
 
 @app.route('/chat/submit_reading', methods=['POST'])  # Accept POST requests for '/gpt'
 def gpt():

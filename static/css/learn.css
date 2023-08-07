@@ -16,10 +16,19 @@ body {
     text-align: center;
 }
 
+.card-container {
+    text-align: center;
+    justify-content: center;
+}
+
 .tarot-deck-ind-img {
     width: 30%;
     height:auto;
     padding: 5px
+}
+
+.tarot-deck-ind-img:hover {
+    cursor: pointer;
 }
 
 h2 {

@@ -1,391 +1,626 @@
-[{
-    "id": 1,
-    "imagePath": "/static/assets/images/1.jpg",
-    "cardName": "The Star"
-},
-{
-    "id": 2,
-    "imagePath": "/static/assets/images/2.jpg",
-    "cardName": "The Tower"
-},
-{
-    "id": 3,
-    "imagePath": "/static/assets/images/3.jpg",
-    "cardName": "The World"
-},
-{
-    "id": 4,
-    "imagePath": "/static/assets/images/4.jpg",
-    "cardName": "The Moon"
-},
-{
-    "id": 5,
-    "imagePath": "/static/assets/images/5.jpg",
-    "cardName": "Two of Swords"
-},
-{
-    "id": 6,
-    "imagePath": "/static/assets/images/6.jpg",
-    "cardName": "Two of Cups"
-},
-{
-    "id": 7,
-    "imagePath": "/static/assets/images/7.jpg",
-    "cardName": "Five of Cups"
-},
-{
-    "id": 8,
-    "imagePath": "/static/assets/images/8.jpg",
-    "cardName": "Eight of Cups"
-},
-{
-    "id": 9,
-    "imagePath": "/static/assets/images/9.jpg",
-    "cardName": "Ten of Wands"
-},
-{
-    "id": 10,
-    "imagePath": "/static/assets/images/10.jpg",
-    "cardName": "Ace of Cups"
-},
-{
-    "id": 11,
-    "imagePath": "/static/assets/images/11.jpg",
-    "cardName": "King of Cups"
-},
-{
-    "id": 12,
-    "imagePath": "/static/assets/images/12.jpg",
-    "cardName": "Knight of Cups"
-},
-{
-    "id": 13,
-    "imagePath": "/static/assets/images/13.jpg",
-    "cardName": "Page of Cups"
-},
-{
-    "id": 14,
-    "imagePath": "/static/assets/images/14.jpg",
-    "cardName": "Queen of Cups"
-},
-{
-    "id": 15,
-    "imagePath": "/static/assets/images/15.jpg",
-    "cardName": "The Fool"
-},
-{
-    "id": 16,
-    "imagePath": "/static/assets/images/16.jpg",
-    "cardName": "The Magician"
-},
-{
-    "id": 17,
-    "imagePath": "/static/assets/images/17.jpg",
-    "cardName": "Wheel of Fortune"
-},
-{
-    "id": 18,
-    "imagePath": "/static/assets/images/18.jpg",
-    "cardName": "Justice"
-},
-{
-    "id": 19,
-    "imagePath": "/static/assets/images/19.jpg",
-    "cardName": "The Hanged Man"
-},
-{
-    "id": 20,
-    "imagePath": "/static/assets/images/20.jpg",
-    "cardName": "Death"
-},
-{
-    "id": 21,
-    "imagePath": "/static/assets/images/21.jpg",
-    "cardName": "Temperance"
-},
-{
-    "id": 22,
-    "imagePath": "/static/assets/images/22.jpg",
-    "cardName": "The Devil"
-},
-{
-    "id": 23,
-    "imagePath": "/static/assets/images/23.jpg",
-    "cardName": "The Tower"
-},
-{
-    "id": 24,
-    "imagePath": "/static/assets/images/24.jpg",
-    "cardName": "The Star"
-},
-{
-    "id": 25,
-    "imagePath": "/static/assets/images/25.jpg",
-    "cardName": "The Moon"
-},
-{
-    "id": 26,
-    "imagePath": "/static/assets/images/26.jpg",
-    "cardName": "The Sun"
-},
-{
-    "id": 27,
-    "imagePath": "/static/assets/images/27.jpg",
-    "cardName": "The High Priestess"
-},
-{
-    "id": 28,
-    "imagePath": "/static/assets/images/28.jpg",
-    "cardName": "Judgement"
-},
-{
-    "id": 29,
-    "imagePath": "/static/assets/images/29.jpg",
-    "cardName": "The World"
-},
-{
-    "id": 30,
-    "imagePath": "/static/assets/images/30.jpg",
-    "cardName": "The Empress"
-},
-{
-    "id": 31,
-    "imagePath": "/static/assets/images/31.jpg",
-    "cardName": "The Emperor"
-},
-{
-    "id": 32,
-    "imagePath": "/static/assets/images/32.jpg",
-    "cardName": "The Hierophant"
-},
-{
-    "id": 33,
-    "imagePath": "/static/assets/images/33.jpg",
-    "cardName": "The Lovers"
-},
-{
-    "id": 34,
-    "imagePath": "/static/assets/images/34.jpg",
-    "cardName": "The Chariot"
-},
-{
-    "id": 35,
-    "imagePath": "/static/assets/images/35.jpg",
-    "cardName": "Strength"
-},
-{
-    "id": 36,
-    "imagePath": "/static/assets/images/36.jpg",
-    "cardName": "The Hermit"
-},
-{
-    "id": 37,
-    "imagePath": "/static/assets/images/37.jpg",
-    "cardName": "Ten of Pentacles"
-},
-{
-    "id": 38,
-    "imagePath": "/static/assets/images/38.jpg",
-    "cardName": "Two of Pentacles"
-},
-{
-    "id": 39,
-    "imagePath": "/static/assets/images/39.jpg",
-    "cardName": "Three of Pentacles"
-},
-{
-    "id": 40,
-    "imagePath": "/static/assets/images/40.jpg",
-    "cardName": "Four of Pentacles"
-},
-{
-    "id": 41,
-    "imagePath": "/static/assets/images/41.jpg",
-    "cardName": "Five of Pentacles"
-},
-{
-    "id": 42,
-    "imagePath": "/static/assets/images/42.jpg",
-    "cardName": "Six of Pentacles"
-},
-{
-    "id": 43,
-    "imagePath": "/static/assets/images/43.jpg",
-    "cardName": "Seven of Pentacles"
-},
-{
-    "id": 44,
-    "imagePath": "/static/assets/images/44.jpg",
-    "cardName": "Eight of Pentacles"
-},
-{
-    "id": 45,
-    "imagePath": "/static/assets/images/45.jpg",
-    "cardName": "Nine of Pentacles"
-},
-{
-    "id": 46,
-    "imagePath": "/static/assets/images/46.jpg",
-    "cardName": "Ace of Pentacles"
-},
-{
-    "id": 47,
-    "imagePath": "/static/assets/images/47.jpg",
-    "cardName": "King of Pentacles"
-},
-{
-    "id": 48,
-    "imagePath": "/static/assets/images/48.jpg",
-    "cardName": "Knight of Pentacles"
-},
-{
-    "id": 49,
-    "imagePath": "/static/assets/images/49.jpg",
-    "cardName": "Page of Pentacles"
-},
-{
-    "id": 50,
-    "imagePath": "/static/assets/images/50.jpg",
-    "cardName": "Queen of Pentacles"
-},
-{
-    "id": 51,
-    "imagePath": "/static/assets/images/51.jpg",
-    "cardName": "Ten of Swords"
-},
-{
-    "id": 52,
-    "imagePath": "/static/assets/images/52.jpg",
-    "cardName": "Two of Swords"
-},
-{
-    "id": 53,
-    "imagePath": "/static/assets/images/53.jpg",
-    "cardName": "Three of Swords"
-},
-{
-    "id": 54,
-    "imagePath": "/static/assets/images/54.jpg",
-    "cardName": "Four of Swords"
-},
-{
-    "id": 55,
-    "imagePath": "/static/assets/images/55.jpg",
-    "cardName": "Five of Swords"
-},
-{
-    "id": 56,
-    "imagePath": "/static/assets/images/56.jpg",
-    "cardName": "Six of Swords"
-},
-{
-    "id": 57,
-    "imagePath": "/static/assets/images/57.jpg",
-    "cardName": "Seven of Swords"
-},
-{
-    "id": 58,
-    "imagePath": "/static/assets/images/58.jpg",
-    "cardName": "Eight of Swords"
-},
-{
-    "id": 59,
-    "imagePath": "/static/assets/images/59.jpg",
-    "cardName": "Nine of Swords"
-},
-{
-    "id": 60,
-    "imagePath": "/static/assets/images/60.jpg",
-    "cardName": "Ace of Swords"
-},
-{
-    "id": 61,
-    "imagePath": "/static/assets/images/61.jpg",
-    "cardName": "King of Swords"
-},
-{
-    "id": 62,
-    "imagePath": "/static/assets/images/62.jpg",
-    "cardName": "Knight of Swords"
-},
-{
-    "id": 63,
-    "imagePath": "/static/assets/images/63.jpg",
-    "cardName": "Page of Swords"
-},
-{
-    "id": 64,
-    "imagePath": "/static/assets/images/64.jpg",
-    "cardName": "Queen of Swords"
-},
-{
-    "id": 65,
-    "imagePath": "/static/assets/images/65.jpg",
-    "cardName": "Ten of Wands"
-},
-{
-    "id": 66,
-    "imagePath": "/static/assets/images/66.jpg",
-    "cardName": "Two of Wands"
-},
-{
-    "id": 67,
-    "imagePath": "/static/assets/images/67.jpg",
-    "cardName": "Three of Wands"
-},
-{
-    "id": 68,
-    "imagePath": "/static/assets/images/68.jpg",
-    "cardName": "Four of Wands"
-},
-{
-    "id": 69,
-    "imagePath": "/static/assets/images/69.jpg",
-    "cardName": "Five of Wands"
-},
-{
-    "id": 70,
-    "imagePath": "/static/assets/images/70.jpg",
-    "cardName": "Six of Wands"
-},
-{
-    "id": 71,
-    "imagePath": "/static/assets/images/71.jpg",
-    "cardName": "Seven of Wands"
-},
-{
-    "id": 72,
-    "imagePath": "/static/assets/images/72.jpg",
-    "cardName": "Eight of Wands"
-},
-{
-    "id": 73,
-    "imagePath": "/static/assets/images/73.jpg",
-    "cardName": "Nine of Wands"
-},
-{
-    "id": 74,
-    "imagePath": "/static/assets/images/74.jpg",
-    "cardName": "Ace of Wands"
-},
-{
-    "id": 75,
-    "imagePath": "/static/assets/images/75.jpg",
-    "cardName": "King of Wands"
-},
-{
-    "id": 76,
-    "imagePath": "/static/assets/images/76.jpg",
-    "cardName": "Knight of Wands"
-},
-{
-    "id": 77,
-    "imagePath": "/static/assets/images/77.jpg",
-    "cardName": "Page of Wands"
-},
-{
-    "id": 78,
-    "imagePath": "/static/assets/images/78.jpg",
-    "cardName": "Queen of Wands"
-}
+[
+    {
+        "id": 1,
+        "imagePath": "/static/assets/images/ma-the-fool.jpg",
+        "cardName": "The Fool",
+        "description": "The Fool is known as a card of new beginnings, innocence, and spontaneity. In the Tarot deck, The Fool is often depicted as a young traveler on a journey, standing on the edge of a cliff without a care in the world. This card represents taking risks, embracing uncertainty, and trusting in the universe's guidance. It symbolizes the start of a new adventure, a fresh chapter in life's story waiting to unfold.",
+        "urlName": "the-fool",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 2,
+        "imagePath": "/static/assets/images/ma-the-magician.jpg",
+        "cardName": "The Magician",
+        "description": "The Magician is known as a card of power, skill, and creativity. In the Tarot deck, The Magician is depicted as a figure standing before a table adorned with various tools and symbols, representing the four elements and the connection between the spiritual and physical realms. This card signifies that you have the ability to manifest your desires, tap into your inner potential, and make things happen through your focused will and intention. The Magician reminds you to harness your talents and use them wisely to achieve your goals.",
+        "urlName": "the-magician",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 3,
+        "imagePath": "/static/assets/images/ma-the-high-priestess.jpg",
+        "cardName": "The High Priestess",
+        "description": "The High Priestess is known as a card of intuition, wisdom, and secrets. In the Tarot deck, The High Priestess is often depicted as a veiled woman seated between two pillars, representing the duality of life and the hidden knowledge she possesses. This card encourages you to trust your intuition, listen to your inner voice, and explore the mysteries of the subconscious mind. The High Priestess is a symbol of inner wisdom and spiritual insight, urging you to seek deeper understanding and connect with your higher self.",
+        "urlName": "the-high-priestess",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 4,
+        "imagePath": "/static/assets/images/ma-the-empress.jpg",
+        "cardName": "The Empress",
+        "description": "The Empress is known as a card of abundance, nurturing, and fertility. In the Tarot deck, The Empress is often depicted as a pregnant woman surrounded by nature, representing the earth's fertile and nurturing qualities. This card symbolizes creativity, sensuality, and the power of feminine energy. The Empress encourages you to embrace and celebrate the beauty of life, to nurture yourself and others, and to tap into your creative potential.",
+        "urlName": "the-empress",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 5,
+        "imagePath": "/static/assets/images/ma-the-emperor.jpg",
+        "cardName": "The Emperor",
+        "description": "The Emperor is known as a card of authority, leadership, and stability. In the Tarot deck, The Emperor is often depicted as a wise and mature ruler sitting on a throne, symbolizing his control and order. This card represents the establishment of structure and discipline in one's life, as well as the ability to take charge and make decisions with confidence. The Emperor encourages you to embrace your inner strength, take responsibility for your actions, and lead with fairness and integrity.",
+        "urlName": "the-emperor",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 6,
+        "imagePath": "/static/assets/images/ma-the-hierophant.jpg",
+        "cardName": "The Hierophant",
+        "description": "The Hierophant is known as a card of tradition, spirituality, and mentorship. In the Tarot deck, The Hierophant is often depicted as a religious figure or teacher, representing the connection between earthly and divine knowledge. This card signifies the importance of tradition, ritual, and seeking guidance from wise mentors or spiritual leaders. The Hierophant encourages you to explore your beliefs, seek spiritual wisdom, and find a sense of belonging within a community.",
+        "urlName": "the-hierophant",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 7,
+        "imagePath": "/static/assets/images/ma-the-lovers.jpg",
+        "cardName": "The Lovers",
+        "description": "The Lovers is known as a card of love, relationships, and choices. In the Tarot deck, The Lovers are often depicted as a couple standing together, symbolizing unity and the power of love. This card represents the importance of making meaningful connections with others and the need to make choices that align with your values and passions. The Lovers encourage you to embrace love, harmony, and balance in your relationships, and to make decisions that resonate with your heart.",
+        "urlName": "the-lovers",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 8,
+        "imagePath": "/static/assets/images/ma-the-chariot.jpg",
+        "cardName": "The Chariot",
+        "description": "The Chariot is known as a card of victory, willpower, and determination. In the Tarot deck, The Chariot is often depicted as a warrior riding a chariot, symbolizing control over opposing forces. This card represents the need to focus your energy and move forward with confidence, even in the face of challenges. The Chariot encourages you to harness your inner strength, set clear goals, and maintain self-discipline to achieve success and overcome obstacles.",
+        "urlName": "the-chariot",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 9,
+        "imagePath": "/static/assets/images/ma-strength.jpg",
+        "cardName": "Strength",
+        "description": "Strength is known as a card of inner strength, courage, and patience. In the Tarot deck, Strength is often depicted as a woman gently taming a lion, representing the power of compassion and understanding. This card symbolizes the ability to face challenges with a calm and compassionate demeanor, rather than resorting to force. Strength encourages you to tap into your inner reservoir of resilience, show empathy towards yourself and others, and approach difficulties with a steady mind.",
+        "urlName": "strength",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 10,
+        "imagePath": "/static/assets/images/ma-the-hermit.jpg",
+        "cardName": "The Hermit",
+        "description": "The Hermit is known as a card of introspection, solitude, and inner guidance. In the Tarot deck, The Hermit is often depicted as a wise old man holding a lantern, symbolizing the search for truth and inner wisdom. This card represents a period of self-reflection and seeking answers within, away from the distractions of the outside world. The Hermit encourages you to take time for self-discovery, trust your inner voice, and seek solitude to find the answers you seek.",
+        "urlName": "the-hermit",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 11,
+        "imagePath": "/static/assets/images/ma-wheel-of-fortune.jpg",
+        "cardName": "Wheel of Fortune",
+        "description": "The Wheel of Fortune is known as a card of change, destiny, and cycles. In the Tarot deck, The Wheel of Fortune is often depicted as a spinning wheel with various symbols, representing the ups and downs of life. This card symbolizes the ever-changing nature of existence and the concept of fate or destiny. The Wheel of Fortune encourages you to embrace life's fluctuations, be open to new opportunities, and trust that the wheel will turn in your favor.",
+        "urlName": "wheel-of-fortune",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 12,
+        "imagePath": "/static/assets/images/ma-justice.jpg",
+        "cardName": "Justice",
+        "description": "Justice is known as a card of fairness, truth, and balance. In the Tarot deck, Justice is often depicted as a woman holding scales, representing the need for objectivity and weighing decisions carefully. This card symbolizes the law of cause and effect and the consequences of one's actions. Justice encourages you to seek truth, act with integrity, and make decisions that align with your values and principles.",
+        "urlName": "justice",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 13,
+        "imagePath": "/static/assets/images/ma-the-hanged-man.jpg",
+        "cardName": "The Hanged Man",
+        "description": "The Hanged Man is known as a card of surrender, letting go, and seeing things from a new perspective. In the Tarot deck, The Hanged Man is often depicted as a man hanging upside down from a tree, representing the need to pause and reassess life's situations. This card symbolizes the idea of sacrifice and surrendering old beliefs or habits to gain new insights. The Hanged Man encourages you to let go of control, find peace in surrender, and be open to different ways of seeing the world.",
+        "urlName": "the-hanged-man",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 14,
+        "imagePath": "/static/assets/images/ma-death.jpg",
+        "cardName": "Death",
+        "description": "Death is known as a card of transformation, rebirth, and letting go of the old. In the Tarot deck, Death is often depicted as a skeleton on horseback, symbolizing the inevitability of change and the need to release what no longer serves you. This card represents the end of one cycle and the beginning of another, urging you to embrace the process of transformation and renewal. Death encourages you to accept change, let go of attachments, and make room for new possibilities.",
+        "urlName": "death",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 15,
+        "imagePath": "/static/assets/images/ma-temperance.jpg",
+        "cardName": "Temperance",
+        "description": "Temperance is known as a card of balance, patience, and moderation. In the Tarot deck, Temperance is often depicted as an angel pouring water between two cups, symbolizing the harmony between opposing forces. This card represents the need to find equilibrium and avoid extremes in life. Temperance encourages you to embrace patience, practice moderation, and seek harmony in all aspects of your life.",
+        "urlName": "temperance",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 16,
+        "imagePath": "/static/assets/images/ma-the-devil.jpg",
+        "cardName": "The Devil",
+        "description": "The Devil is known as a card of bondage, materialism, and temptation. In the Tarot deck, The Devil is often depicted as a figure resembling a satyr, representing our desires and attachments that can enslave us. This card symbolizes the allure of material pleasures and the need to break free from negative patterns or addictions. The Devil encourages you to confront your inner demons, release yourself from unhealthy attachments, and reclaim your power.",
+        "urlName": "the-devil",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 17,
+        "imagePath": "/static/assets/images/ma-the-tower.jpg",
+        "cardName": "The Tower",
+        "description": "The Tower is known as a card of upheaval, sudden change, and liberation. In the Tarot deck, The Tower is often depicted as a tall tower being struck by lightning, symbolizing the breaking down of old structures and beliefs. This card represents the need to release what no longer serves you, even if it feels chaotic or uncomfortable. The Tower encourages you to embrace change, let go of the old, and trust that through destruction, new opportunities for growth and freedom will arise.",
+        "urlName": "the-tower",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 18,
+        "imagePath": "/static/assets/images/ma-the-star.jpg",
+        "cardName": "The Star",
+        "description": "The Star is known as a card of hope, inspiration, and healing. In the Tarot deck, The Star is often depicted as a woman kneeling by a pool of water, pouring water from two cups, representing her connection to the divine and the flow of inspiration. This card symbolizes renewal and healing after challenging times. The Star encourages you to have faith in the future, stay connected to your inner guidance, and believe in the power of positivity and hope.",
+        "urlName": "the-star",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 19,
+        "imagePath": "/static/assets/images/ma-the-moon.jpg",
+        "cardName": "The Moon",
+        "description": "The Moon is known as a card of intuition, dreams, and hidden truths. In the Tarot deck, The Moon is often depicted as a moon in the night sky, symbolizing the mysteries of the subconscious mind. This card represents the need to trust your instincts and navigate through uncertainties with grace. The Moon encourages you to explore your dreams, pay attention to your emotions, and seek deeper understanding beyond the surface appearances.",
+        "urlName": "the-moon",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 20,
+        "imagePath": "/static/assets/images/ma-the-sun.jpg",
+        "cardName": "The Sun",
+        "description": "The Sun is known as a card of joy, success, and optimism. In the Tarot deck, The Sun is often depicted as a radiant sun shining brightly in the sky, symbolizing the power of positivity and enlightenment. This card represents a time of clarity and celebration after a period of darkness or uncertainty. The Sun encourages you to bask in the light of happiness, embrace your achievements, and radiate positivity to those around you.",
+        "urlName": "the-sun",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 21,
+        "imagePath": "/static/assets/images/ma-judgement.jpg",
+        "cardName": "Judgement",
+        "description": "Judgement is known as a card of awakening, self-evaluation, and rebirth. In the Tarot deck, Judgement is often depicted as an angel blowing a trumpet, symbolizing the call to awaken and face the truth. This card represents the need to take stock of your life, let go of the past, and embrace transformation. Judgement encourages you to release self-judgment, forgive yourself and others, and step into a new chapter of your life with a sense of renewal.",
+        "urlName": "judgement",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 22,
+        "imagePath": "/static/assets/images/ma-the-world.jpg",
+        "cardName": "The World",
+        "description": "The World is known as a card of completion, wholeness, and fulfillment. In the Tarot deck, The World is often depicted as a figure inside a laurel wreath, symbolizing achievement and success. This card represents the end of a significant cycle and the beginning of a new journey. The World encourages you to celebrate your accomplishments, embrace your uniqueness, and recognize that you are an integral part of the interconnected universe.",
+        "urlName": "the-world",
+        "arcana": "Major Arcana"
+    },
+    {
+        "id": 23,
+        "imagePath": "/static/assets/images/cups-ace.jpg",
+        "cardName": "Ace of Cups",
+        "description": "The Ace of Cups is known as a card of new emotional beginnings, love, and compassion. In the Tarot deck, the Ace of Cups is often depicted as a hand holding a cup overflowing with water, symbolizing the potential for emotional abundance and new connections. This card signifies the opening of the heart and the possibility of deep emotional fulfillment. The Ace of Cups encourages you to embrace love, connect with your emotions, and be open to new experiences and relationships.",
+        "urlName": "ace-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 24,
+        "imagePath": "/static/assets/images/cups-2.jpg",
+        "cardName": "Two of Cups",
+        "description": "The Two of Cups is known as a card of partnership, harmony, and mutual attraction. In the Tarot deck, the Two of Cups is often depicted as two figures holding cups and exchanging glances, symbolizing the beginning of a loving and harmonious relationship. This card signifies the deep connection and emotional bond between two people. The Two of Cups encourages you to nurture your relationships, express your feelings, and seek balance and understanding with others.",
+        "urlName": "two-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 25,
+        "imagePath": "/static/assets/images/cups-3.jpg",
+        "cardName": "Three of Cups",
+        "description": "The Three of Cups is known as a card of celebration, friendship, and joy. In the Tarot deck, the Three of Cups is often depicted as three figures raising their cups in a toast, symbolizing the joyous moments shared with friends and loved ones. This card signifies a time of harmony, social connections, and shared happiness. The Three of Cups encourages you to celebrate life's victories, connect with your community, and cherish the positive relationships in your life.",
+        "urlName": "three-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 26,
+        "imagePath": "/static/assets/images/cups-4.jpg",
+        "cardName": "Four of Cups",
+        "description": "The Four of Cups is known as a card of contemplation, introspection, and apathy. In the Tarot deck, the Four of Cups is often depicted as a figure sitting with crossed arms, gazing at three cups before them while ignoring a new cup being offered from above. This card symbolizes a time of introspection and being emotionally withdrawn. The Four of Cups encourages you to look within, reevaluate your emotional state, and be open to new opportunities and perspectives.",
+        "urlName": "four-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 27,
+        "imagePath": "/static/assets/images/cups-5.jpg",
+        "cardName": "Five of Cups",
+        "description": "The Five of Cups is known as a card of loss, disappointment, and grief. In the Tarot deck, the Five of Cups is often depicted as a figure standing with their back turned to three spilled cups, symbolizing a focus on what has been lost rather than what remains. This card signifies a time of emotional pain and mourning. The Five of Cups encourages you to acknowledge your feelings of loss, find ways to heal and move forward, and recognize that not all is lost.",
+        "urlName": "five-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 28,
+        "imagePath": "/static/assets/images/cups-6.jpg",
+        "cardName": "Six of Cups",
+        "description": "The Six of Cups is known as a card of nostalgia, innocence, and fond memories. In the Tarot deck, the Six of Cups is often depicted as two figures exchanging cups, symbolizing the sharing of positive experiences from the past. This card signifies a time of reminiscing and finding comfort in the past. The Six of Cups encourages you to reconnect with your inner child, embrace the innocence of simpler times, and find happiness in the memories that warm your heart.",
+        "urlName": "six-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 29,
+        "imagePath": "/static/assets/images/cups-7.jpg",
+        "cardName": "Seven of Cups",
+        "description": "The Seven of Cups is known as a card of choices, fantasies, and illusions. In the Tarot deck, the Seven of Cups is often depicted as a figure surrounded by seven cups, each holding different symbols or desires, symbolizing the need to make decisions amidst various options. This card signifies a time of daydreaming, imagination, and the potential for wishful thinking. The Seven of Cups encourages you to be discerning and focus on practical goals amidst alluring fantasies.",
+        "urlName": "seven-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 30,
+        "imagePath": "/static/assets/images/cups-8.jpg",
+        "cardName": "Eight of Cups",
+        "description": "The Eight of Cups is known as a card of walking away, transition, and seeking a deeper meaning. In the Tarot deck, the Eight of Cups is often depicted as a figure walking away from a stack of cups, symbolizing the need to leave behind what no longer serves you. This card signifies a time of self-discovery and the desire to seek more profound fulfillment. The Eight of Cups encourages you to be brave, let go of the past, and embark on a new journey to find true emotional satisfaction.",
+        "urlName": "eight-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 31,
+        "imagePath": "/static/assets/images/cups-9.jpg",
+        "cardName": "Nine of Cups",
+        "description": "The Nine of Cups is known as a card of wishes fulfilled, contentment, and emotional satisfaction. In the Tarot deck, the Nine of Cups is often depicted as a figure sitting with nine cups behind them, symbolizing the fulfillment of desires and a sense of emotional abundance. This card signifies a time of happiness, contentment, and the realization of dreams. The Nine of Cups encourages you to count your blessings, celebrate your achievements, and embrace the joy and fulfillment in your life.",
+        "urlName": "nine-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 32,
+        "imagePath": "/static/assets/images/cups-10.jpg",
+        "cardName": "Ten of Cups",
+        "description": "The Ten of Cups is known as a card of harmony, joy, and emotional fulfillment. In the Tarot deck, the Ten of Cups is often depicted as a family celebrating together under a rainbow, symbolizing the harmony and happiness that comes from strong emotional connections. This card signifies a time of deep emotional satisfaction and the realization of a harmonious family or community life. The Ten of Cups encourages you to cherish the loving relationships and find joy in the unity and support of those around you.",
+        "urlName": "ten-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 33,
+        "imagePath": "/static/assets/images/cups-page.jpg",
+        "cardName": "Page of Cups",
+        "description": "The Page of Cups is known as a card of creativity, intuition, and emotional openness. In the Tarot deck, the Page of Cups is often depicted as a young figure holding a cup, symbolizing the potential for creative expression and emotional receptivity. This card signifies a time of new ideas, intuitive insights, and the willingness to explore one's emotions. The Page of Cups encourages you to embrace your creative side, trust your intuition, and be open to emotional growth and new experiences.",
+        "urlName": "page-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 34,
+        "imagePath": "/static/assets/images/cups-knight.jpg",
+        "cardName": "Knight of Cups",
+        "description": "The Knight of Cups is known as a card of romance, charm, and creativity. In the Tarot deck, the Knight of Cups is depicted as a young knight on horseback, holding a cup adorned with various symbols of love and emotions. This card represents a passionate and emotional approach to life, as well as the pursuit of creative endeavors and artistic expression. The Knight of Cups encourages you to follow your heart, express your feelings, and pursue your dreams with enthusiasm and dedication.",
+        "urlName": "knight-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 35,
+        "imagePath": "/static/assets/images/cups-queen.jpg",
+        "cardName": "Queen of Cups",
+        "description": "The Queen of Cups is known as one of the most powerful and mysterious cards in a deck. She is often associated with secrets, hidden knowledge, and a strong, independent character. In the Tarot deck, the Queen of Cups is depicted as a woman seated on a throne by the water's edge, symbolizing her deep connection with her emotions and intuition. This card encourages you to embrace your emotional depth, be compassionate towards others, and trust your inner guidance.",
+        "urlName": "queen-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 36,
+        "imagePath": "/static/assets/images/cups-king.jpg",
+        "cardName": "King of Cups",
+        "description": "The King of Cups is known for his emotional intelligence, wisdom, and calm demeanor. In the Tarot deck, the King of Cups is depicted as a mature and compassionate king sitting on his throne, holding a cup that represents his emotional depth. This card signifies emotional stability, strong intuition, and the ability to offer support and understanding to others. The King of Cups encourages you to be a caring and empathetic leader, to listen to your heart, and to approach challenging situations with grace and understanding.",
+        "urlName": "king-of-cups",
+        "arcana": "Cups"
+    },
+    {
+        "id": 37,
+        "imagePath": "/static/assets/images/swords-ace.jpg",
+        "cardName": "Ace of Swords",
+        "description": "The Ace of Swords is known as a card of mental clarity, truth, and breakthroughs. In the Tarot deck, the Ace of Swords is often depicted as a hand holding a sword, symbolizing the potential for cutting through illusions and gaining mental clarity. This card signifies a time of intellectual insight, truth-seeking, and the power of clear thinking. The Ace of Swords encourages you to trust your intellect, communicate with honesty, and seek the truth in all matters.",
+        "urlName": "ace-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 38,
+        "imagePath": "/static/assets/images/swords-2.jpg",
+        "cardName": "Two of Swords",
+        "description": "The Two of Swords is known as a card of difficult decisions, stalemate, and finding balance. In the Tarot deck, the Two of Swords is often depicted as a figure blindfolded and holding two crossed swords, symbolizing the need to weigh options and make a tough choice. This card signifies a time of inner conflict and the importance of finding equilibrium between opposing forces. The Two of Swords encourages you to be objective, seek clarity in your choices, and find a middle ground that serves your highest good.",
+        "urlName": "two-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 39,
+        "imagePath": "/static/assets/images/swords-3.jpg",
+        "cardName": "Three of Swords",
+        "description": "The Three of Swords is known as a card of heartbreak, sorrow, and emotional pain. In the Tarot deck, the Three of Swords is often depicted as three swords piercing a heart, symbolizing the pain of loss and grief. This card signifies a time of sadness and disappointment in relationships or life events. The Three of Swords encourages you to acknowledge your emotions, allow yourself to grieve, and seek healing and support during challenging times.",
+        "urlName": "three-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 40,
+        "imagePath": "/static/assets/images/swords-4.jpg",
+        "cardName": "Four of Swords",
+        "description": "The Four of Swords is known as a card of rest, recuperation, and inner contemplation. In the Tarot deck, the Four of Swords is often depicted as a figure lying on a bed, symbolizing the need to take a break from life's challenges. This card signifies a time of healing and introspection after difficult experiences. The Four of Swords encourages you to prioritize self-care, find peace in solitude, and recharge your energy before moving forward.",
+        "urlName": "four-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 41,
+        "imagePath": "/static/assets/images/swords-5.jpg",
+        "cardName": "Five of Swords",
+        "description": "The Five of Swords is known as a card of conflict, defeat, and loss. In the Tarot deck, the Five of Swords is often depicted as a figure holding three swords while two others lie on the ground, symbolizing the aftermath of a battle. This card signifies a time of discord and confrontation, as well as the need to navigate the aftermath of conflict. The Five of Swords encourages you to assess your actions, learn from past mistakes, and seek resolution and reconciliation.",
+        "urlName": "five-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 42,
+        "imagePath": "/static/assets/images/swords-6.jpg",
+        "cardName": "Six of Swords",
+        "description": "The Six of Swords is known as a card of transition, moving on, and finding solace. In the Tarot deck, the Six of Swords is often depicted as a figure traveling on a boat, leaving troubled waters behind, symbolizing the journey towards calmer seas. This card signifies a time of transition and the need to leave the past behind in search of a more peaceful future. The Six of Swords encourages you to embrace change, trust in the journey, and find comfort in the hope of a better tomorrow.",
+        "urlName": "six-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 43,
+        "imagePath": "/static/assets/images/swords-7.jpg",
+        "cardName": "Seven of Swords",
+        "description": "The Seven of Swords is known as a card of deception, strategy, and secrecy. In the Tarot deck, the Seven of Swords is often depicted as a figure sneaking away with stolen swords, symbolizing dishonesty and hidden motives. This card signifies a time of caution and the need to be vigilant against deception and betrayal. The Seven of Swords encourages you to trust your instincts, be aware of your surroundings, and protect yourself from potential harm or deceit.",
+        "urlName": "seven-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 44,
+        "imagePath": "/static/assets/images/swords-8.jpg",
+        "cardName": "Eight of Swords",
+        "description": "The Eight of Swords is known as a card of restriction, self-imposed limitations, and feeling trapped. In the Tarot deck, the Eight of Swords is often depicted as a figure blindfolded and bound, surrounded by swords, symbolizing the perceived obstacles that prevent progress. This card signifies a time of feeling stuck and the need to break free from mental or emotional constraints. The Eight of Swords encourages you to look beyond perceived limitations, find courage within, and take steps to liberate yourself from self-imposed restrictions.",
+        "urlName": "eight-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 45,
+        "imagePath": "/static/assets/images/swords-9.jpg",
+        "cardName": "Nine of Swords",
+        "description": "The Nine of Swords is known as a card of anxiety, nightmares, and worry. In the Tarot deck, the Nine of Swords is often depicted as a figure sitting up in bed, holding their head in their hands, symbolizing the burden of fear and distress. This card signifies a time of mental anguish and the need to address and confront your fears and worries. The Nine of Swords encourages you to seek support, practice self-compassion, and find healthy ways to alleviate anxiety and stress.",
+        "urlName": "nine-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 46,
+        "imagePath": "/static/assets/images/swords-10.jpg",
+        "cardName": "Ten of Swords",
+        "description": "The Ten of Swords is known as a card of endings, betrayal, and release. In the Tarot deck, the Ten of Swords is often depicted as a figure lying face-down with ten swords in their back, symbolizing the end of a difficult situation. This card signifies a time of surrender and acceptance, as well as the need to let go of what no longer serves you. The Ten of Swords encourages you to release the past, embrace change, and find renewal in new beginnings.",
+        "urlName": "ten-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 47,
+        "imagePath": "/static/assets/images/swords-page.jpg",
+        "cardName": "Page of Swords",
+        "description": "The Page of Swords is known as a card of curiosity, intellectual growth, and communication. In the Tarot deck, the Page of Swords is often depicted as a young figure holding a sword, symbolizing the potential for new ideas and clear communication. This card signifies a time of intellectual curiosity, open-mindedness, and the desire to learn. The Page of Swords encourages you to be inquisitive, speak your mind with honesty, and seek new knowledge and understanding.",
+        "urlName": "page-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 48,
+        "imagePath": "/static/assets/images/swords-knight.jpg",
+        "cardName": "Knight of Swords",
+        "description": "The Knight of Swords is known as a card of action, ambition, and assertiveness. In the Tarot deck, the Knight of Swords is depicted as a young knight charging forward on his horse, holding a sword, symbolizing his determined and goal-oriented nature. This card represents a time of action and a willingness to take risks to achieve your objectives. The Knight of Swords encourages you to be decisive, face challenges with courage, and pursue your ambitions with determination.",
+        "urlName": "knight-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 49,
+        "imagePath": "/static/assets/images/swords-queen.jpg",
+        "cardName": "Queen of Swords",
+        "description": "The Queen of Swords is known for her keen intellect, independence, and no-nonsense attitude. In the Tarot deck, the Queen of Swords is depicted as a woman sitting on her throne, holding a sword, symbolizing her ability to cut through illusions and speak the truth. This card encourages you to embrace your mental clarity, be objective in your judgments, and communicate with honesty and directness.",
+        "urlName": "queen-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 50,
+        "imagePath": "/static/assets/images/swords-king.jpg",
+        "cardName": "King of Swords",
+        "description": "The King of Swords is known as a card of authority, wisdom, and clear judgment. In the Tarot deck, the King of Swords is depicted as a mature and composed king on his throne, holding a sword, symbolizing his intellectual prowess and leadership skills. This card signifies a time of mental clarity, objectivity, and the ability to make fair and informed decisions. The King of Swords encourages you to be assertive in your leadership, use your intellect wisely, and seek truth and justice in all matters.",
+        "urlName": "king-of-swords",
+        "arcana": "Swords"
+    },
+    {
+        "id": 51,
+        "imagePath": "/static/assets/images/pentacles-ace.jpg",
+        "cardName": "Ace of Pentacles",
+        "description": "The Ace of Pentacles is known as a card of new opportunities, prosperity, and material abundance. In the Tarot deck, the Ace of Pentacles is often depicted as a hand holding a pentacle, symbolizing the potential for financial gain and material stability. This card signifies a time of new beginnings and the potential for success in material matters. The Ace of Pentacles encourages you to seize opportunities, be diligent in your efforts, and cultivate a mindset of abundance and prosperity.",
+        "urlName": "ace-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 52,
+        "imagePath": "/static/assets/images/pentacles-2.jpg",
+        "cardName": "Two of Pentacles",
+        "description": "The Two of Pentacles is known as a card of balance, adaptability, and juggling priorities. In the Tarot deck, the Two of Pentacles is often depicted as a figure dancing while balancing two pentacles, symbolizing the need to find harmony amidst life's demands. This card signifies a time of managing multiple responsibilities and adapting to changing circumstances. The Two of Pentacles encourages you to be flexible, stay grounded, and find creative solutions to challenges.",
+        "urlName": "two-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 53,
+        "imagePath": "/static/assets/images/pentacles-3.jpg",
+        "cardName": "Three of Pentacles",
+        "description": "The Three of Pentacles is known as a card of teamwork, collaboration, and skill-building. In the Tarot deck, the Three of Pentacles is often depicted as three figures working together on a building, symbolizing the value of cooperation and mastery in one's craft. This card signifies a time of progress and the rewards that come from hard work and dedication. The Three of Pentacles encourages you to collaborate with others, strive for excellence, and take pride in your accomplishments.",
+        "urlName": "three-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 54,
+        "imagePath": "/static/assets/images/pentacles-4.jpg",
+        "cardName": "Four of Pentacles",
+        "description": "The Four of Pentacles is known as a card of stability, possessiveness, and financial security. In the Tarot deck, the Four of Pentacles is often depicted as a figure holding onto four pentacles, symbolizing a desire to cling to what one has. This card signifies a time of holding onto resources and guarding against potential loss. The Four of Pentacles encourages you to find a balance between financial security and generosity, and to avoid becoming too possessive or resistant to change.",
+        "urlName": "four-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 55,
+        "imagePath": "/static/assets/images/pentacles-5.jpg",
+        "cardName": "Five of Pentacles",
+        "description": "The Five of Pentacles is known as a card of hardship, financial loss, and adversity. In the Tarot deck, the Five of Pentacles is often depicted as two figures walking in the snow, symbolizing feelings of isolation and lack. This card signifies a time of difficulty and the need to seek support during challenging times. The Five of Pentacles encourages you to reach out for help, have faith in the abundance of the universe, and focus on finding solutions to overcome your difficulties.",
+        "urlName": "five-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 56,
+        "imagePath": "/static/assets/images/pentacles-6.jpg",
+        "cardName": "Six of Pentacles",
+        "description": "The Six of Pentacles is known as a card of generosity, charity, and prosperity shared. In the Tarot deck, the Six of Pentacles is often depicted as a figure giving out coins to those in need, symbolizing the importance of giving back and sharing one's abundance. This card signifies a time of balance and the rewards that come from both giving and receiving. The Six of Pentacles encourages you to be charitable, help others in need, and find satisfaction in sharing your resources with those less fortunate.",
+        "urlName": "six-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 57,
+        "imagePath": "/static/assets/images/pentacles-7.jpg",
+        "cardName": "Seven of Pentacles",
+        "description": "The Seven of Pentacles is known as a card of patience, investment, and long-term rewards. In the Tarot deck, the Seven of Pentacles is often depicted as a figure tending to a pentacle plant, symbolizing the need to nurture one's investments and wait for them to grow. This card signifies a time of waiting for results and assessing the progress of your efforts. The Seven of Pentacles encourages you to be patient, trust in the process, and continue to work diligently towards your goals.",
+        "urlName": "seven-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 58,
+        "imagePath": "/static/assets/images/pentacles-8.jpg",
+        "cardName": "Eight of Pentacles",
+        "description": "The Eight of Pentacles is known as a card of craftsmanship, skill development, and dedication. In the Tarot deck, the Eight of Pentacles is often depicted as a figure diligently working on a pentacle, symbolizing the value of honing one's skills and expertise. This card signifies a time of hard work and the pursuit of mastery in your chosen field. The Eight of Pentacles encourages you to be dedicated to your craft, seek continuous improvement, and find fulfillment in your achievements.",
+        "urlName": "eight-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 59,
+        "imagePath": "/static/assets/images/pentacles-9.jpg",
+        "cardName": "Nine of Pentacles",
+        "description": "The Nine of Pentacles is known as a card of luxury, self-sufficiency, and material well-being. In the Tarot deck, the Nine of Pentacles is often depicted as a figure surrounded by nature, enjoying the fruits of her labor, symbolizing the rewards of independence and prosperity. This card signifies a time of financial stability and the ability to enjoy the finer things in life. The Nine of Pentacles encourages you to embrace your independence, appreciate your achievements, and savor the pleasures of a well-lived life.",
+        "urlName": "nine-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 60,
+        "imagePath": "/static/assets/images/pentacles-10.jpg",
+        "cardName": "Ten of Pentacles",
+        "description": "The Ten of Pentacles is known as a card of wealth, family, and legacy. In the Tarot deck, the Ten of Pentacles is often depicted as a family enjoying the comforts of home, symbolizing the rewards of long-term success and the preservation of family traditions. This card signifies a time of financial prosperity and the joy of sharing your abundance with loved ones. The Ten of Pentacles encourages you to create a lasting legacy, cherish family connections, and find fulfillment in the richness of your life.",
+        "urlName": "ten-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 61,
+        "imagePath": "/static/assets/images/pentacles-page.jpg",
+        "cardName": "Page of Pentacles",
+        "description": "The Page of Pentacles is known as a card of ambition, diligence, and new opportunities in the material realm. In the Tarot deck, the Page of Pentacles is often depicted as a young figure holding a pentacle and gazing at it with curiosity, symbolizing the potential for new ventures and the desire for tangible results. This card signifies a time of focusing on practical matters and laying the groundwork for future success. The Page of Pentacles encourages you to be studious, seek new learning opportunities, and be open to new ventures that can lead to material growth.",
+        "urlName": "page-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 62,
+        "imagePath": "/static/assets/images/pentacles-knight.jpg",
+        "cardName": "Knight of Pentacles",
+        "description": "The Knight of Pentacles is known as a card of responsibility, reliability, and practicality. In the Tarot deck, the Knight of Pentacles is depicted as a young knight on horseback, holding a pentacle, symbolizing his methodical and dependable nature. This card represents a time of steady progress and the need to approach tasks with patience and determination. The Knight of Pentacles encourages you to be diligent, stay focused on your goals, and handle your responsibilities with dedication and care.",
+        "urlName": "knight-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 63,
+        "imagePath": "/static/assets/images/pentacles-queen.jpg",
+        "cardName": "Queen of Pentacles",
+        "description": "The Queen of Pentacles is known for her nurturing nature, practicality, and abundance. In the Tarot deck, the Queen of Pentacles is depicted as a woman seated on a throne surrounded by nature, symbolizing her connection with the material world and her ability to provide for others. This card encourages you to embrace your nurturing qualities, take care of your physical well-being, and find balance and stability in your material affairs.",
+        "urlName": "queen-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 64,
+        "imagePath": "/static/assets/images/pentacles-king.jpg",
+        "cardName": "King of Pentacles",
+        "description": "The King of Pentacles is known as a card of wealth, success, and practical leadership. In the Tarot deck, the King of Pentacles is depicted as a mature and prosperous king sitting on his throne, holding a pentacle, symbolizing his material abundance and business acumen. This card signifies a time of financial security, professional success, and the ability to manage resources effectively. The King of Pentacles encourages you to be a responsible and reliable leader, make sound financial decisions, and use your resources to create a stable and prosperous future.",
+        "urlName": "king-of-pentacles",
+        "arcana": "Pentacles"
+    },
+    {
+        "id": 65,
+        "imagePath": "/static/assets/images/wands-ace.jpg",
+        "cardName": "Ace of Wands",
+        "description": "The Ace of Wands is known as a card of inspiration, creativity, and new beginnings. In the Tarot deck, the Ace of Wands is often depicted as a hand holding a wand, symbolizing the spark of potential and passion for new endeavors. This card signifies a time of creative energy and the opportunity to pursue your passions. The Ace of Wands encourages you to embrace your creative impulses, seize new opportunities, and take bold action to manifest your desires.",
+        "urlName": "ace-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 66,
+        "imagePath": "/static/assets/images/wands-2.jpg",
+        "cardName": "Two of Wands",
+        "description": "The Two of Wands is known as a card of planning, vision, and future possibilities. In the Tarot deck, the Two of Wands is often depicted as a figure holding a globe and looking out into the distance, symbolizing the need to assess future opportunities. This card signifies a time of decision-making and the need to choose a path for future growth. The Two of Wands encourages you to be bold in your vision, make thoughtful decisions, and take the necessary steps to bring your aspirations to life.",
+        "urlName": "two-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 67,
+        "imagePath": "/static/assets/images/wands-3.jpg",
+        "cardName": "Three of Wands",
+        "description": "The Three of Wands is known as a card of foresight, expansion, and enterprise. In the Tarot deck, the Three of Wands is often depicted as a figure overlooking the horizon, symbolizing the ability to envision future opportunities. This card signifies a time of planning and the potential for success through strategic actions. The Three of Wands encourages you to have confidence in your abilities, explore new ventures, and take calculated risks to achieve your goals.",
+        "urlName": "three-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 68,
+        "imagePath": "/static/assets/images/wands-4.jpg",
+        "cardName": "Four of Wands",
+        "description": "The Four of Wands is known as a card of celebration, harmony, and homecoming. In the Tarot deck, the Four of Wands is often depicted as figures dancing and celebrating, symbolizing the joy of shared achievements. This card signifies a time of happiness and the need to honor and appreciate the supportive relationships in your life. The Four of Wands encourages you to celebrate your accomplishments, foster a sense of community, and find joy in the comfort and security of your home.",
+        "urlName": "four-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 69,
+        "imagePath": "/static/assets/images/wands-5.jpg",
+        "cardName": "Five of Wands",
+        "description": "The Five of Wands is known as a card of competition, conflict, and challenges. In the Tarot deck, the Five of Wands is often depicted as figures engaged in playful or competitive combat, symbolizing the need to navigate through conflicts and obstacles. This card signifies a time of struggle and the importance of finding constructive ways to overcome challenges. The Five of Wands encourages you to seek common ground, collaborate with others, and rise above differences to achieve your objectives.",
+        "urlName": "five-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 70,
+        "imagePath": "/static/assets/images/wands-6.jpg",
+        "cardName": "Six of Wands",
+        "description": "The Six of Wands is known as a card of victory, recognition, and public acclaim. In the Tarot deck, the Six of Wands is often depicted as a figure riding a horse and being celebrated by others, symbolizing the recognition and appreciation for achievements. This card signifies a time of success and the acknowledgment of your efforts by others. The Six of Wands encourages you to be proud of your accomplishments, use your influence positively, and inspire others through your achievements.",
+        "urlName": "six-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 71,
+        "imagePath": "/static/assets/images/wands-7.jpg",
+        "cardName": "Seven of Wands",
+        "description": "The Seven of Wands is known as a card of perseverance, courage, and standing your ground. In the Tarot deck, the Seven of Wands is often depicted as a figure bravely defending their position against adversaries, symbolizing the need to stand firm in the face of challenges. This card signifies a time of resistance and the need to assert your boundaries and values. The Seven of Wands encourages you to be assertive, trust in your abilities, and face opposition with determination.",
+        "urlName": "seven-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 72,
+        "imagePath": "/static/assets/images/wands-8.jpg",
+        "cardName": "Eight of Wands",
+        "description": "The Eight of Wands is known as a card of swift action, progress, and messages. In the Tarot deck, the Eight of Wands is often depicted as wands soaring through the air, symbolizing rapid developments and the need to act quickly. This card signifies a time of fast-paced change and the arrival of exciting news or opportunities. The Eight of Wands encourages you to seize the moment, go after your goals with enthusiasm, and be open to the possibilities that come your way.",
+        "urlName": "eight-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 73,
+        "imagePath": "/static/assets/images/wands-9.jpg",
+        "cardName": "Nine of Wands",
+        "description": "The Nine of Wands is known as a card of resilience, courage, and perseverance. In the Tarot deck, the Nine of Wands is often depicted as a figure holding a wand and standing tall despite challenges, symbolizing the strength to carry on despite adversity. This card signifies a time of resilience and the need to stay committed to your goals. The Nine of Wands encourages you to have the courage to keep going, overcome obstacles, and protect what you've worked hard to achieve.",
+        "urlName": "nine-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 74,
+        "imagePath": "/static/assets/images/wands-10.jpg",
+        "cardName": "Ten of Wands",
+        "description": "The Ten of Wands is known as a card of burden, responsibility, and hard work. In the Tarot deck, the Ten of Wands is often depicted as a figure carrying a heavy load of wands, symbolizing the weight of responsibility and the need to take on more than one can handle. This card signifies a time of overwhelm and the need to find balance by delegating tasks and seeking support. The Ten of Wands encourages you to release what no longer serves you, prioritize your well-being, and find relief from the burdens you carry.",
+        "urlName": "ten-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 75,
+        "imagePath": "/static/assets/images/wands-page.jpg",
+        "cardName": "Page of Wands",
+        "description": "The Page of Wands is known as a card of enthusiasm, exploration, and new opportunities in the realm of passion and creativity. In the Tarot deck, the Page of Wands is often depicted as a young figure holding a wand and gazing at it with excitement, symbolizing the potential for new ventures and the desire for fresh experiences. This card signifies a time of being open to inspiration and taking the first steps toward your creative aspirations. The Page of Wands encourages you to embrace your adventurous spirit, seek inspiration from your surroundings, and be open to the unexpected possibilities that come your way.",
+        "urlName": "page-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 76,
+        "imagePath": "/static/assets/images/wands-knight.jpg",
+        "cardName": "Knight of Wands",
+        "description": "The Knight of Wands is known as a card of action, adventure, and fearlessness. In the Tarot deck, the Knight of Wands is depicted as a young knight on horseback, holding a wand, symbolizing his passion and desire for exploration. This card represents a time of pursuing your goals with gusto and daring to take risks for your passions. The Knight of Wands encourages you to be adventurous, embrace change with confidence, and fearlessly pursue your dreams.",
+        "urlName": "knight-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 77,
+        "imagePath": "/static/assets/images/wands-queen.jpg",
+        "cardName": "Queen of Wands",
+        "description": "The Queen of Wands is known for her charisma, confidence, and creative spark. In the Tarot deck, the Queen of Wands is depicted as a woman sitting on her throne, holding a wand, symbolizing her passionate and magnetic nature. This card encourages you to embrace your inner fire, be confident in your abilities, and use your charisma to inspire and lead others.",
+        "urlName": "queen-of-wands",
+        "arcana": "Wands"
+    },
+    {
+        "id": 78,
+        "imagePath": "/static/assets/images/wands-king.jpg",
+        "cardName": "King of Wands",
+        "description": "The King of Wands is known as a card of vision, leadership, and inspiration. In the Tarot deck, the King of Wands is depicted as a mature and powerful king sitting on his throne, holding a wand, symbolizing his visionary leadership and creative energy. This card signifies a time of taking charge and using your passion and charisma to inspire others and manifest your vision. The King of Wands encourages you to be a confident and visionary leader, take bold action, and use your creativity to make a positive impact on the world.",
+        "urlName": "king-of-wands",
+        "arcana": "Wands"
+    }
 ]

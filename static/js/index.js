@@ -119,6 +119,7 @@ function generateSelectedCardsList() {
     return cardList
 }
 
+// function to get card name from card object
 function showReading() {
     if (cardsRevealed) {
         // shows typing gif while waiting for response
@@ -210,7 +211,7 @@ function getCardName(card) {
 function showCardName(card) {
     cardName = getCardName(card)
     if (cardsRevealed || cardIsFlipped(card)) {
-        updateStatusElement(selectedCardElem, "block", `<span class='badge'>${cardName}</span>`)
+        updateStatusElement(selectedCardElem, "block", `<span class='badge round-button pointer'>${cardName} <i class="fa-regular fa-circle-right"></i> </span>`)
     }
 }
 
