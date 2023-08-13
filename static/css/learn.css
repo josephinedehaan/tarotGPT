@@ -2,6 +2,10 @@ body {
     color:white;
 }
 
+a {
+    text-decoration: none;
+}
+
 .deck-title-container {
     color: rgb(255, 255, 255);
     /* font-family: Averia_Serif_Libre; */
