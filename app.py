@@ -10,7 +10,7 @@ app.secret_key = 'secret'
 def index():
         return render_template('index.html')
 
-def create_card_dict_from_file(filename):
+def create_card_dict_from_json(filename):
     with open(filename, 'r') as f:
         data = json.load(f)
         card_dict = {}
@@ -26,7 +26,7 @@ def create_card_dict_from_file(filename):
             card_dict[key] = value
     return card_dict
 
-card_descriptions = create_card_dict_from_file('static/cards.json')
+card_descriptions = create_card_dict_from_json('static/cards.json')
 
 @app.route('/reading')
 def reading():

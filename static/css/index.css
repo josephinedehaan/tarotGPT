@@ -25,14 +25,19 @@ body {
 
 .page-header-container {
     justify-content: space-around;
+    height: 47.75vh;
+
+
 }
 
 #left-container {
-    margin-right: -5px;
+    margin-top: 1.5vh;
+    margin-bottom: .75vh;
 }
 
 #right-container {
-    margin-left: -5px;
+    margin-bottom: 1.5vh;
+    margin-top: .75vh;
 
 }
 
@@ -46,4 +51,17 @@ body {
 
 .text-white {
     color: white;
+}
+
+/* media querie screens above 992px */
+@media (min-width: 992px) {
+    .page-header-container {
+        height: 97vh;
+
+    }
+
+    #left-container, #right-container {
+        margin-top: 1.5vh;
+        margin-bottom: 1.5vh;
+    }
 }

@@ -2,11 +2,11 @@ import requests
 import os
 import json
 from flask import session
+from dotenv import load_dotenv
 
 def fetch_tarot_reading(selected_cards):
-
-    print("SNEED FUNCTION SNEEDED")
-    api_key = os.environ.get('OPENAI_KEY')
+    load_dotenv()
+    api_key = os.getenv('OPENAI_KEY')
 
     print(api_key)
     url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
@@ -67,7 +67,8 @@ def chat(system_message, message):
 
     session["log"].append(f"User: {message}")   
 
-    api_key = os.environ.get('OPENAI_KEY')
+    load_dotenv()
+    api_key = os.getenv('OPENAI_KEY')
 
     print(api_key)
     url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
