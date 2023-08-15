@@ -79,6 +79,15 @@ function sendMessage(route) {
         message: userInput
     };
 
+    // attempt to extract the current card name from the chatbox, if it exists include it along with the message
+    var currentCardName = document.getElementById('currentCardName').innerHTML;
+    if (typeof currentCardName === 'undefined') {
+        currentCardName = ""
+    } else {
+        data.cardName = currentCardName;
+    }
+
+
     updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="userText">${userInput}</p>`)
     document.getElementById('messageInput').value = "";
 

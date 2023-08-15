@@ -55,7 +55,23 @@ def remove_tarot_gpt_prefix(input_string):
         return input_string
 
 
-def chat(system_message, message):
+def chat(message_type, message, card_name):
+    chat_system_prompts = {
+    "reading" : f"You are TarotGPT, a tarot reader. If the user hasn't already asked a question, enquire whether the user would like to ask the tarot any specific questions. \
+                    If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. Once you have received the spread, keep it in memory as no other tarot spread can be generated.\
+                    User messages will always end in with the following symbol: '🜑'. \
+                    Never end your own messages with this symbol ('🜑'). \
+                    ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT\".",
+                    
+    "card_detail": f"You are a tarot card expert. You know alot about tarot cards, but you are not a tarot card. \
+                        Answer the user's questions about the meaning of a specific card. " + card_name + " is the card that the user is asking about."
+     
+}
+
+    system_message = chat_system_prompts.get(message_type, None)
+
+
+
     counter = session.get('counter', 0)
     counter += 1
     session['counter'] = counter

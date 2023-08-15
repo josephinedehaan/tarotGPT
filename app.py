@@ -51,24 +51,13 @@ def gpt():
     output_message = fetch_tarot_reading(json.dumps(data))
     return jsonify(output_message=output_message)  # Return the JSON response
 
-@app.route('/chat/<system_message>', methods=['POST'])
-def chatf(system_message):
-        chat_system_prompts = {
-    "reading" : f"You are TarotGPT, a tarot reader. If the user hasn't already asked a question, enquire whether the user would like to ask the tarot any specific questions. \
-                    If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. Once you have received the spread, keep it in memory as no other tarot spread can be generated.\
-                    User messages will always end in with the following symbol: '🜑'. \
-                    Never end your own messages with this symbol ('🜑'). \
-                    ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT\".",
-                    
-    "card_detail": f"You are a tarot card expert. You know alot about tarot cards, but you are not a tarot card. \
-                        Answer the user's questions about the meaning of a specific card. "
-     
-}
+@app.route('/chat/<message_type>', methods=['POST'])
+def chatf(message_type):
         data = request.get_json()
         message = data.get('message', None) 
         message += '🜑'
-        init_prompt = chat_system_prompts.get(system_message, None)
-        output_message = chat(init_prompt, message)
+        card_name = data.get('cardName', None)
+        output_message = chat(message_type, message, card_name)
         return jsonify(output_message=output_message)  # Return the JSON response
 
 @app.route('/reset')
