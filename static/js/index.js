@@ -80,11 +80,12 @@ function sendMessage(route) {
     };
 
     // attempt to extract the current card name from the chatbox, if it exists include it along with the message
-    var currentCardName = document.getElementById('currentCardName').innerHTML;
-    if (typeof currentCardName === 'undefined') {
-        currentCardName = ""
+    var currentCardName = document.getElementById('currentCardName');
+    if (currentCardName === null) {
+        currentCardName = "";  // Set a default value
     } else {
-        data.cardName = currentCardName;
+        data.cardName = currentCardName.innerHTML;
+        alert(data.cardName);
     }
 
 

@@ -23,13 +23,14 @@ def fetch_tarot_reading(selected_cards):
     }
 
     if "log" not in session:
-        session["log"] = []
+        session["log"] = {}
+        session["log"]["reading"] = []
      
-    session["log"].append(prompt)   
+    session["log"]["reading"].append(prompt)   
     session.modified = True
    
 
-    print("FROM SESSION['log']:", session["log"])
+    print("FROM SESSION['log']:", session["log"]["reading"])
 
     try:
         response = requests.post(url, headers=headers, json=data)
@@ -37,7 +38,7 @@ def fetch_tarot_reading(selected_cards):
 
         if 'choices' in response_data and response_data['choices']:
             message = response_data['choices'][0].get('text', '').strip()
-            session["log"].append(f"TarotGPT: {message}")   
+            session["log"]["reading"].append(f"TarotGPT: {message}")   
             session.modified = True
             return message
         else:
@@ -56,6 +57,10 @@ def remove_tarot_gpt_prefix(input_string):
 
 
 def chat(message_type, message, card_name):
+
+    if card_name == None:
+        card_name = ""
+
     chat_system_prompts = {
     "reading" : f"You are TarotGPT, a tarot reader. If the user hasn't already asked a question, enquire whether the user would like to ask the tarot any specific questions. \
                     If the user has no more questions, invite the user to press the shuffle cards button. This will provide you a tarot card spread. Once you have received the spread, keep it in memory as no other tarot spread can be generated.\
@@ -64,24 +69,30 @@ def chat(message_type, message, card_name):
                     ONLY reply as TarotGPT, but never start the reply with the text: \"TarotGPT\".",
                     
     "card_detail": f"You are a tarot card expert. You know alot about tarot cards, but you are not a tarot card. \
-                        Answer the user's questions about the meaning of a specific card. " + card_name + " is the card that the user is asking about."
+                        Answer the user's questions about the meaning of a specific card. " + card_name + " is the card that the user is asking about.\
+                        When possible, casually include an emoji that is relevant to the tarot card without mentioning the word Emoji."
      
 }
 
     system_message = chat_system_prompts.get(message_type, None)
 
-
-
     counter = session.get('counter', 0)
     counter += 1
     session['counter'] = counter
 
-
     if "log" not in session:
-        session["log"] = []
-        session["log"].append(system_message)
+        session["log"] = {}
 
-    session["log"].append(f"User: {message}")   
+    log_type = message_type 
+    if log_type == "card_detail":
+        log_type = card_name
+
+
+    if log_type not in session["log"]:
+        session["log"][log_type] = []
+        session["log"][log_type].append(system_message)
+
+    session["log"][log_type].append(f"User: {message}")   
 
     load_dotenv()
     api_key = os.getenv('OPENAI_KEY')
@@ -94,7 +105,7 @@ def chat(message_type, message, card_name):
     }
 
     data = {
-        'prompt': ' '.join(session["log"]),
+        'prompt': ' '.join(session["log"][log_type]),
         'max_tokens': 1000
     }
 
@@ -107,7 +118,7 @@ def chat(message_type, message, card_name):
         if 'choices' in response_data and response_data['choices']:
             message = response_data['choices'][0].get('text', '').strip()
             message = remove_tarot_gpt_prefix(message)
-            session["log"].append(f"TarotGPT: {message}")   
+            session["log"][log_type].append(f"TarotGPT: {message}")   
 
             return f"{message}"
         else:
