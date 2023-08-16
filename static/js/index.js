@@ -17,6 +17,7 @@ cardLayout = ['.card-pos-a', '.card-pos-b', '.card-pos-c',
 const shuffleCardsButtonElem = document.getElementById('shuffleCards')
 const revealCardsButtonElem = document.getElementById('revealCards')
 const resetReadingButtonElem = document.getElementById('resetReading')
+const backButtonElem = document.getElementById('back')
 
 // Number of cards in the game
 const numCards = cardObjectDefinitions.length
@@ -34,6 +35,18 @@ const readingTextElem = document.querySelector('.reading-text')
 loadGame();
 
 function resetReading(card) {
+    // fetch the clear route in bg
+    fetch('/reset')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response:', data);
+    }
+    )
+    .catch(error => {
+        console.error('Error:', error);
+    }
+    );
+
     gameInProgress = false;
     shufflingInProgress = false;
     cardsRevealed = false;
@@ -44,8 +57,9 @@ function resetReading(card) {
     destroyCards()
     createCards()
     cards = document.querySelectorAll('.tarot-card')
-    revealCardsButtonElem.disabled = true;
-    shuffleCardsButtonElem.disabled = false;
+    activateShuffleCardsButton()
+    disableButton(revealCardsButtonElem, revealCards)
+    disableButton(resetReadingButtonElem, resetReading)
     const defaultGridAreaTemplate = `"a a a" "a a a" "a a a"`;
     transformGridArea(defaultGridAreaTemplate);
     addCardsToAppropriateCell(card);
@@ -200,14 +214,15 @@ function addToFlippedCardsList(card) {
 
 // unhides the reveal cards button and attaches revealcards() function to it
 function activateRevealCardsButton() {
-    revealCardsButtonElem.disabled = false
     revealCardsButtonElem.addEventListener('click', revealCards)
+    enableButton(revealCardsButtonElem)
 }
 
 // unhides the reset reading button
 function activateResetReadingButton(card) {
     // resetReadingButtonElem.hidden = false;
     resetReadingButtonElem.addEventListener('click', () => resetReading(card))
+    enableButton(resetReadingButtonElem)
 }
 
 function activateShuffleCardsButton() {
@@ -247,8 +262,15 @@ function loadGame() {
     createCards()
     activateChat()
     cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
-    revealCardsButtonElem.disabled = true
+    disableButton(revealCardsButtonElem, revealCards)
+    disableButton(resetReadingButtonElem, resetReading)
     activateShuffleCardsButton()
+    attachHoverEventHandlerToBtn(shuffleCardsButtonElem)
+    attachHoverEventHandlerToBtn(revealCardsButtonElem)
+    attachHoverEventHandlerToBtn(backButtonElem)
+    attachHoverEventHandlerToBtn(resetReadingButtonElem)
+
+
 
     // resetReadingButtonElem.hidden = true
 }
@@ -295,7 +317,7 @@ function revealCards() {
     });
 
     cardsRevealed = true;
-    revealCardsButtonElem.disabled = true
+    disableButton(revealCardsButtonElem, revealCards)
     showReading()
 }
 
@@ -306,7 +328,7 @@ function revealCard(card) {
         addToFlippedCardsList(card);
     }
     if (flipCounter == 9) {
-        revealCardsButtonElem.disabled = true
+        disableButton(revealCardsButtonElem, revealCards)
     }
 }
 
@@ -355,7 +377,7 @@ function shuffleCards(card) {
             dealCards()
             activateRevealCardsButton()
             activateResetReadingButton(card)
-            shuffleCardsButtonElem.disabled = true
+            disableButton(shuffleCardsButtonElem, shuffleCards)
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>Cards dealt</span>`)
 
 
@@ -485,6 +507,30 @@ function attachClickEventHandlerToCard(card) {
         revealCard(card);
         showCardName(card);
     });
+}
+
+function attachHoverEventHandlerToBtn(button) {
+    const originalText = selectedCardElem.innerHTML; // Capture the original text
+
+    button.addEventListener('mouseenter', () => {
+        updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span>`);
+    });
+
+    button.addEventListener('mouseleave', () => {
+        updateStatusElement(selectedCardElem, "block", originalText); // Restore the original text
+    });
+}
+
+
+function disableButton(button, listenerFunction) {
+    button.removeEventListener('click', listenerFunction)
+    button.classList.add('disabled-button');
+    button.classList.remove('btn-outline-light');
+}
+
+function enableButton(button) {
+    button.classList.remove('disabled-button');
+    button.classList.add('btn-outline-light');
 }
 
 function createElement(elemType) {

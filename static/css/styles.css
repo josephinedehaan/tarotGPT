@@ -52,3 +52,17 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.disabled-button {
+    color: gainsboro;
+    border: 1px solid gainsboro;
+    cursor: auto;
+    background: transparent;
+}
+
+.disabled-button:hover {
+    color: gainsboro;
+    border: 1px solid gainsboro;
+    cursor: auto;
+    background: transparent;
+}
