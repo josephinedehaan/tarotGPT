@@ -269,10 +269,6 @@ function loadGame() {
     attachHoverEventHandlerToBtn(revealCardsButtonElem)
     attachHoverEventHandlerToBtn(backButtonElem)
     attachHoverEventHandlerToBtn(resetReadingButtonElem)
-
-
-
-    // resetReadingButtonElem.hidden = true
 }
 
 // this gets called when the play game button is clicked.
@@ -379,13 +375,10 @@ function shuffleCards(card) {
             activateResetReadingButton(card)
             disableButton(shuffleCardsButtonElem, shuffleCards)
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>Cards dealt</span>`)
-
-
         }
         else {
             shuffleCount++;
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>Shuffling</span>`)
-
         }
     }
 }
@@ -509,25 +502,33 @@ function attachClickEventHandlerToCard(card) {
     });
 }
 
+// updates status bar with button functionality (tooltip) whilst hovering on button
 function attachHoverEventHandlerToBtn(button) {
-    const originalText = selectedCardElem.innerHTML; // Capture the original text
+    const originalText = selectedCardElem.innerHTML;
 
     button.addEventListener('mouseenter', () => {
-        updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span>`);
+        if (button.classList.contains('disabled-button')) {
+            updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}(not currently allowed)</span>`);
+
+        } else {
+            updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span>`);
+
+        }
     });
 
     button.addEventListener('mouseleave', () => {
-        updateStatusElement(selectedCardElem, "block", originalText); // Restore the original text
+        updateStatusElement(selectedCardElem, "block", originalText);
     });
 }
 
-
+// removes event listener and changes button appearnce to disabled by toggling classes
 function disableButton(button, listenerFunction) {
     button.removeEventListener('click', listenerFunction)
     button.classList.add('disabled-button');
     button.classList.remove('btn-outline-light');
 }
 
+// changes button appearnce to enabled by toggling classes
 function enableButton(button) {
     button.classList.remove('disabled-button');
     button.classList.add('btn-outline-light');
