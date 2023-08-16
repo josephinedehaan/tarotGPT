@@ -105,6 +105,8 @@ function sendMessage(route) {
 
     updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="userText">${userInput}</p>`)
     document.getElementById('messageInput').value = "";
+    scrollToBottom();
+
 
     // Convert the data to JSON string
     const jsonData = JSON.stringify(data);
@@ -127,11 +129,18 @@ function sendMessage(route) {
             // Handle the response data here if needed
             console.log('Response:', responseData);
             updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="gptText"> ${responseData.output_message} </p>`)
+            scrollToBottom();
 
         })
         .catch(error => {
             console.error('Error:', error);
         });
+
+}
+
+function scrollToBottom() {
+    const chatBody = document.getElementById('chatBody');
+    chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 // generate selected cards list 
