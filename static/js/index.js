@@ -134,6 +134,7 @@ function sendMessage(route) {
         })
         .catch(error => {
             console.error('Error:', error);
+            alert("Something went wrong. Please try quitting and reopening your browser.")
         });
 
 }
@@ -207,6 +208,7 @@ function generateCardsPositionList() {
         })
         .catch(error => {
             console.error('Error:', error);
+            alert("Something went wrong. Please try quitting and reopening your browser.")
         });
 }
 
@@ -602,5 +604,6 @@ fetch('/static/cards.json')
     })
     .catch(error => {
         console.error('Error loading JSON:', error);
+        alert("Something went wrong. Please try quitting and reopening your browser.")
         alert(error)
     });
