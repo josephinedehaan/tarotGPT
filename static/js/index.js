@@ -517,7 +517,7 @@ function attachHoverEventHandlerToBtn(button) {
 
     button.addEventListener('mouseenter', () => {
         if (button.classList.contains('disabled-button')) {
-            updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}(not currently allowed)</span>`);
+            updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span><span class='badge'>Disabled</span>`);
 
         } else {
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span>`);
