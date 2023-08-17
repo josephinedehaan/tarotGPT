@@ -236,6 +236,7 @@ function activateResetReadingButton(card) {
 
 function activateShuffleCardsButton() {
     shuffleCardsButtonElem.addEventListener('click', startTarotReading)
+    enableButton(shuffleCardsButtonElem)
 }
 
 // retrieves card name metadatata from card element
@@ -517,7 +518,7 @@ function attachHoverEventHandlerToBtn(button) {
 
     button.addEventListener('mouseenter', () => {
         if (button.classList.contains('disabled-button')) {
-            updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span><span class='badge'>Disabled</span>`);
+            updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title} (not allowed yet)</span>`);
 
         } else {
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span>`);
