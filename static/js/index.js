@@ -99,6 +99,7 @@ function sendMessage(route) {
         currentCardName = "";  // Set a default value
     } else {
         data.cardName = currentCardName.innerHTML;
+        alert(data.cardName);
     }
 
 
