@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarot Reading Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+</head>
+
+<body>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="page-header-container" id="left-container">
+          <a href="{{ url_for('reading') }}"><button class="btn btn-outline-light round-button">Reading</button></a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="page-header-container " id="right-container">
+          <a href="{{ url_for('learn') }}"><button class="btn btn-outline-light round-button">Learn</button></a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="masthead-container ">
+      <div class="masthead-text ">
+        <div class="masthead-heading">
+          <div >WELCOME TO <span class="text-white">tarotGPT</span></div>
+          <div class="text-float-left">your friendly AI tarot companion</div>
+
+          <div class="text-float-left">Get your tarot reading or simply learn more about tarot</div>
+
+        </div>
+
+      </div>
+    </div> -->
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/static/js/vanilla-tilt.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>

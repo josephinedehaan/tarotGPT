@@ -1,0 +1,393 @@
+:root {
+    --tarot-card-width: 300px;
+    --tarot-card-height: 528px;
+    --num-cards: 9;
+    --card-horizontal-space: 100px;
+}
+
+.card-header {
+    border-bottom: none;
+    background-color: transparent;
+}
+
+.card-footer {
+    border-top: none;
+    background-color:var(--bs-card-cap-bg);
+}
+
+main {
+    height: 55%;
+    display: flex;
+    justify-content: center;
+}
+
+/* body {
+    height: 100vh;
+} */
+
+
+
+.back-button-container {
+    float: left;
+    padding-left: 10px;
+}
+
+.exit-button-container {
+    float: right;
+    padding-right: 10px;
+}
+
+.round-button {
+    border-radius: 20px;
+}
+
+.selected-card-container {
+    /* border: 1px solid white; */
+    padding: 5px;
+    border-radius: 50px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.selected-card {
+    margin-bottom: 0;
+}
+
+.badge {
+    font-weight: 400;
+}
+
+.card-container {
+    position: relative;
+    height: 50vh;
+    width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space));
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "a a a"
+        "a a a"
+        "a a a";
+    justify-items: center;
+    z-index: 1;
+    background-color: rgba(242, 231, 231, 0.069);
+    border-radius: 10px;
+    padding-top:15px;
+}
+
+#deck-img {
+    z-index: 10;
+    width: 20%;
+    cursor: default;
+}
+
+.card-pos-a {
+    grid-area: a;
+}
+
+.card-pos-b {
+    grid-area: b;
+}
+
+.card-pos-c {
+    grid-area: c;
+}
+
+.card-pos-d {
+    grid-area: d;
+}
+
+.card-pos-e {
+    grid-area: e;
+}
+
+.card-pos-f {
+    grid-area: f;
+}
+
+.card-pos-g {
+    grid-area: g;
+}
+
+.card-pos-h {
+    grid-area: h;
+}
+
+.card-pos-i {
+    grid-area: i;
+}
+
+
+.tarot-card {
+    position: absolute;
+    height: auto;
+    width: 15%;
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.6s ease-in-out;
+    background-color: black;
+    border: 0px;
+}
+
+.initial-pos {
+    margin-top: 100px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    -backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-inner.flip-it {
+    transform: rotateY(180deg);
+}
+
+.tarot-card.shuffle-left {
+    transform: translateX(100px) translateY(10px);
+}
+
+.tarot-card.shuffle-right {
+    transform: translateX(-100px) translateY(-10px);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.white-layer {
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(242, 231, 231, 0.069);
+    z-index: 2;
+}
+
+.chatbot {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
+    position: fixed;
+    bottom: 0;
+    color: black;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    /* width: 100vw; */
+    z-index: 10;
+    margin-right: 12px;
+    margin-bottom: 10px;
+}
+
+.fa-angle-down{
+    vertical-align: middle;
+}
+
+.chatbot .card-body {
+    overflow-y: scroll;
+    height: 70vh;
+    width: 100%;
+    z-index: 2;
+}
+
+.minimize-button, .collapse, .show {
+    z-index: 2;
+
+}
+
+.collapse:not(.show) {
+    display: block;
+    width: auto;
+    height: 20vh;
+    /* visibility: hidden; */
+}
+
+
+.collapsing {
+    transition:linear;
+}
+
+
+#typingGIF {
+    height: 50px;
+    float: left;
+    padding-left: 10px;
+}
+
+.userText {
+    text-align: right;
+    background-color: rgba(245, 222, 179, 0.547);
+    border-radius: 40px;
+    margin-left: 20%;
+    padding: 20px;
+    z-index: 2;
+}
+.gptText {
+    text-align: left;
+    background-color: rgba(245, 179, 224, 0.547);
+    border-radius: 40px;
+    margin-right: 20%;
+    padding: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cab0cc62;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.form-control {
+    /* border: 1px solid rgb(255, 255, 255); */
+    /* border-radius: 5px; */
+    border: none;
+    background: transparent;
+    z-index: 2;
+}
+
+.form-control:focus {
+    background: transparent;
+    border-color: #946e6e00;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0), 0 0 8px rgba(255, 0, 0, 0);
+}
+
+.input-group {
+    max-height: fit-content;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 10px;
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .chatbot {
+        margin-top: 0px;
+    }
+
+    /* .tarot-card {
+
+    } */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .img-fluid {
+        max-width: 80%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .main-container {
+        /* bottom: 0;
+        position: fixed;
+        margin-bottom: 10px; */
+    }
+
+    .chatbot {
+        background: rgba(242, 231, 231, 0.069);
+        position: relative;
+        /* bottom: none; */
+        width: 100%;
+        border: none;
+        height: 80vh;
+    }
+    .white-layer {
+        display: none;
+    }
+
+    .chatbot .card-body {
+        height: 70vh;
+    }
+
+    .chatbot .card-header {
+        height: 60px;
+        align-items: center;
+    }
+
+    .chatbot .card-footer {
+        /* bottom: 0;
+        position: absolute; */
+        width: 100%;
+    } 
+
+    .card-container {
+        height: 80vh;
+        background-color: rgba(242, 231, 231, 0.069);
+        border-radius: 10px;
+        padding-top: 20px;
+    }
+
+    .tarot-card.shuffle-left {
+        transform: translateX(200px) translateY(-10px);
+    }
+
+    .tarot-card.shuffle-right {
+        transform: translateX(-200px) translateY(-10px);
+    }
+
+    .initial-pos {
+        margin-top: 200px;
+    }
+
+    .minimize-button {
+        display: none;
+    }
+
+    .img-fluid {
+        max-width: 80%;
+    }
+
+    .selected-card {
+        margin-left: 0px;
+        /* position: fixed; */
+        float: right;
+    }
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .img-fluid {
+        max-width: 80%;
+    }
+}

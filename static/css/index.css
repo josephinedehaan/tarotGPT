@@ -1,0 +1,67 @@
+body {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
+}
+
+.masthead-text {
+    font-family: Unbounded;
+    padding-left: 30px;
+    font-size: 2rem;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    flex-direction: column; /* Add this line to align items vertically */
+
+}
+
+.masthead-container {
+    background-color: rgba(242, 231, 231, 0.069);
+    border-radius: 10px;
+    padding: 20px;
+    height: calc(90vh - 30px);
+
+}
+
+.page-header-container {
+    justify-content: space-around;
+    height: 47.75vh;
+
+
+}
+
+#left-container {
+    margin-top: 1.5vh;
+    margin-bottom: .75vh;
+}
+
+#right-container {
+    margin-bottom: 1.5vh;
+    margin-top: .75vh;
+
+}
+
+.text-float-left {
+    float: left;
+}
+
+.text-float-right {
+    float: right;
+}
+
+.text-white {
+    color: white;
+}
+
+/* media querie screens above 992px */
+@media (min-width: 992px) {
+    .page-header-container {
+        height: 97vh;
+
+    }
+
+    #left-container, #right-container {
+        margin-top: 1.5vh;
+        margin-bottom: 1.5vh;
+    }
+}

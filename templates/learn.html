@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Reading Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+    <link rel="stylesheet" href="/static/css/learn.css">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-header-container">
+                    <div class="back-button-container">
+                        <a href="/"><button class="btn btn-outline-light round-button"><i class="fas fa-arrow-left"></i>
+                            </button></a>
+                    </div>
+
+                    <div class="single-card-name-container">
+                        <h3>Learn</h3>
+                    </div>
+
+
+                    <div class="exit-button-container">
+                        <button class="btn btn-outline-light round-button" id="resetReading"><i
+                                class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-12">
+            <div class="deck-title-container basic-container">
+                <h4>Major Arcana</h4>
+            </div>
+        </div> -->
+        <div class="basic-container">
+            <h2>Major Arcana</h2>
+            {% for card in cards %}
+                {% if card.arcana == "Major Arcana" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="basic-container">
+            <h2>Minor Arcana</h2>
+            <h5>Cups</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Cups" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <h5>Pentacles</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Pentacles" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <h5>Swords</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Swords" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <h5>Wands</h5>
+            {% for card in cards %}
+                {% if card.arcana == "Wands" %}
+                    <a href="{{ url_for('card_detail', card_name=card.urlName) }}">
+                        <img class="tarot-deck-ind-img img-fluid" data-tilt data-tilt-scale="1.1" src="{{card.imagePath}}"
+                            alt="Image of {{card.cardName}} card">
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/static/js/vanilla-tilt.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

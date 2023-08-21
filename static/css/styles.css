@@ -1,0 +1,68 @@
+@font-face {
+    font-family: Eubergine;
+    src: url(/static/assets/fonts/Eubergine\ Font.ttf);
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url(/static/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Unbounded;
+    src: url(/static/assets/fonts/Unbounded/Unbounded-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Averia_Serif_Libre;
+    src: url(/static/assets/fonts/Averia_Serif_Libre/AveriaSerifLibre-Regular.ttf);
+}
+
+
+body {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
+    color: rgb(174, 133, 220);   
+    font-family: Manrope; 
+}
+
+.page-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: rgba(242, 231, 231, 0.069);
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.round-button {
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.basic-container {
+    background-color: rgba(242, 231, 231, 0.226);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.disabled-button {
+    color: gainsboro;
+    border: 1px solid gainsboro;
+    cursor: auto;
+    background: transparent;
+}
+
+.disabled-button:hover {
+    color: gainsboro;
+    border: 1px solid gainsboro;
+    cursor: auto;
+    background: transparent;
+}

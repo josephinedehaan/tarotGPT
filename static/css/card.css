@@ -1,0 +1,84 @@
+body {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
+}
+
+.page-header-container {
+    background-color: transparent;
+}
+
+.exit-button-container {
+    padding-right: 6px
+}
+
+.back-button-container {
+    padding-left: 6px;
+}
+
+
+.single-card-name {
+    font-family: Averia_Serif_Libre;
+    font-size: 2rem;
+}
+
+.single-card-img-container {
+    text-align: center;
+}
+
+.single-card-img {
+    border-radius: 10px;
+    height: auto;
+    width: 50%;
+    display: block;
+    margin: 0 auto; 
+}
+
+
+.test1 {
+    background-color: red;
+    height: 100px;
+    width: 100px;
+
+}
+
+.chatbot {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
+    width: auto;
+    border: 1px solid white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: auto;
+    margin-top: 10px;
+
+}
+
+form, input, label {
+    color: white !important;
+}
+/* media queries */
+@media (min-width: 765px) {
+    .single-card-img {
+        width: 35%;
+    }
+}
+ 
+@media (min-width: 992px) {
+    .single-card-img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .single-card-img {
+        border-radius: 10px;
+        width: 50%;
+        margin-top: -10%;
+
+    }
+
+    .chatbot {
+        margin-right: 50px;
+        background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(165, 65, 228) 100%);
+        border: none;
+    }
+}

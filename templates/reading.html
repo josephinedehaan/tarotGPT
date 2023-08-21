@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Tarot Reading Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="/static/css/reading.css">
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Main contents  -->
+  <div class="container-fluid main-container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header-container">
+          <div class="back-button-container">
+            <a href="/"><button class="btn btn-outline-light round-button" id="back" title="Back"><i class="fas fa-arrow-left" title="Back"></i>
+              </button></a>
+          </div>
+
+          <a><button class="btn btn-outline-light round-button" id="shuffleCards" title="Shuffle Cards"><i class="fas fa-shuffle"></i>
+            </button></a>
+
+          <div class="selected-card-container">
+            <h3 class="selected-card"><span class="badge">Welcome</span></h3>
+          </div>
+
+          <a><button class="btn btn-outline-light round-button" id="revealCards" title="Reveal Cards"><i class="fa-regular fa-eye"></i>
+            </button></a>
+
+          <div class="exit-button-container">
+            <button class="btn btn-outline-light round-button" id="resetReading" title="Reset Reading"><i class="fa-solid fa-rotate-right"></i>
+            </button>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- LHS: Tarot card section -->
+      <div class="tarot-spread-container col-lg-8">
+        <!-- Tarot Cards -->
+        <div class="card-container">
+          <div class="card-pos-a d-flex justify-content-center">
+          </div>
+          <div class="card-pos-b d-flex justify-content-center">
+          </div>
+          <div class="card-pos-c d-flex justify-content-center">
+          </div>
+          <div class="card-pos-d d-flex justify-content-center">
+          </div>
+          <div class="card-pos-e d-flex justify-content-center">
+          </div>
+          <div class="card-pos-f d-flex justify-content-center">
+          </div>
+          <div class="card-pos-g d-flex justify-content-center">
+          </div>
+          <div class="card-pos-h d-flex justify-content-center">
+          </div>
+          <div class="card-pos-i d-flex justify-content-center">
+          </div>
+          <img src="/static/assets/images/deck.jpg" class="tarot-card initial-pos" id="deck-img">
+        </div>
+
+
+      </div>
+
+      <!-- RHS: ChatGPT Section -->
+      <div class="col-lg-4 chatbot-container" id="chatbox" data-chat-type="reading">
+        <div class="card chatbot">
+          <div class="white-layer"></div>
+
+          <div class="card-header">
+            <!-- Buttons -->
+            <div class="button-container">
+              <h3><span class="badge">Chat</span></h3>
+              <div class="minimize-button ">
+                <button class="btn btn-outline-light round-button" type="button" data-toggle="collapse"
+                  data-target="#chatBody" aria-controls="chatBody">
+                  <i class="fas fa-angle-down"></i></button>
+              </div>
+            </div>
+          </div>
+
+            <div class="card-body collapse" id="chatBody">
+              <span id="output"></span>
+              <div class="reading-text">
+                <p class="gptText">Hello and welcome to TarotGPT! You can ask me a question or click on the shuffle button to
+                  start the reading.</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="input-group">
+                <input class="form-control" id="messageInput" rows="1"></input>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-light input-box-btn round-button" id="sendButton" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/static/js/vanilla-tilt.js"></script>
+    <script src="/static/js/index.js"></script>
+</body>
+
+</html>
