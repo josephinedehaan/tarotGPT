@@ -34,6 +34,7 @@ const readingTextElem = document.querySelector('.reading-text')
 
 loadGame();
 
+// fully resets the reading
 function resetReading(card) {
     // fetch the clear route in bg
     fetch('/reset')
@@ -70,19 +71,21 @@ function resetReading(card) {
 
 }
 
+// activates chatbox
 function activateChat() {
     document.getElementById('sendButton').addEventListener('click', sendMessage);
     document.getElementById('messageInput').addEventListener('keyup', handleKeyPress);
 }
 
+// submits message when enter key is pressed
 function handleKeyPress(event) {
-    // Check if the Enter key is pressed (keyCode 13)
     if (event.code === 'Enter') {
-        event.preventDefault(); // Prevent form submission
-        sendMessage(); // Send the message
+        event.preventDefault(); 
+        sendMessage();
     }
 }
 
+// sends message to server and updates chatbox
 function sendMessage(route) {
     route = document.getElementById('chatbox').getAttribute('data-chat-type');
 
@@ -138,6 +141,7 @@ function sendMessage(route) {
 
 }
 
+// auto scrolls to bottom of chatbox
 function scrollToBottom() {
     const chatBody = document.getElementById('chatBody');
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -170,7 +174,6 @@ function removeTypingGIF() {
     typingGIF.remove()
 }
 
-
 // generate JSON for selected cards and assigns them their position name
 function buildSelectedCardsJSON() {
     const cardList = generateSelectedCardsList();
@@ -185,10 +188,10 @@ function buildSelectedCardsJSON() {
     return JSON.stringify({ selected_cards: tarotCardsPositionList })
 }
 
+//submits select cards json to flask server and returns the generated reading text
 function generateCardsPositionList() {
     cardsJson = buildSelectedCardsJSON()
-
-    // Make an API request to the Flask server
+    // makes an API request to the Flask server
     fetch('/chat/submit_reading', {
         method: 'POST',
         headers: {
@@ -198,12 +201,8 @@ function generateCardsPositionList() {
     })
         .then(response => response.json())
         .then(data => {
-            // Handle the response data if needed
-            // updateStatusElement(readingTextElem, "block", `<p>${data.output_message}</p>`)
             updateStatusElement(readingTextElem, "block", `${readingTextElem.innerHTML} <p class="gptText">${data.output_message} </p>`)
             removeTypingGIF()
-
-
         })
         .catch(error => {
             console.error('Error:', error);
@@ -230,7 +229,6 @@ function activateRevealCardsButton() {
 
 // unhides the reset reading button
 function activateResetReadingButton(card) {
-    // resetReadingButtonElem.hidden = false;
     resetReadingButtonElem.addEventListener('click', () => resetReading(card))
     enableButton(resetReadingButtonElem)
 }
@@ -267,12 +265,11 @@ function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed
 }
 
-// this gets called upon loading the page, creates all cards
+// this gets called upon loading the page, creates all cards and acivates user interaction
 function loadGame() {
-    // Call the function to fetch card data
     createCards()
     activateChat()
-    cards = document.querySelectorAll('.tarot-card')  // creates array with all cards
+    cards = document.querySelectorAll('.tarot-card')  
     disableButton(revealCardsButtonElem, revealCards)
     disableButton(resetReadingButtonElem, resetReading)
     activateShuffleCardsButton()
@@ -282,7 +279,7 @@ function loadGame() {
     attachHoverEventHandlerToBtn(resetReadingButtonElem)
 }
 
-// this gets called when the play game button is clicked.
+// this gets called when the play game button is clicked, initialises reading and shuffles cards
 function startTarotReading() {
     if (!gameInProgress) {
         initializeNewReading()
@@ -301,13 +298,11 @@ function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas
 }
 
-
 function flipCard(card) {
     const innerCardElem = card.firstChild
     if (innerCardElem.classList.contains('flip-it')) {
         innerCardElem.classList.remove('flip-it')
     }
-
 }
 
 // flips all cards
@@ -320,7 +315,6 @@ function revealCards() {
                 addToFlippedCardsList(card)
             }
         }, index * 500);
-
     });
 
     cardsRevealed = true;
@@ -339,13 +333,11 @@ function revealCard(card) {
     }
 }
 
-
 function removeInitialPosClass(){
     cards.forEach((card) => {
         card.classList.remove("initial-pos")
     })
 }
-
 
 function removeShuffleCasses() {
     cards.forEach((card) => {
@@ -472,12 +464,6 @@ function createCard(cardItem) {
     // add src attribute and appropriate value to img element - front of card
     addSrcToImageElem(cardFrontImg, cardItem.imagePath)
 
-    // // assign class to back image elemnet of back of card
-    // addClassToElement(cardBackImg, 'card-img')
-
-    // // assign class to front image elemnet of front of card
-    // addClassToElement(cardFrontImg, 'card-img')
-
     // assign class to back image elemnet of back of card
     addClassToElement(cardBackImg, 'img-fluid')
 
@@ -505,6 +491,7 @@ function createCard(cardItem) {
     attachClickEventHandlerToCard(cardElem)
 }
 
+// attaches click event handler to card element
 function attachClickEventHandlerToCard(card) {
     card.addEventListener('click', () => {
         startTarotReading();
@@ -520,10 +507,8 @@ function attachHoverEventHandlerToBtn(button) {
     button.addEventListener('mouseenter', () => {
         if (button.classList.contains('disabled-button')) {
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title} (not allowed yet)</span>`);
-
         } else {
             updateStatusElement(selectedCardElem, "block", `<span class='badge'>${button.title}</span>`);
-
         }
     });
 
@@ -573,7 +558,7 @@ function addChildElement(parentElem, childElem) {
     parentElem.appendChild(childElem)
 }
 
-// assesses whether the game is in progress and "places the cards in the correct grid area so to speak"
+// assesses whether the game is in progress and places the cards in the correct grid area
 function addCardToGridCell(card) {
     let cardPositionClassName;
 
@@ -597,7 +582,6 @@ function mapCardIdToGridCell(card) {
 fetch('/static/cards.json')
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
         cardObjectDefinitions = data;
         loadGame();
     })

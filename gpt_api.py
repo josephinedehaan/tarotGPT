@@ -29,9 +29,6 @@ def fetch_tarot_reading(selected_cards):
     session["log"]["reading"].append(prompt)   
     session.modified = True
    
-
-    print("FROM SESSION['log']:", session["log"]["reading"])
-
     try:
         response = requests.post(url, headers=headers, json=data)
         response_data = response.json()
